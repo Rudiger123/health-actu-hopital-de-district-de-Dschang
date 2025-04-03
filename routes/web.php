@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Back\Profile as BackProfile;
+use Livewire\Volt\Volt;
 
 /**
  * les routes de l'interface utilisateur de la plateforme
@@ -32,10 +33,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware(['auth'])->group(function () {
         Route::controller(AdminController::class)->group(function () {
-            Route::get('/dashboard', 'adminDashboard')->name('dashboard');
+            Route::get('/dashboard', 'adminDashoard')->name('dashboard');
             Route::post('/logout', 'logoutHandler')->name('logout');
         });
+
+        Volt::route('/profile', BackProfile::class)->name('profile');
     });
 });
 
-Route::get('/livewire/livewire.js', Livewire\Mechanisms\FrontendAssets\FrontendAssets::class);
