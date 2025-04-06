@@ -436,12 +436,6 @@
                                             <i class="bx bx-lock-alt me-2"></i> Sécurité
                                         </button>
                                     </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="social-tab" data-bs-toggle="pill"
-                                            data-bs-target="#social" type="button">
-                                            <i class="bx bx-share-alt me-2"></i> Réseaux Sociaux
-                                        </button>
-                                    </li>
                                 </ul>
 
                                 <!-- Contenu des Onglets -->
@@ -526,47 +520,6 @@
                                         </form>
                                     </div>
 
-                                    <!-- Onglet Réseaux Sociaux -->
-                                    <div class="tab-pane fade" id="social" role="tabpanel">
-                                        <div class="social-settings">
-                                            <div class="mb-4">
-                                                <h5 class="mb-3">Connectez vos comptes sociaux</h5>
-                                                <p>Améliorez votre visibilité en connectant vos réseaux sociaux</p>
-                                            </div>
-
-                                            <div class="social-accounts">
-                                                <div class="account-item mb-3">
-                                                    <div class="account-info">
-                                                        <i class="bx bxl-facebook-circle facebook-icon"></i>
-                                                        <span>Facebook</span>
-                                                    </div>
-                                                    <button class="btn btn-outline-primary btn-sm">Connecter</button>
-                                                </div>
-                                                <div class="account-item mb-3">
-                                                    <div class="account-info">
-                                                        <i class="bx bxl-twitter twitter-icon"></i>
-                                                        <span>Twitter</span>
-                                                    </div>
-                                                    <button class="btn btn-outline-primary btn-sm">Connecter</button>
-                                                </div>
-                                                <div class="account-item mb-3">
-                                                    <div class="account-info">
-                                                        <i class="bx bxl-instagram instagram-icon"></i>
-                                                        <span>Instagram</span>
-                                                    </div>
-                                                    <button class="btn btn-outline-primary btn-sm">Connecter</button>
-                                                </div>
-                                                <div class="account-item">
-                                                    <div class="account-info">
-                                                        <i class="bx bxl-linkedin linkedin-icon"></i>
-                                                        <span>LinkedIn</span>
-                                                    </div>
-                                                    <button class="btn btn-outline-primary btn-sm">Connecter</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
                                 </div>
                             </div>
                         </div>

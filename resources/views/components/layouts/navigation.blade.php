@@ -138,7 +138,8 @@
     </div>
 </div>
 
-@include('livewire.resetpassword')
+<livewire:reset-password-form/>
+
 
 @push('scripts')
     <script>

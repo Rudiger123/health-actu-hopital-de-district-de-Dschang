@@ -48,7 +48,7 @@
                                     </li>
                                     <li><hr class="dropdown-divider my-2"></li>
                                     <li>
-                                        <a href="{{ route('admin.profile') }}" wire:navigate class="dropdown-item d-flex align-items-center">
+                                        <a href="{{ route('admin.profile') }}" class="dropdown-item d-flex align-items-center">
                                             <i class="bx bx-user me-2"></i>
                                             <span>Mon Profil</span>
                                         </a>

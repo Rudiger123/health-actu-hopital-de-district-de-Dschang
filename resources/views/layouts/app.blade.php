@@ -15,7 +15,7 @@
         rel="stylesheet">
 
 
-    <title> {{ config('app.name') }}</title>
+    <title>@yield('title',config('app.name'))</title>
     <link rel="shortcut icon" href="{{ asset('favicon.webp') }}" type="image/x-icon" />
 
     {{--  import tailwindcss and alpinejs  --}}

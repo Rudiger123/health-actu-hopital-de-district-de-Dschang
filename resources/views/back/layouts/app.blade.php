@@ -129,6 +129,23 @@
 
     <!-- Place this tag before closing body tag for github widget button. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            @if(session('toast'))
+                Swal.fire({
+                    icon: "{{ session('toast.type') }}",
+                    title: "{{ session('toast.message') }}",
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+            @endif
+        });
+    </script>
+
+
 </body>
 
 </html>

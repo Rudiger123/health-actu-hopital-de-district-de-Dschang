@@ -3,7 +3,12 @@
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Back\Profile as BackProfile;
+use Illuminate\Support\Facades\DB;
 use Livewire\Volt\Volt;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\User;
 
 /**
  * les routes de l'interface utilisateur de la plateforme
@@ -41,3 +46,57 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 });
 
+// USER ROUTES
+// RESET PASSWORD TOKEN LINK
+Route::get('/reset-password/{token}', function ($token) {
+    $tokenData = DB::table('password_reset_tokens')->where('token', $token)->first();
+    if (!$tokenData) {
+        session()->flash('toast', [
+            'type' => 'error',
+            'message' => 'Token invalide ou expiré. Veuillez recommencer la procédure.',
+        ]);
+        return redirect()->route('home');
+    }
+
+    return view('pages.resetPassword', [
+        'token' => $token,
+        'email' => $tokenData->email,
+    ]);
+})->name('resetpassword.form');
+
+Route::post('/reset-password', function (Request $request) {
+    $request->validate([
+        'email' => 'required|email',
+        'token' => 'required',
+        'password' => 'required|min:6|confirmed',
+    ]);
+
+    $tokenData = DB::table('password_reset_tokens')
+        ->where('email', $request->email)
+        ->where('token', $request->token)
+        ->first();
+
+    if (!$tokenData) {
+        return back()->withErrors(['email' => 'Le lien de réinitialisation est invalide ou expiré.']);
+    }
+
+    $user = User::where('email', $request->email)->first();
+
+    if (!$user) {
+        return back()->withErrors(['email' => 'Aucun utilisateur trouvé avec cet email.']);
+    }
+
+    $user->password = Hash::make($request->password);
+    $user->setRememberToken(Str::random(60));
+    $user->save();
+
+    // Supprimer le token
+    DB::table('password_reset_tokens')->where('email', $request->email)->delete();
+
+    session()->flash('toast', [
+        'type' => 'success',
+        'message' => 'Mot de passe réinitialisé avec succès. Vous pouvez maintenant vous connecter.',
+    ]);
+
+    return redirect()->route('home');
+})->name('resetpassword.submit');
