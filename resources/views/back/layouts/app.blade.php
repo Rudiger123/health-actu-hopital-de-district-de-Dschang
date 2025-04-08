@@ -137,7 +137,7 @@
                     icon: "{{ session('toast.type') }}",
                     title: "{{ session('toast.message') }}",
                     toast: true,
-                    position: 'top-end',
+                    position: 'bottom-end',
                     showConfirmButton: false,
                     timer: 3000
                 });

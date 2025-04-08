@@ -64,7 +64,7 @@ class LoginForm extends Component
 
             session()->flash('toast', [
                 'type' => 'success',
-                'message' => "Connexion réussie, Bienvenue Administrateur $user->username ",
+                'message' => "Connexion réussie, Bienvenue $user->username ",
             ]);
 
             return redirect()->intended(route('admin.dashboard'));

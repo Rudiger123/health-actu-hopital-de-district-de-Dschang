@@ -10,4 +10,10 @@ class AdminController extends Controller
     {
         return view('back.pages.Auth.dashboard');
     }
+
+    public function profile(Request $request)
+    {
+        return view('back.pages.Auth.profile');
+    }
+    
 }
