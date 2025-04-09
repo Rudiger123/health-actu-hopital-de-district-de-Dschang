@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Livewire\Back\Components;
 
 use App\Livewire\Back\UserTopInfo;
 use App\Livewire\Back\Profile;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-
 use Livewire\Component;
 
 class UpdateProfilForm extends Component
@@ -28,6 +25,7 @@ class UpdateProfilForm extends Component
 
     public function updateProfile()
     {
+        // Validation des champs
         $this->validate([
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users,username,' . Auth::id(),
@@ -35,6 +33,7 @@ class UpdateProfilForm extends Component
             'bio' => 'nullable|string|max:500',
         ]);
 
+        // Mise à jour de l'utilisateur
         $user = Auth::user();
         $update = $user->update([
             'name' => $this->name,
@@ -43,28 +42,27 @@ class UpdateProfilForm extends Component
             'bio' => $this->bio,
         ]);
 
-        sleep(0.5);
-
+        // Gestion de l'actualisation et des messages
         if ($update) {
             session()->flash('toast', [
                 'type' => 'success',
-                'message' => "Your personal details have been updated successfully!",
+                'message' => "Vos informations ont été mises à jour avec succès !",
             ]);
             
+            // Déclenchement des événements pour mettre à jour d'autres composants
             $this->dispatch("updateTopUserInfo")->to(UserTopInfo::class);
             $this->dispatch("updatePersonalDetails")->to(Profile::class);
         } else {
             session()->flash('toast', [
                 'type' => 'error',
-                'message' => "Something went wrong!",
+                'message' => "Une erreur est survenue lors de la mise à jour.",
             ]);
         }
-
     }
-
 
     public function render()
     {
         return view('livewire.back.components.update-profil-form');
     }
 }
+

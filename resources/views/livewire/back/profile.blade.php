@@ -1,5 +1,6 @@
 <div>
-    <div>
+   @push('admincss')
+
         <style>
             /* Base Styles */
             .profile-revolution-container {
@@ -375,124 +376,124 @@
                 }
             }
         </style>
-
-        @section('content')
-            <div class="content-wrapper" x-data="{ modelOpen: false }" x-cloak>
-                <div class="container-xxl flex-grow-1 container-p-y">
-                    <div class="profile-revolution-container">
-                        <div class="row g-4">
-                            <!-- Colonne de Profil -->
-                            <div class="col-lg-4" style="background-color:white">
-                                <div class="profile-card text-center p-4">
-                                    <div class="avatar-container mb-4" style="position: relative; display: inline-block;">
-                                        <img src="{{ auth()->user()->avatar ?? asset('back/assets/img/avatars/1.png') }}"
-                                            style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #f0f0f0;">
-                                        <button
-                                            style="position: absolute; bottom: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; background-color: #6c757d; color: white; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer;"
-                                            @click="modelOpen =!modelOpen">
-                                            <i class="bx bx-edit" style="font-size: 16px;"></i>
-                                        </button>
-                                    </div>
-                                    <h3 class="profile-name">{{ Auth::user()->name }}</h3>
-                                    <p class="profile-email text-muted">{{ Auth::user()->email }}</p>
-                                    <div class="profile-badge">{{ Auth::user()->type }}</div>
-                                    <div class="profile-stats mt-4"
-                                        style="display: flex; justify-content: center; gap: 20px;">
-                                        <div class="stat-item">
-                                            <div class="stat-number" style="font-weight: bold; font-size: 18px;">142</div>
-                                            <div class="stat-label" style="font-size: 14px; color: #6c757d;">Articles</div>
-                                        </div>
-                                        <div class="stat-item">
-                                            <div class="stat-number" style="font-weight: bold; font-size: 18px;">326</div>
-                                            <div class="stat-label" style="font-size: 14px; color: #6c757d;">Commentaires
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="social-links mt-4">
-                                        <h5 class="section-title" style="font-size: 16px; margin-bottom: 12px;">Réseaux
-                                            Sociaux
-                                        </h5>
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <a href="#"
-                                                style="width: 36px; height: 36px; border-radius: 50%; background-color: #3b5998; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i
-                                                    class="bx bxl-facebook"></i></a>
-                                            <a href="#"
-                                                style="width: 36px; height: 36px; border-radius: 50%; background-color: #1da1f2; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i
-                                                    class="bx bxl-twitter"></i></a>
-                                            <a href="#"
-                                                style="width: 36px; height: 36px; border-radius: 50%; background-color: #e1306c; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i
-                                                    class="bx bxl-instagram"></i></a>
-                                            <a href="#"
-                                                style="width: 36px; height: 36px; border-radius: 50%; background-color: #0077b5; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i
-                                                    class="bx bxl-linkedin"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Colonne de Contenu -->
-                            <div class="col-lg-8">
-                                <div class="profile-content-card" style="background-color:white">
-                                    <!-- Navigation par Onglets -->
-                                    <ul class="nav nav-pills profile-tabs" id="profileTab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="details-tab" data-bs-toggle="pill"
-                                                data-bs-target="#details" type="button">
-                                                <i class="bx bx-user-circle me-2"></i> Informations
-                                            </button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="security-tab" data-bs-toggle="pill"
-                                                data-bs-target="#security" type="button">
-                                                <i class="bx bx-lock-alt me-2"></i> Sécurité
-                                            </button>
-                                        </li>
-                                    </ul>
+   @endpush
 
 
-                                    <!-- Contenu des Onglets -->
-                                    <div class="tab-content p-4">
-
-                                        <!-- Onglet Informations -->
-                                        <div class="tab-pane fade show active" id="details" role="tabpanel">
-                                            @livewire('back.components.update-profil-form')
-                                        </div>
 
 
-                                        <!-- Onglet Sécurité -->
-                                        <div class="tab-pane fade" id="security" role="tabpanel">
-                                            @livewire('back.components.update-password-form')
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    @livewire('back.components.update-profile-image')
+   @section('content')
+   <div class="content-wrapper" x-data="{ modelOpen: false }" x-cloak>
+       <div class="container-xxl flex-grow-1 container-p-y">
+           <div class="profile-revolution-container">
+               <div class="row g-4">
+                   <!-- Colonne de Profil -->
+                   <div class="col-lg-4" style="background-color:white">
+                       <div class="profile-card text-center p-4">
+                           <div class="avatar-container mb-4" style="position: relative; display: inline-block;">
+                               <img src="{{ auth()->user()->avatar ?? asset('back/assets/img/avatars/1.png') }}"
+                                   style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #f0f0f0;">
+                               <button
+                                   style="position: absolute; bottom: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; background-color: #6c757d; color: white; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer;"
+                                   @click="modelOpen =!modelOpen">
+                                   <i class="bx bx-edit" style="font-size: 16px;"></i>
+                               </button>
+                           </div>
+                           <h3 class="profile-name">{{ Auth::user()->name }}</h3>
+                           <p class="profile-email text-muted">{{ Auth::user()->email }}</p>
+                           <div class="profile-badge">{{ Auth::user()->type }}</div>
+                           <div class="profile-stats mt-4"
+                               style="display: flex; justify-content: center; gap: 20px;">
+                               <div class="stat-item">
+                                   <div class="stat-number" style="font-weight: bold; font-size: 18px;">142</div>
+                                   <div class="stat-label" style="font-size: 14px; color: #6c757d;">Articles</div>
+                               </div>
+                               <div class="stat-item">
+                                   <div class="stat-number" style="font-weight: bold; font-size: 18px;">326</div>
+                                   <div class="stat-label" style="font-size: 14px; color: #6c757d;">Commentaires
+                                   </div>
+                               </div>
+                           </div>
 
-                    <!-- / Content -->
+                           <div class="social-links mt-4">
+                               <h5 class="section-title" style="font-size: 16px; margin-bottom: 12px;">Réseaux
+                                   Sociaux
+                               </h5>
+                               <div class="d-flex justify-content-center gap-2">
+                                   <a href="#"
+                                       style="width: 36px; height: 36px; border-radius: 50%; background-color: #3b5998; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i
+                                           class="bx bxl-facebook"></i></a>
+                                   <a href="#"
+                                       style="width: 36px; height: 36px; border-radius: 50%; background-color: #1da1f2; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i
+                                           class="bx bxl-twitter"></i></a>
+                                   <a href="#"
+                                       style="width: 36px; height: 36px; border-radius: 50%; background-color: #e1306c; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i
+                                           class="bx bxl-instagram"></i></a>
+                                   <a href="#"
+                                       style="width: 36px; height: 36px; border-radius: 50%; background-color: #0077b5; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i
+                                           class="bx bxl-linkedin"></i></a>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
 
-                </div>
-            @endsection
-        </div>
-    </div>
+                   <!-- Colonne de Contenu -->
+                   <div class="col-lg-8">
+                       <div class="profile-content-card" style="background-color:white">
+                           <!-- Navigation par Onglets -->
+                           <ul class="nav nav-pills profile-tabs" id="profileTab" role="tablist">
+                               <li class="nav-item" role="presentation">
+                                   <button class="nav-link active" id="details-tab" data-bs-toggle="pill"
+                                       data-bs-target="#details" type="button">
+                                       <i class="bx bx-user-circle me-2"></i> Informations
+                                   </button>
+                               </li>
+                               <li class="nav-item" role="presentation">
+                                   <button class="nav-link" id="security-tab" data-bs-toggle="pill"
+                                       data-bs-target="#security" type="button">
+                                       <i class="bx bx-lock-alt me-2"></i> Sécurité
+                                   </button>
+                               </li>
+                           </ul>
 
-    @push('scripts')
-        <script>
-            document.addEventListener('livewire:initialized', () => {
-                Livewire.on('showAlert', (data) => {
-                    Swal.fire({
-                        title: data[0].title,
-                        text: data[0].text,
-                        icon: data[0].type,
-                        confirmButtonText: '{{ __('blog.ok') }}'
-                    });
-                });
+                           <!-- Contenu des Onglets -->
+                           <div class="tab-content p-4">
+
+                               <!-- Onglet Informations -->
+                               <div class="tab-pane fade show active" id="details" role="tabpanel">
+                                   @livewire('back.components.update-profil-form')
+                               </div>
+
+                               <!-- Onglet Sécurité -->
+                               <div class="tab-pane fade" id="security" role="tabpanel">
+                                   @livewire('back.components.update-password-form')
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           {{-- @livewire('back.components.update-profile-image') --}}
+
+           <!-- / Content -->
+
+       </div>
+   @endsection
+
+
+   @push('adminjs')
+   <script>
+    document.addEventListener('livewire:initialized', () => {
+        Livewire.on('showAlert', (data) => {
+            Swal.fire({
+                title: data[0].title,
+                text: data[0].text,
+                icon: data[0].type,
+                confirmButtonText: 'mettre à jour',
             });
-        </script>
-    @endpush
-
-
+        });
+    });
+</script>
+   @endpush
 </div>

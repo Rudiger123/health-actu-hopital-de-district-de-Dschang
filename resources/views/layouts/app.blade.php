@@ -18,6 +18,8 @@
     <title>@yield('title',config('app.name'))</title>
     <link rel="shortcut icon" href="{{ asset('favicon.webp') }}" type="image/x-icon" />
 
+    @livewireStyles
+
     {{--  import tailwindcss and alpinejs  --}}
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -35,7 +37,6 @@
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
-    @livewireStyles
 
 </head>
 

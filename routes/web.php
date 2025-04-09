@@ -4,7 +4,6 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Back\Profile;
 use Illuminate\Support\Facades\DB;
-use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -42,7 +41,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/logout', 'logoutHandler')->name('logout');
         });
 
-        Volt::route('/profile', Profile::class)->name('profile');
+        Route::get('/profile', Profile::class)->name('profile');
     });
 });
 

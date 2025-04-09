@@ -63,19 +63,24 @@ return [
     |
     */
 
-    'temporary_file_upload' => [
-        'disk' => null,        // Example: 'local', 's3'              | Default: 'default'
-        'rules' => null,       // Example: ['file', 'mimes:png,jpg']  | Default: ['required', 'file', 'max:12288'] (12MB)
-        'directory' => null,   // Example: 'tmp'                      | Default: 'livewire-tmp'
-        'middleware' => null,  // Example: 'throttle:5,1'             | Default: 'throttle:60,1'
-        'preview_mimes' => [   // Supported file types for temporary pre-signed file URLs...
-            'png', 'gif', 'bmp', 'svg', 'wav', 'mp4',
-            'mov', 'avi', 'wmv', 'mp3', 'm4a',
-            'jpg', 'jpeg', 'mpga', 'webp', 'wma',
-        ],
-        'max_upload_time' => 5, // Max duration (in minutes) before an upload is invalidated...
-        'cleanup' => true, // Should cleanup temporary uploads older than 24 hrs...
+   'temporary_file_upload' => [
+    'disk' => 'public', // utilise le disque 'public' défini dans config/filesystems.php
+
+    'rules' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:1024'], 
+    // max = taille en Ko => 1024 Ko = 1 Mo
+
+    'directory' => 'temp-uploads', // dossier temporaire dans storage/app/public/temp-uploads
+
+    'middleware' => 'throttle:20,1', // pour limiter les abus (20 uploads max par minute)
+
+    'preview_mimes' => [
+        'png', 'jpg', 'jpeg', 'gif', 'webp',
     ],
+
+    'max_upload_time' => 5, // 5 minutes de validité pour les fichiers uploadés
+
+    'cleanup' => true, // nettoyage automatique au-delà de 24 heures
+],
 
     /*
     |---------------------------------------------------------------------------

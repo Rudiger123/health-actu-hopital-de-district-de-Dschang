@@ -22,16 +22,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // redirect an authenticated user to Dashbaord
-        RedirectIfAuthenticated::redirectUsing(function(){
-           // message d'avertissement de deconnexion et de demande de connexion de l'utilisateur
-           return route('home');
+        RedirectIfAuthenticated::redirectUsing(function () {
+            session()->flash('message', 'Vous êtes déjà connecté !');
+            return route('admin.dashboard');
         });
-        // redirect an no authenticated user to home page 
-        Authenticate::redirectUsing(function(){   
-              // message vous etes déjà authentifié
-              return route('admin.dashboard');
+        
+        Authenticate::redirectUsing(function () {
+            session()->flash('warning', 'Veuillez vous connecter pour accéder à cette page.');
+            return route('home');
         });
+        
 
     }
 }

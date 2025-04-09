@@ -44,6 +44,12 @@
 
     @livewireStyles
 
+    {{--  stylesheet files import  --}}
+    @stack('admincss')
+{{--  stylesheet files import  --}}
+@stack('adminjs')
+
+
     <!-- Helpers -->
     <script src="{{ asset('back/assets/vendor/js/helpers.js') }}"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
@@ -107,7 +113,6 @@
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-
     @livewireScripts
 
     <!-- Core JS -->
@@ -126,9 +131,6 @@
 
     <!-- Page JS -->
     <script src="{{ asset('back/assets/js/dashboards-analytics.js') }}"></script>
-
-    <!-- Place this tag before closing body tag for github widget button. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
