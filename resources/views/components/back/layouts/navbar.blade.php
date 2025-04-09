@@ -71,6 +71,20 @@
             </a>
         </li>
 
+        <li class="menu-item open">
+            <a href="{{route('admin.dashboard')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-smile"></i>
+                <div class="text-truncate" data-i18n="Dashboards">Categories</div>
+            </a>
+        </li>
+
+        <li class="menu-item open">
+            <a href="{{route('admin.dashboard')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-smile"></i>
+                <div class="text-truncate" data-i18n="Dashboards">Posts</div>
+            </a>
+        </li>
+
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">

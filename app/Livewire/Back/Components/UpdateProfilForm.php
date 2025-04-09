@@ -1,17 +1,23 @@
 <?php
+
 namespace App\Livewire\Back\Components;
 
 use App\Livewire\Back\UserTopInfo;
-use App\Livewire\Back\Profile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class UpdateProfilForm extends Component
 {
+    use WithFileUploads;
+
     public $name;
     public $username;
     public $email;
     public $bio;
+    public $photo;
 
     public function mount()
     {
@@ -31,6 +37,7 @@ class UpdateProfilForm extends Component
             'username' => 'required|string|max:255|unique:users,username,' . Auth::id(),
             'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
             'bio' => 'nullable|string|max:500',
+            'photo' => 'nullable|image|max:1024'
         ]);
 
         // Mise à jour de l'utilisateur
@@ -42,20 +49,44 @@ class UpdateProfilForm extends Component
             'bio' => $this->bio,
         ]);
 
+        if ($this->photo) {
+            // Supprimer l’ancienne photo si elle existe
+            if ($user->picture) {
+                Storage::disk('public')->delete($user->picture);
+            }
+
+            // Enregistrer la nouvelle photo
+            $fileName = Str::uuid() . '.' . $this->photo->getClientOriginalExtension();
+            $filePath = $this->photo->storeAs('Profile', $fileName);
+
+            $user->update([
+                'picture' => $filePath,
+            ]);
+
+            $this->reset('photo');
+        }
+
         // Gestion de l'actualisation et des messages
         if ($update) {
             session()->flash('toast', [
                 'type' => 'success',
                 'message' => "Vos informations ont été mises à jour avec succès !",
             ]);
-            
+
+            $this->dispatch('showAlert', [
+                'type' => 'success',
+                'title' => 'mise à jour',
+                'text' => "Vos informations ont été mises à jour avec succès !",
+            ]);
+
             // Déclenchement des événements pour mettre à jour d'autres composants
             $this->dispatch("updateTopUserInfo")->to(UserTopInfo::class);
-            $this->dispatch("updatePersonalDetails")->to(Profile::class);
+            $this->dispatch("updatePersonalDetails")->to(UpdateProfileImage::class);
         } else {
-            session()->flash('toast', [
+            $this->dispatch('showAlert', [
                 'type' => 'error',
-                'message' => "Une erreur est survenue lors de la mise à jour.",
+                'title' => 'une erreur est survenue',
+                'text' => 'une erreur est survenue lors de la mise à jour des informations',
             ]);
         }
     }
@@ -65,4 +96,3 @@ class UpdateProfilForm extends Component
         return view('livewire.back.components.update-profil-form');
     }
 }
-

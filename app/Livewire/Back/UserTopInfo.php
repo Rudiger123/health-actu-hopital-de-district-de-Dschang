@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Livewire\Back;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Livewire\Component;
 
 class UserTopInfo extends Component
@@ -11,6 +12,8 @@ class UserTopInfo extends Component
     ];
     public function render()
     {
-        return view('livewire.back.user-top-info');
+        return view('livewire.back.user-top-info',[
+            'user' => User::findOrFail(Auth::user()->id),
+        ]);
     }
 }

@@ -46,8 +46,8 @@
 
     {{--  stylesheet files import  --}}
     @stack('admincss')
-{{--  stylesheet files import  --}}
-@stack('adminjs')
+    {{--  stylesheet files import  --}}
+    @stack('adminjs')
 
 
     <!-- Helpers -->
@@ -133,8 +133,18 @@
     <script src="{{ asset('back/assets/js/dashboards-analytics.js') }}"></script>
 
     <script>
+        document.addEventListener('livewire:initialized', () => {
+            Livewire.on('showAlert', (data) => {
+                Swal.fire({
+                    title: data[0].title,
+                    text: data[0].text,
+                    icon: data[0].type,
+                    confirmButtonText: 'OK'
+                });
+            });
+        });
         document.addEventListener('DOMContentLoaded', () => {
-            @if(session('toast'))
+            @if (session('toast'))
                 Swal.fire({
                     icon: "{{ session('toast.type') }}",
                     title: "{{ session('toast.message') }}",
