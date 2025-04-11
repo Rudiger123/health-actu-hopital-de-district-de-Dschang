@@ -2,191 +2,80 @@
 
 namespace App\Livewire\Back\Admin;
 
-use App\Models\Category as CategoryModel;
+use App\Models\Category as CategorysModel;
 use App\Models\ParentCategory;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class Category extends Component
 {
-    public $parentCategories;
-    public $categories;
+    
+    public function mount() {}
 
-    // Propriétés pour les catégories parents
-    public $parentName, $parentDescription, $parentId;
+    public $isUpdateParentCategoryMode = false;
+    public $pcategory_name, $pcategory_id;
 
-    // Propriétés pour les sous-catégories
-    public $categoryName, $categoryDescription, $parentCategoryId, $categoryId;
-
-    // Modals
-    public $isEditParent = false;
-    public $isEditCategory = false;
-
-    protected $rules = [
-        'parentName' => 'required|string|max:255|unique:parent_category,name',
-        'categoryName' => 'required|string|max:255',
-        'categoryDescription' => 'nullable|string|max:500',
-        'parentCategoryId' => 'required|exists:categories,id',
-    ];
-
-    public function mount()
+    public function addParentCategory()
     {
-        $this->loadData();
+        // dd('create modal');
+        $this->pcategory_name = '';
+        $this->pcategory_id = '';
+        $this->isUpdateParentCategoryMode = false;
+        $this->showParentCategoryModalForm();
     }
 
-    public function loadData()
+    public function showParentCategoryModalForm()
     {
-        $this->parentCategories = ParentCategory::all();
-        $this->categories = CategoryModel::all();
+        // dd('show modal');
+        $this->resetErrorBag();
+        $this->dispatch('showParentCategoryModalForm');
     }
 
-    // CRUD pour les catégories parents
-    public function storeParent()
+    public function hideParentCategoryModalForm()
+    {
+        $this->dispatch('hideParentCategoryModalForm');
+        $this->isUpdateParentCategoryMode = false;
+        $this->pcategory_name = $this->pcategory_id = null;
+    }
+
+
+    public function createParentCategory()
     {
         $this->validate([
-            'parentName' => 'required|string|max:255|unique:parent_categories,name',
+            'pcategory_name' => 'required|unique:parent_categories,name',
+        ], [
+            'pcategory_name.required' => 'Le nom de la catégorie est obligatoire',
+            'pcategory_name.unique' => 'Le nom de la catégorie existe déjà',
         ]);
 
-        $parent = ParentCategory::create([
-            'name' => $this->parentName
+        // store new parent category
+        $category = ParentCategory::create([
+            'name' => $this->pcategory_name,
         ]);
 
-        if ($parent) {
+        if ($category) {
+            $this->hideParentCategoryModalForm();
             $this->dispatch('showAlert', [
                 'type' => 'success',
-                'title' => 'creation succès',
-                'text' => "categorie crée avec succès !",
+                'title' => 'categorie parente',
+                'text' => "la nouvelle categorie parente a été créée avec succès !",
+            ]);
+        } else {
+            $this->dispatch('showAlert', [
+                'type' => 'success',
+                'title' => 'Error',
+                'text' => "Une erreur est survenue!",
             ]);
         }
-        $this->resetParentFields();
-        $this->loadData();
-    }
-
-    public function editParent($id)
-    {
-        $parent = CategoryModel::findOrFail($id);
-        $this->parentId = $parent->id;
-        $this->parentName = $parent->name;
-        $this->parentDescription = $parent->description;
-        $this->isEditParent = true;
-    }
-
-    public function updateParent()
-    {
-        $this->validate([
-            'parentName' => 'required|string|max:255',
-            'parentDescription' => 'nullable|string|max:500',
-        ]);
-
-        $parent = CategoryModel::findOrFail($this->parentId);
-        $parent->update([
-            'name' => $this->parentName,
-            'description' => $this->parentDescription,
-        ]);
-
-        session()->flash('success', 'Catégorie parent mise à jour avec succès.');
-        $this->resetParentFields();
-        $this->loadData();
-    }
-
-    public function confirmDeleteParent($id)
-    {
-        $this->parentId = $id;
-    }
-
-    public function deleteParent()
-    {
-        $parent = CategoryModel::findOrFail($this->parentId);
-        $parent->delete();
-
-        session()->flash('success', 'Catégorie parent supprimée avec succès.');
-        $this->resetParentFields();
-        $this->loadData();
-    }
-
-    public function resetParentFields()
-    {
-        $this->parentName = '';
-        $this->parentDescription = '';
-        $this->parentId = null;
-        $this->isEditParent = false;
-    }
-
-    // CRUD pour les sous-catégories
-    public function storeCategory()
-    {
-        $this->validate([
-            'categoryName' => 'required|string|max:255',
-            'categoryDescription' => 'nullable|string|max:500',
-            'parentCategoryId' => 'required|exists:categories,id',
-        ]);
-
-        CategoryModel::create([
-            'name' => $this->categoryName,
-            'description' => $this->categoryDescription,
-            'parent_id' => $this->parentCategoryId,
-        ]);
-
-        session()->flash('success', 'Sous-catégorie ajoutée avec succès.');
-        $this->resetCategoryFields();
-        $this->loadData();
-    }
-
-    public function editCategory($id)
-    {
-        $category = CategoryModel::findOrFail($id);
-        $this->categoryId = $category->id;
-        $this->categoryName = $category->name;
-        $this->categoryDescription = $category->description;
-        $this->parentCategoryId = $category->parent_id;
-        $this->isEditCategory = true;
-    }
-
-    public function updateCategory()
-    {
-        $this->validate([
-            'categoryName' => 'required|string|max:255',
-            'categoryDescription' => 'nullable|string|max:500',
-            'parentCategoryId' => 'required|exists:categories,id',
-        ]);
-
-        $category = CategoryModel::findOrFail($this->categoryId);
-        $category->update([
-            'name' => $this->categoryName,
-            'description' => $this->categoryDescription,
-            'parent_id' => $this->parentCategoryId,
-        ]);
-
-        session()->flash('success', 'Sous-catégorie mise à jour avec succès.');
-        $this->resetCategoryFields();
-        $this->loadData();
-    }
-
-    public function confirmDeleteCategory($id)
-    {
-        $this->categoryId = $id;
-    }
-
-    public function deleteCategory()
-    {
-        $category = CategoryModel::findOrFail($this->categoryId);
-        $category->delete();
-
-        session()->flash('success', 'Sous-catégorie supprimée avec succès.');
-        $this->resetCategoryFields();
-        $this->loadData();
-    }
-
-    public function resetCategoryFields()
-    {
-        $this->categoryName = '';
-        $this->categoryDescription = '';
-        $this->parentCategoryId = null;
-        $this->categoryId = null;
-        $this->isEditCategory = false;
+        $this->isUpdateParentCategoryMode = false;
+        $this->reset();
     }
 
     public function render()
     {
-        return view('livewire.back.admin.category');
+        return view('livewire.back.admin.category', [
+            "parentCategories" => ParentCategory::all(),
+            "childCategories" => CategorysModel::all()
+        ]);
     }
 }
