@@ -55,4 +55,16 @@ class User extends Authenticatable
             'type' => UserType::class
         ];
     }
+
+    // Relation avec les articles (un utilisateur a plusieurs articles)
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'author_id');
+    }
+
+    // Relation avec les commentaires (un utilisateur a plusieurs commentaires)
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

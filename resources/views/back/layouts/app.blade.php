@@ -14,9 +14,7 @@
     {{--  import tailwindcss and alpinejs  --}}
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <meta name="description" content="" />
-
-
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,11 +33,7 @@
     <!-- Vendors CSS -->
 
     <link rel="stylesheet" href="{{ asset('back/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
-
-    <!-- endbuild -->
-
-    <link rel="stylesheet" href="{{ asset('back/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
-
+   
     <!-- Page CSS -->
 
     @livewireStyles
@@ -112,7 +106,10 @@
         <!-- Overlay -->
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
+
     <!-- / Layout wrapper -->
+
+    {{-- livewire scripts --}}
     @livewireScripts
 
     <!-- Core JS -->
@@ -123,14 +120,8 @@
     <script src="{{ asset('back/assets/vendor/js/menu.js') }}"></script>
     <!-- endbuild -->
 
-    <!-- Vendors JS -->
-    <script src="{{ asset('back/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
-
     <!-- Main JS -->
     <script src="{{ asset('back/assets/js/main.js') }}"></script>
-
-    <!-- Page JS -->
-    <script src="{{ asset('back/assets/js/dashboards-analytics.js') }}"></script>
 
     <script>
         document.addEventListener('livewire:initialized', () => {

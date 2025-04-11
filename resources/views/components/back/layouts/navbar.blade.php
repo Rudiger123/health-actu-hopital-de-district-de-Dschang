@@ -63,76 +63,75 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <!-- Dashboards -->
+        <!-- Dashboard -->
         <li class="menu-item active open">
             <a href="{{route('admin.dashboard')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-smile"></i>
-                <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div class="text-truncate" data-i18n="Dashboard">Tableau de bord</div>
             </a>
         </li>
 
-        <li class="menu-item open">
-            <a href="{{route('admin.dashboard')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-smile"></i>
-                <div class="text-truncate" data-i18n="Dashboards">Categories</div>
-            </a>
-        </li>
-
-        <li class="menu-item open">
-            <a href="{{route('admin.dashboard')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-smile"></i>
-                <div class="text-truncate" data-i18n="Dashboards">Posts</div>
-            </a>
-        </li>
-
-        <!-- Layouts -->
+        <!-- Articles -->
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div class="text-truncate" data-i18n="Layouts">Layouts</div>
-            </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="" class="menu-link">
-                        <div class="text-truncate" data-i18n="Without menu">Without menu</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <!-- Pages -->
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div class="text-truncate" data-i18n="Account Settings">Account Settings</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="" class="menu-link">
-                        <div class="text-truncate" data-i18n="Account">Account</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        </li>
-
-        <!-- Components -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
-        <!-- Cards -->
-        <li class="menu-item">
-            <a href="" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div class="text-truncate" data-i18n="Basic">Cards</div>
+            <a href="{{route('admin.posts')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-news"></i>
+                <div class="text-truncate" data-i18n="Posts">Articles</div>
             </a>
         </li>
-      
-        <!-- Tables -->
+
+        <!-- Catégories -->
         <li class="menu-item">
-            <a href="" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-table"></i>
-                <div class="text-truncate" data-i18n="Tables">Tables</div>
+            <a href="{{route('admin.categories')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-category"></i>
+                <div class="text-truncate" data-i18n="Categories">Catégories</div>
+            </a>
+        </li>
+
+        <!-- Tags -->
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-tag"></i>
+                <div class="text-truncate" data-i18n="Tags">Étiquettes</div>
+            </a>
+        </li>
+
+        <!-- Commentaires -->
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-comment"></i>
+                <div class="text-truncate" data-i18n="Comments">Commentaires</div>
+            </a>
+        </li>
+
+        <!-- Utilisateurs -->
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div class="text-truncate" data-i18n="Users">Utilisateurs</div>
+            </a>
+        </li>
+
+        <!-- Médias -->
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-image"></i>
+                <div class="text-truncate" data-i18n="Media">Médias</div>
+            </a>
+        </li>
+
+        <!-- Paramètres -->
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div class="text-truncate" data-i18n="Settings">Paramètres</div>
+            </a>
+        </li>
+
+        <!-- Statistiques -->
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-stats"></i>
+                <div class="text-truncate" data-i18n="Statistics">Statistiques</div>
             </a>
         </li>
     </ul>

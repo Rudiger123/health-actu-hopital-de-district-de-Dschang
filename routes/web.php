@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Livewire\Back\Admin\Category;
+use App\Livewire\Back\Admin\Post;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Back\Profile;
 use Illuminate\Support\Facades\DB;
@@ -34,14 +36,14 @@ Route::get('contact', function () {
  *  ADMIN ROUTES
  */
 Route::prefix('admin')->name('admin.')->group(function () {
-
     Route::middleware(['auth'])->group(function () {
         Route::controller(AdminController::class)->group(function () {
             Route::get('/dashboard', 'adminDashoard')->name('dashboard');
             Route::post('/logout', 'logoutHandler')->name('logout');
+            Route::get('/profile', Profile::class)->name('profile');
+            Route::get('/categories', 'categories')->name('categories');
+            Route::get('/posts', Post::class)->name('posts');
         });
-
-        Route::get('/profile', Profile::class)->name('profile');
     });
 });
 

@@ -68,11 +68,6 @@ class UpdateProfilForm extends Component
 
         // Gestion de l'actualisation et des messages
         if ($update) {
-            session()->flash('toast', [
-                'type' => 'success',
-                'message' => "Vos informations ont été mises à jour avec succès !",
-            ]);
-
             $this->dispatch('showAlert', [
                 'type' => 'success',
                 'title' => 'mise à jour',

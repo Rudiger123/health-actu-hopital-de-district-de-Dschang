@@ -11,9 +11,9 @@ class AdminController extends Controller
         return view('back.pages.Auth.dashboard');
     }
 
-    public function profile(Request $request)
+    public function categories(Request $request)
     {
-        return view('back.pages.Auth.profile');
+        return view('back.pages.Auth.categories');
     }
     
 }
