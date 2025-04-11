@@ -103,10 +103,7 @@
         @endguest
 
         @auth
-            <a class="btn-getstarted btn-open-login cursor-pointer" style="cursor: pointer;" data-bs-toggle="modal"
-                data-bs-target="#loginModal">
-                {{ auth()->user()->username }}
-            </a>
+            @livewire('back.user-top-info')
         @endauth
 
     </div>
@@ -138,7 +135,7 @@
     </div>
 </div>
 
-<livewire:reset-password-form/>
+<livewire:reset-password-form />
 
 
 @push('scripts')

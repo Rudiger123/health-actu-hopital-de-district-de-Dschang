@@ -26,12 +26,6 @@ class AppServiceProvider extends ServiceProvider
             session()->flash('message', 'Vous êtes déjà connecté !');
             return route('admin.dashboard');
         });
-        
-        Authenticate::redirectUsing(function () {
-            session()->flash('warning', 'Veuillez vous connecter pour accéder à cette page.');
-            return route('home');
-        });
-        
 
     }
 }
