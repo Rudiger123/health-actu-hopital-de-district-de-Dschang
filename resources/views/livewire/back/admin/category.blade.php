@@ -1,3 +1,16 @@
+<?php
+use Livewire\Volt\Component;
+use function Livewire\Volt\{state};
+
+new class extends Component {
+    public function edittest()
+    {
+        dd('hello mon gars');
+    }
+};
+
+?>
+
 <div>
     <!-- En-tête -->
     <div class="container-fluid py-4 container-xxl flex-grow-1 container-p-y">
@@ -8,7 +21,7 @@
                     <h2 class="mb-0">Gestion des Catégories</h2>
 
                     <div class="d-flex flex-column flex-sm-row gap-2">
-                        <button class="btn btn-primary" wire:click="addParentCategory()">
+                        <button class="btn btn-primary" wire:click="addParentCategory">
                             <i class="fas fa-layer-plus me-2"></i>
                             Nouvelle Catégorie Parent
                         </button>
@@ -94,16 +107,13 @@
                                     @forelse($childCategories as $category)
                                         <tr>
                                             <td>{{ $category->name }}</td>
-                                            <td>{{ Str::limit($category->description, 50) }}</td>
+                                            <td>0</td>
                                             <td>{{ $category->parent->name ?? '-' }}</td>
                                             <td class="text-end">
-                                                <button class="btn btn-sm btn-warning me-2"
-                                                    wire:click="openEditModal({{ $category->id }})">
+                                                <button class="btn btn-sm btn-warning me-2">
                                                     <i class="icon-base bx bx-edit-alt me-1"></i> Edit
                                                 </button>
-                                                <button class="btn btn-sm btn-danger"
-                                                    wire:click="$dispatch('confirm-delete', { id: {{ $category->id }} })"
-                                                    >
+                                                <button class="btn btn-sm btn-danger">
                                                     <i class="icon-base bx bx-trash me-1"></i> Delete
                                                 </button>
                                             </td>
@@ -128,40 +138,64 @@
     <div wire:ignore.self class="modal fade" id="pcategory_modal" tabindex="-1" aria-labelledby="pcategory_modalLabel"
         aria-hidden="true" data-backdrop="static" data-keyboard = "false">
         <div class="modal-dialog modal-dialog-centered">
-            <form wire:submit.prevent = "{{ $isUpdateParentCategoryMode ? "updateParentCategory($pcategory_id)" : 'createParentCategory()' }}"
-                class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        {{ $isUpdateParentCategoryMode ? 'Modifier une categorie Parent' : 'Ajouter une categorie Parent' }}
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    @if ($isUpdateParentCategoryMode)
-                        <input type="hidden" wire:model="pcategory_id">
-                    @endif
-
-                    @if ($isUpdateParentCategoryMode)
-                        @dump($pcategory_name)
-                    @endif
-                    <div class="mb-3">
-                        <label for="pcategory_name" class="form-label">Nom de la catégorie</label>
-                        <input type="text" id="pcategory_name" class="form-control" wire:model="pcategory_name"
-                            placeholder="Nom de la catégorie">
-                        @error('pcategory_name')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+            @if ($isUpdateParentCategoryMode)
+                <form wire:submit.prevent = "updateParentCategory" class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Modifier une categorie Parent
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">
-                        <span wire:loading wire:target="{{ $isUpdateParentCategoryMode ? 'updateParentCategory' : 'createParentCategory' }}" 
-                              class="spinner-border spinner-border-sm"></span>
-                        {{ $isUpdateParentCategoryMode ? 'Mettre à jour' : 'Créer' }}
-                    </button>
-                </div>
-            </form>
+                    <div class="modal-body">
+                        @if ($isUpdateParentCategoryMode)
+                            <input type="text" wire:model="pcategory_id" class="form-control" disabled>
+                        @endif
+
+                        <div class="mb-3">
+                            <label for="pcategory_name" class="form-label">Nom de la catégorie</label>
+                            <input type="text" id="pcategory_name" class="form-control" wire:model="pcategory_name"
+                                placeholder="Nom de la catégorie">
+                            @error('pcategory_name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">
+                            <span wire:loading wire:target="updateParentCategory"
+                                class="spinner-border spinner-border-sm"></span>
+                            Mettre à jour
+                        </button>
+                    </div>
+                </form>
+            @else
+                <form wire:submit = "createParentCategory" class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Ajouter une categorie Parent
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="pcategory_name" class="form-label">Nom de la catégorie</label>
+                            <input type="text" id="pcategory_name" class="form-control" wire:model="pcategory_name"
+                                placeholder="Nom de la catégorie">
+                            @error('pcategory_name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">
+                            <span wire:loading createParentCategory class="spinner-border spinner-border-sm"></span>
+                            Créer
+                        </button>
+                    </div>
+                </form>
+            @endif
         </div>
     </div>
 

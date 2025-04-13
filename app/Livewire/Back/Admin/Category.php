@@ -5,7 +5,6 @@ namespace App\Livewire\Back\Admin;
 use App\Models\Category as CategorysModel;
 use App\Models\ParentCategory;
 use Livewire\Component;
-use Livewire\Attributes\On;
 
 class Category extends Component
 {
@@ -19,6 +18,7 @@ class Category extends Component
     public $isUpdateParentCategoryMode = false;
     public $pcategory_name, $pcategory_id;
 
+
     public function addParentCategory()
     {
         $this->pcategory_name = '';
@@ -27,6 +27,14 @@ class Category extends Component
         $this->showParentCategoryModalForm();
     }
 
+
+    /************************************************************
+     * CRUD CATEGORIE PARENT 
+     ************************************************************/
+
+    /**
+     * OUVERTURE DE LA MODALE DU FORMULAIRE DE CREATION ET DE MISE A JOUR D'UNE CATEGORIE PARENTE
+     */
     public function showParentCategoryModalForm()
     {
         // dd('show modal');
@@ -34,6 +42,9 @@ class Category extends Component
         $this->dispatch('showParentCategoryModalForm');
     }
 
+    /**
+     * FERMETURE DE LA MODALE DU FORMULAIRE DE CREATION ET DE MISE A JOUR D'UNE CATEGORIE PARENTE
+     */
     public function hideParentCategoryModalForm()
     {
         $this->dispatch('hideParentCategoryModalForm');
@@ -42,6 +53,9 @@ class Category extends Component
     }
 
 
+    /**
+     * ACTION DE CREATION DE LA CATEGORIE PARENTE
+     */
     public function createParentCategory()
     {
         $this->validate([
@@ -71,9 +85,13 @@ class Category extends Component
             ]);
         }
         $this->isUpdateParentCategoryMode = false;
-        $this->reset();
+        $this->pcategory_name = null;
+        //$this->reset();
     }
 
+     /**
+     * OUVERTURE DU FORMULAIRE POUR LA MISE A JOUR
+     */
     public function editParentCategory($id)
     {
         $category = ParentCategory::findOrFail($id);
@@ -83,11 +101,18 @@ class Category extends Component
         $this->showParentCategoryModalForm();
     }
 
-    public function updateParentCategory($id) {
-        dd($id);
+    public function edittest()
+    {
+        dd($this->pcategory_name);
+    }
+    /**
+     * ACTION DE MISE A JOUR DE LA CATEGORIE PARENTE
+     */
+    public function updateParentCategory()
+    {
         $category = ParentCategory::findOrFail($this->pcategory_id);
         $this->validate([
-            'pcategory_name' => 'required|unique:parent_categories,name,'.$this->pcategory_id,
+            'pcategory_name' => 'required|unique:parent_categories,name,' . $this->pcategory_id,
         ], [
             'pcategory_name.required' => 'Le nom de la catégorie est obligatoire',
             'pcategory_name.unique' => 'Le nom de la catégorie existe déjà',
@@ -111,7 +136,6 @@ class Category extends Component
                 'text' => "Une erreur est survenue lors de la mise à jour de la catégorie parente",
             ]);
         }
-
     }
 
     // Confirmation de suppression
@@ -148,6 +172,10 @@ class Category extends Component
             );
         }
     }
+
+    /******************************************************************
+     * FIN CRUD CATEGORY PARENT
+     *************************************************************** */
 
     public function render()
     {
