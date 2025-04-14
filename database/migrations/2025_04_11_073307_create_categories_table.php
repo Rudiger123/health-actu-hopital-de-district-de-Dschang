@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ParentCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,8 +17,7 @@ return new class extends Migration
             $table->id(); // Identifiant unique
             $table->string('name'); // Nom de la catégorie
             $table->string('slug')->unique(); // Version URL-friendly
-            $table->foreignId('parent_id')->nullable()->constrained('categories'); // Catégorie parente (pour hiérarchie)
-            $table->integer('ordering')->default(1000);
+            $table->foreignIdFor(ParentCategory::class)->nullable(); // Catégorie parente (pour hiérarchie)
             $table->timestamps(); // created_at et updated_at
         });
     }

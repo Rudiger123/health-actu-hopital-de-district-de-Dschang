@@ -53,7 +53,7 @@ new class extends Component {
                     </div>
                     <!-- /Search -->
 
-                    
+
 
 
                     <div class="d-flex flex-column flex-sm-row gap-2">
@@ -61,9 +61,9 @@ new class extends Component {
                             <i class="fas fa-layer-plus me-2"></i>
                             Nouvelle Catégorie Parent
                         </button>
-                        <button class="btn btn-primary" wire:click="">
+                        <button class="btn btn-primary" wire:click="addCategory">
                             <i class="fas fa-plus me-2"></i>
-                            Nouvelle Sous-Catégorie
+                            Nouvelle Catégorie
                         </button>
                     </div>
                 </div>
@@ -92,7 +92,7 @@ new class extends Component {
                                     @forelse($parentCategories as $category)
                                         <tr>
                                             <td>{{ $category->name }}</td>
-                                            <td>0</td>
+                                            <td> {{ $category?->categories()->count() }} </td>
                                             <td class="text-end">
                                                 <!-- Bouton Édition -->
                                                 <button class="btn btn-sm btn-warning me-2"
@@ -117,6 +117,9 @@ new class extends Component {
                                     @endforelse
                                 </tbody>
                             </table>
+                            <div class="container-fluid container-p-y">
+                                {{ $parentCategories->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -126,7 +129,7 @@ new class extends Component {
             <div class="col-12">
                 <div class="card shadow-sm">
                     <div class="card-header">
-                        <h5 class="mb-0">Sous-Catégories</h5>
+                        <h5 class="mb-0">Catégories</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -134,8 +137,8 @@ new class extends Component {
                                 <thead>
                                     <tr>
                                         <th>Nom</th>
-                                        <th>Description</th>
-                                        <th>Parent</th>
+                                        <th>slug</th>
+                                        <th>Parent Categorie</th>
                                         <th class="text-end">Actions</th>
                                     </tr>
                                 </thead>
@@ -143,8 +146,8 @@ new class extends Component {
                                     @forelse($childCategories as $category)
                                         <tr>
                                             <td>{{ $category->name }}</td>
-                                            <td>0</td>
-                                            <td>{{ $category->parent->name ?? '-' }}</td>
+                                            <td>{{ $category->slug }}</td>
+                                            <td>{{ $category->parentCategory->name ?? '-' }}</td>
                                             <td class="text-end">
                                                 <button class="btn btn-sm btn-warning me-2">
                                                     <i class="icon-base bx bx-edit-alt me-1"></i> Edit
@@ -163,6 +166,9 @@ new class extends Component {
                                     @endforelse
                                 </tbody>
                             </table>
+                            <div class="container-fluid container-p-y">
+                                {{ $childCategories->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -220,6 +226,88 @@ new class extends Component {
                             <input type="text" id="pcategory_name" class="form-control"
                                 wire:model="pcategory_name" placeholder="Nom de la catégorie">
                             @error('pcategory_name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">
+                            <span wire:loading createParentCategory class="spinner-border spinner-border-sm"></span>
+                            Créer
+                        </button>
+                    </div>
+                </form>
+            @endif
+        </div>
+    </div>
+
+
+    {{-- CATEGORIE MODALE CREATION ET SUPPRESSION ET MISE A JOUR --}}
+
+    <!-- Modal unique pour création/édition -->
+    <div wire:ignore.self class="modal fade" id="category_modal" tabindex="-1"
+        aria-labelledby="category_modalLabel" aria-hidden="true" data-backdrop="static" data-keyboard = "false">
+        <div class="modal-dialog modal-dialog-centered">
+            @if ($isUpdateCategoryMode)
+                <form wire:submit.prevent = "updateParentCategory" class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Modifier une categorie
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        @if ($isUpdateCategoryMode)
+                            <input type="text" wire:model="category_id" class="form-control" disabled>
+                        @endif
+
+                        <div class="mb-3">
+                            <label for="category_name" class="form-label">Nom de la catégorie</label>
+                            <input type="text" id="category_name" class="form-control" wire:model="category_name"
+                                placeholder="Nom de la catégorie">
+                            @error('category_name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">
+                            <span wire:loading wire:target="updateParentCategory"
+                                class="spinner-border spinner-border-sm"></span>
+                            Mettre à jour
+                        </button>
+                    </div>
+                </form>
+            @else
+                <form wire:submit = "createCategory" class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Ajouter une categorie
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="category_name" class="form-label">choix de la catégorie Parente</label>
+                            <select name="parent" class="form-control" id="parent" wire:model='parent'>
+                                <option value="">choisir une categorie parente</option>
+                                @foreach ($parentCategories as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('parent')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="category_name" class="form-label">Nom de la catégorie</label>
+                            <input type="text" id="category_name" class="form-control" wire:model="category_name"
+                                placeholder="Nom de la catégorie">
+                            @error('category_name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

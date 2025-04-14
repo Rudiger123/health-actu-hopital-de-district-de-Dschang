@@ -14,6 +14,14 @@
             $('#pcategory_modal').modal('hide');
         });
 
+        window.addEventListener('showCategoryModalForm', function() {
+            $('#category_modal').modal('show');
+        });
+
+        window.addEventListener('hideCategoryModalForm', function() {
+            $('#category_modal').modal('hide');
+        });
+
        // Écouteur pour la confirmation de suppression
 window.addEventListener('confirm-delete', event => {
     const { title, text, id } = event.detail;

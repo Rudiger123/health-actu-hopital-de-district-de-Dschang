@@ -18,6 +18,9 @@ class Category extends Component
     public $isUpdateParentCategoryMode = false;
     public $pcategory_name, $pcategory_id;
 
+    public $isUpdateCategoryMode = false;
+    public $category_name, $category_id, $parent;
+
 
     public function addParentCategory()
     {
@@ -25,6 +28,15 @@ class Category extends Component
         $this->pcategory_id = '';
         $this->isUpdateParentCategoryMode = false;
         $this->showParentCategoryModalForm();
+    }
+
+    public function addCategory()
+    {
+        $this->category_name = '';
+        $this->category_id = '';
+        $this->parent = 0;
+        $this->isUpdateCategoryMode = false;
+        $this->showCategoryModalForm();
     }
 
 
@@ -49,7 +61,29 @@ class Category extends Component
     {
         $this->isUpdateParentCategoryMode = false;
         $this->pcategory_name = $this->pcategory_id = null;
-        $this->dispatch('hideParentCategoryModalForm');  
+        $this->parent = 0;
+        $this->dispatch('hideParentCategoryModalForm');
+    }
+
+    /**
+     * OUVERTURE DE LA MODALE DU FORMULAIRE DE CREATION ET DE MISE A JOUR D'UNE CATEGORIE PARENTE
+     */
+    public function showCategoryModalForm()
+    {
+        // dd('show modal');
+        $this->resetErrorBag();
+        $this->dispatch('showCategoryModalForm');
+    }
+
+    /**
+     * FERMETURE DE LA MODALE DU FORMULAIRE DE CREATION ET DE MISE A JOUR D'UNE CATEGORIE PARENTE
+     */
+    public function hideCategoryModalForm()
+    {
+        $this->isUpdateCategoryMode = false;
+        $this->category_name = $this->category_id = null;
+        $this->parent = 0;
+        $this->dispatch('hideCategoryModalForm');
     }
 
 
@@ -89,7 +123,45 @@ class Category extends Component
         //$this->reset();
     }
 
-     /**
+    /**
+     * ACTION DE CREATION DE LA CATEGORIE PARENTE
+     */
+    public function createCategory()
+    {
+        $this->validate([
+            'category_name' => 'required|unique:parent_categories,name',
+            'parent' => 'required|exists:parent_categories,id'
+        ], [
+            'category_name.required' => 'Le nom de la catégorie est obligatoire',
+            'category_name.unique' => 'Le nom de la catégorie existe déjà',
+        ]);
+
+        // store new parent category
+        $category = new CategorysModel();
+        $category->name = $this->category_name;
+        $category->parent_category_id = $this->parent;
+        $isCreate = $category->save();
+
+        if ($isCreate) {
+            $this->hideCategoryModalForm();
+            $this->dispatch('showAlert', [
+                'type' => 'success',
+                'title' => 'categorie',
+                'text' => "la nouvelle categorie a été créée avec succès !",
+            ]);
+        } else {
+            $this->dispatch('showAlert', [
+                'type' => 'success',
+                'title' => 'Error',
+                'text' => "Une erreur est survenue!",
+            ]);
+        }
+        $this->isUpdateParentCategoryMode = false;
+        $this->pcategory_name = null;
+        //$this->reset();
+    }
+
+    /**
      * OUVERTURE DU FORMULAIRE POUR LA MISE A JOUR
      */
     public function editParentCategory($id)
@@ -176,8 +248,8 @@ class Category extends Component
     public function render()
     {
         return view('livewire.back.admin.category', [
-            "parentCategories" => ParentCategory::orderBy('id', 'asc')->get(),
-            "childCategories" => CategorysModel::orderBy('id', 'asc')->get()
+            "parentCategories" => ParentCategory::orderBy('id', 'asc')->paginate(5),
+            "childCategories" => CategorysModel::orderBy('id', 'asc')->paginate(5)
         ]);
     }
 }

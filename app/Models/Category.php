@@ -27,14 +27,9 @@ class Category extends Model
     }
 
     // Relation parent/enfant pour la hiérarchie des catégories
-    public function parent()
+    public function parentCategory()
     {
-        return $this->belongsTo(Category::class, 'parent_id');
-    }
-
-    public function children()
-    {
-        return $this->hasMany(Category::class, 'parent_id');
+        return $this->belongsTo(ParentCategory::class, 'parent_category_id');
     }
 
     // Relation many-to-many avec les articles
