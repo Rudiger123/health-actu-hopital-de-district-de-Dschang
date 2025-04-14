@@ -44,4 +44,5 @@ return [
         'from_name' => env('CMAIL_FROM_NAME')
     ]
 
+
 ];

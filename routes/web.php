@@ -15,22 +15,28 @@ use App\Models\User;
  * les routes de l'interface utilisateur de la plateforme
  */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
 
-Route::get('/services', function () {
-    return view('pages.services');
-})->name('services');
+    Route::get('/services', function () {
+        return view('pages.services');
+    })->name('services');
 
-Route::get('actualités', function () {
-    return view('pages.blog.index');
-})->name('blog.index');
+    Route::get('actualités', function () {
+        return view('pages.blog.index');
+    })->name('blog.index');
 
-Route::get('contact', function () {
-    return view('pages.contact');
-})->name('contact');
+    Route::get('contact', function () {
+        return view('pages.contact');
+    })->name('contact');
 
+    // AUTHENTIFICATION ROUTE
+    Route::get('/login', function () {
+        return redirect()->route('home');
+    })->name('login');
+});
 
 /**
  *  ADMIN ROUTES

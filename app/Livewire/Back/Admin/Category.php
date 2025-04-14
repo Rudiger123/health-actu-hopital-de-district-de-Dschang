@@ -47,9 +47,9 @@ class Category extends Component
      */
     public function hideParentCategoryModalForm()
     {
-        $this->dispatch('hideParentCategoryModalForm');
         $this->isUpdateParentCategoryMode = false;
         $this->pcategory_name = $this->pcategory_id = null;
+        $this->dispatch('hideParentCategoryModalForm');  
     }
 
 
@@ -101,10 +101,6 @@ class Category extends Component
         $this->showParentCategoryModalForm();
     }
 
-    public function edittest()
-    {
-        dd($this->pcategory_name);
-    }
     /**
      * ACTION DE MISE A JOUR DE LA CATEGORIE PARENTE
      */
@@ -180,8 +176,8 @@ class Category extends Component
     public function render()
     {
         return view('livewire.back.admin.category', [
-            "parentCategories" => ParentCategory::all(),
-            "childCategories" => CategorysModel::all()
+            "parentCategories" => ParentCategory::orderBy('id', 'asc')->get(),
+            "childCategories" => CategorysModel::orderBy('id', 'asc')->get()
         ]);
     }
 }

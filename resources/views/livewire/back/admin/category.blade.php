@@ -14,11 +14,47 @@ new class extends Component {
 <div>
     <!-- En-tête -->
     <div class="container-fluid py-4 container-xxl flex-grow-1 container-p-y">
+
+        <div class="py-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                <a href="#" class="text-primary fw-semibold">Gestion des Catégories</a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+
         <div class="row mb-4">
             <div class="col-12">
                 <div
                     class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-                    <h2 class="mb-0">Gestion des Catégories</h2>
+                    <!-- Search -->
+                    <div class="navbar-nav align-items-center me-auto bg-white px-3 py-2 rounded shadow-sm"
+                        style="max-width: 400px;">
+                        <div class="nav-item d-flex align-items-center w-100">
+                            <!-- Icône de recherche -->
+                            <span class="me-2 text-muted">
+                                <i class="bx bx-search fs-5"></i> <!-- Assurez-vous que Boxicons est bien importé -->
+                            </span>
+
+                            <!-- Champ de recherche -->
+                            <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2 bg-transparent"
+                                placeholder="Rechercher..." aria-label="Rechercher..." />
+                        </div>
+                    </div>
+                    <!-- /Search -->
+
+                    
+
 
                     <div class="d-flex flex-column flex-sm-row gap-2">
                         <button class="btn btn-primary" wire:click="addParentCategory">
@@ -175,13 +211,14 @@ new class extends Component {
                         <h5 class="modal-title">
                             Ajouter une categorie Parent
                         </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="pcategory_name" class="form-label">Nom de la catégorie</label>
-                            <input type="text" id="pcategory_name" class="form-control" wire:model="pcategory_name"
-                                placeholder="Nom de la catégorie">
+                            <input type="text" id="pcategory_name" class="form-control"
+                                wire:model="pcategory_name" placeholder="Nom de la catégorie">
                             @error('pcategory_name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

@@ -34,12 +34,6 @@
                         <span>Mon Profil</span>
                     </a>
                 </li>
-                <li>
-                    <a class="dropdown-item d-flex align-items-center" href="">
-                        <i class="bx bx-cog me-2"></i>
-                        <span>Paramètres</span>
-                    </a>
-                </li>
                 <li><hr class="dropdown-divider my-2"></li>
                 <li>
                    <livewire:logout-handler/>
