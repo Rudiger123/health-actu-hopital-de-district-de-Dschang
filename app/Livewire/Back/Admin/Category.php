@@ -10,7 +10,8 @@ class Category extends Component
 {
 
     protected $listeners = [
-        'deleteParentCategory' => 'deleteParentCategory'
+        'deleteParentCategory' => 'deleteParentCategory',
+        'deleteCategory' => 'deleteCategory'
     ];
 
     public function mount() {}
@@ -20,6 +21,8 @@ class Category extends Component
 
     public $isUpdateCategoryMode = false;
     public $category_name, $category_id, $parent;
+
+    public $search, $filter;
 
 
     public function addParentCategory()
@@ -41,7 +44,7 @@ class Category extends Component
 
 
     /************************************************************
-     * CRUD CATEGORIE PARENT 
+     * CRUD CATEGORIE PARENT
      ************************************************************/
 
     /**
@@ -82,7 +85,7 @@ class Category extends Component
     {
         $this->isUpdateCategoryMode = false;
         $this->category_name = $this->category_id = null;
-        $this->parent = 0;
+        $this->parent = null;
         $this->dispatch('hideCategoryModalForm');
     }
 
@@ -174,6 +177,19 @@ class Category extends Component
     }
 
     /**
+     * OUVERTURE DU FORMULAIRE POUR LA MISE A JOUR
+     */
+    public function editCategory($id)
+    {
+        $category = CategorysModel::findOrFail($id);
+        $this->category_name = $category->name;
+        $this->category_id = $id;
+        $this->parent = $category->parent_category_id;
+        $this->isUpdateCategoryMode = true;
+        $this->showCategoryModalForm();
+    }
+
+    /**
      * ACTION DE MISE A JOUR DE LA CATEGORIE PARENTE
      */
     public function updateParentCategory()
@@ -206,6 +222,42 @@ class Category extends Component
         }
     }
 
+    /**
+     * ACTION DE MISE A JOUR DE LA CATEGORIE
+     */
+    public function updateCategory()
+    {
+        $category = CategorysModel::findOrFail($this->category_id);
+        $this->validate([
+            'category_name' => 'required',
+        ], [
+            'category_name.required' => 'Le nom de la catégorie est obligatoire',
+        ]);
+        $category->name = $this->category_name;
+        $category->parent_category_id = $this->parent;
+        $update = $category->save();
+
+        if ($update) {
+            $this->hideCategoryModalForm();
+            $this->dispatch('showAlert', [
+                'type' => 'success',
+                'title' => 'categorie',
+                'text' => "la catégorie a été mise à jour avec succès !",
+            ]);
+            $this->isUpdateCategoryMode = false;
+            $this->reset([
+                'parent',
+                'category_name'
+            ]);
+        } else {
+            $this->dispatch('showAlert', [
+                'type' => 'error',
+                'title' => 'Erreur',
+                'text' => "Une erreur est survenue lors de la mise à jour de la catégorie",
+            ]);
+        }
+    }
+
     // Confirmation de suppression
     public function confirmDelete($id)
     {
@@ -222,9 +274,50 @@ class Category extends Component
     {
         try {
             $category = ParentCategory::findOrFail($id);
+            // dd($category->categories()->count());
+            // verifier que la categorie n'a pas de sous-catégories
+            if ($category->categories()->count() > 0) {
+                $this->dispatch(
+                    'show-toast',
+                    type: 'error',
+                    message: 'impossible de supprimer la categorie parente, svp veuillez supprimer premierement toutes ces sous-categories'
+                );
+            } else {
+                $category->delete();
 
-            // verifier que la categorie n'a pas de sous-catégories  
+                $this->dispatch(
+                    'show-toast',
+                    type: 'success',
+                    message: 'Catégorie parente supprimée avec succès'
+                );
+            }
+        } catch (\Exception $e) {
+            $this->dispatch(
+                'show-toast',
+                type: 'error',
+                message: $e->getMessage()
+            );
+        }
+    }
 
+    // Confirmation de suppression
+    public function confirmCategoryDelete($id)
+    {
+        $this->dispatch(
+            'confirm-category-delete',
+            title: 'Confirmer la suppression',
+            text: 'Voulez-vous vraiment supprimer cette catégorie ?',
+            id: $id
+        );
+    }
+
+    // Action de suppression
+    public function deleteCategory($id)
+    {
+        try {
+            $category = CategorysModel::findOrFail($id);
+
+            // suppression de la categorie
             $category->delete();
 
             $this->dispatch(
@@ -241,15 +334,29 @@ class Category extends Component
         }
     }
 
+
+
+
+
     /******************************************************************
      * FIN CRUD CATEGORY PARENT
      *************************************************************** */
 
     public function render()
     {
+        $categoryParents = ParentCategory::where('name', 'like', '%' . $this->search . '%')
+        ->orderBy('id', 'desc')
+        ->get();
+        $categories = CategorysModel::where('name', 'like', '%' . $this->search . '%')
+        ->orWhere('parent_category_id', 'like', '%' . $this->filter . '%')
+        ->orderBy('id', 'desc')
+        ->get();
+
+        dump($categories);
+
         return view('livewire.back.admin.category', [
-            "parentCategories" => ParentCategory::orderBy('id', 'asc')->paginate(5),
-            "childCategories" => CategorysModel::orderBy('id', 'asc')->paginate(5)
+            "parentCategories" => $categoryParents,
+            "childCategories" => $categories
         ]);
     }
 }

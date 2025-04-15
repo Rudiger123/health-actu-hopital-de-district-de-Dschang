@@ -47,7 +47,7 @@ new class extends Component {
                             </span>
 
                             <!-- Champ de recherche -->
-                            <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2 bg-transparent"
+                            <input type="text" wire:model.live.debounce.250ms="search" class="form-control border-0 shadow-none ps-1 ps-sm-2 bg-transparent"
                                 placeholder="Rechercher..." aria-label="Rechercher..." />
                         </div>
                     </div>
@@ -117,9 +117,9 @@ new class extends Component {
                                     @endforelse
                                 </tbody>
                             </table>
-                            <div class="container-fluid container-p-y">
+                            {{-- <div class="container-fluid container-p-y">
                                 {{ $parentCategories->links() }}
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -128,8 +128,19 @@ new class extends Component {
             <!-- Sous-Catégories -->
             <div class="col-12">
                 <div class="card shadow-sm">
-                    <div class="card-header">
+                    <div class="card-header d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
                         <h5 class="mb-0">Catégories</h5>
+
+                        <div class="w-20">
+                            <label for="pcategory_name" class="form-label">Filtre par catégorie parente</label>
+                            <select name="filter" class="form-control" id="filter" wire:model.live.debounce.250ms="filter">
+                                <option value="">choisir une categorie parente</option>
+                                @foreach ($parentCategories as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -149,10 +160,12 @@ new class extends Component {
                                             <td>{{ $category->slug }}</td>
                                             <td>{{ $category->parentCategory->name ?? '-' }}</td>
                                             <td class="text-end">
-                                                <button class="btn btn-sm btn-warning me-2">
+                                                <button wire:click="editCategory({{ $category->id }})"
+                                                    class="btn btn-sm btn-warning me-2">
                                                     <i class="icon-base bx bx-edit-alt me-1"></i> Edit
                                                 </button>
-                                                <button class="btn btn-sm btn-danger">
+                                                <button wire:click="confirmCategoryDelete({{ $category->id }})"
+                                                    class="btn btn-sm btn-danger">
                                                     <i class="icon-base bx bx-trash me-1"></i> Delete
                                                 </button>
                                             </td>
@@ -166,9 +179,9 @@ new class extends Component {
                                     @endforelse
                                 </tbody>
                             </table>
-                            <div class="container-fluid container-p-y">
+                            {{-- <div class="container-fluid container-p-y">
                                 {{ $childCategories->links() }}
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -250,7 +263,7 @@ new class extends Component {
         aria-labelledby="category_modalLabel" aria-hidden="true" data-backdrop="static" data-keyboard = "false">
         <div class="modal-dialog modal-dialog-centered">
             @if ($isUpdateCategoryMode)
-                <form wire:submit.prevent = "updateParentCategory" class="modal-content">
+                <form wire:submit.prevent = "updateCategory" class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">
                             Modifier une categorie
@@ -259,8 +272,19 @@ new class extends Component {
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="category_name" class="form-label">choix de la catégorie Parente</label>
+                            <select name="parent" class="form-control" id="parent" wire:model.defer='parent'>
+                                @foreach ($parentCategories as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('parent')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                         @if ($isUpdateCategoryMode)
-                            <input type="text" wire:model="category_id" class="form-control" disabled>
+                            <input type="hidden" wire:model="category_id" class="form-control" disabled>
                         @endif
 
                         <div class="mb-3">

@@ -42,6 +42,25 @@ window.addEventListener('confirm-delete', event => {
     });
 });
 
+window.addEventListener('confirm-category-delete', event => {
+    const { title, text, id } = event.detail;
+    
+    Swal.fire({
+        title: title || 'Confirmer la suppression',
+        text: text || "Cette action est irréversible !",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui, supprimer !',
+        cancelButtonText: 'Annuler'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Livewire.dispatch('deleteCategory', { id: id });
+        }
+    });
+});
+
 // Écouteur pour les notifications toast
 window.addEventListener('show-toast', event => {
     const { type, message } = event.detail;
