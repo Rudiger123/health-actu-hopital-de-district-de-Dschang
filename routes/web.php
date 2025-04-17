@@ -48,7 +48,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/logout', 'logoutHandler')->name('logout');
             Route::get('/profile', Profile::class)->name('profile');
             Route::get('/categories', 'categories')->name('categories');
-            Route::get('/posts', Post::class)->name('posts');
+            Route::get('/posts', 'posts')->name('posts');
         });
     });
 });

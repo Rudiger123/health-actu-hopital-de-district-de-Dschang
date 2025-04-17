@@ -29,6 +29,7 @@
 
     <link rel="stylesheet" href="{{ asset('back/assets/vendor/css/core.css') }}" />
     <link rel="stylesheet" href="{{ asset('back/assets/css/demo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('back/assets/css/bootstrap-tagsinput.css') }}" />
 
     <!-- Vendors CSS -->
 
@@ -118,6 +119,7 @@
     <script src="{{ asset('back/assets/vendor/js/bootstrap.js') }}"></script>
     <script src="{{ asset('back/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
     <script src="{{ asset('back/assets/vendor/js/menu.js') }}"></script>
+    <script src="{{ asset('back/assets/js/bootstrap-tagsinput.js') }}"></script>
     <!-- endbuild -->
 
     <!-- Main JS -->

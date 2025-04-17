@@ -63,7 +63,7 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active open">
+        <li class="menu-item {{ Route::is('admin.dashboard') ? 'active' : '' }} open">
             <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div class="text-truncate" data-i18n="Dashboard">Tableau de bord</div>
@@ -71,7 +71,7 @@
         </li>
 
         <!-- Articles -->
-        <li class="menu-item">
+        <li class="menu-item {{ Route::is('admin.posts') ? 'active' : '' }}">
             <a href="{{ route('admin.posts') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-news"></i>
                 <div class="text-truncate" data-i18n="Posts">Articles</div>
@@ -79,7 +79,7 @@
         </li>
 
         <!-- Catégories -->
-        <li class="menu-item">
+        <li class="menu-item {{ Route::is('admin.categories') ? 'active' : '' }}">
             <a href="{{ route('admin.categories') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-category"></i>
                 <div class="text-truncate" data-i18n="Categories">Catégories</div>
@@ -120,9 +120,7 @@
 
         <!-- Paramètres -->
         <li class="menu-item">
-
             @livewire('back.admin.general-settings')
-
         </li>
     </ul>
 </aside>

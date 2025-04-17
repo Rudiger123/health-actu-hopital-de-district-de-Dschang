@@ -277,20 +277,17 @@ class Category extends Component
             // dd($category->categories()->count());
             // verifier que la categorie n'a pas de sous-catégories
             if ($category->categories()->count() > 0) {
-                $this->dispatch(
-                    'show-toast',
-                    type: 'error',
-                    message: 'impossible de supprimer la categorie parente, svp veuillez supprimer premierement toutes ces sous-categories'
-                );
-            } else {
-                $category->delete();
-
-                $this->dispatch(
-                    'show-toast',
-                    type: 'success',
-                    message: 'Catégorie parente supprimée avec succès'
-                );
+                foreach ($category->categories() as $cat) {
+                    CategorysModel::where('id', $cat->id)->update(['parent_id' => null]);
+                }
             }
+            $category->delete();
+
+            $this->dispatch(
+                'show-toast',
+                type: 'success',
+                message: 'Catégorie parente supprimée avec succès'
+            );
         } catch (\Exception $e) {
             $this->dispatch(
                 'show-toast',
@@ -344,15 +341,20 @@ class Category extends Component
 
     public function render()
     {
-        $categoryParents = ParentCategory::where('name', 'like', '%' . $this->search . '%')
-        ->orderBy('id', 'desc')
-        ->get();
-        $categories = CategorysModel::where('name', 'like', '%' . $this->search . '%')
-        ->orWhere('parent_category_id', 'like', '%' . $this->filter . '%')
-        ->orderBy('id', 'desc')
-        ->get();
+        $categoryParents = ParentCategory::when($this->search, function ($query) {
+            $query->where('name', 'like', '%' . $this->search . '%');
+        })
+            ->orderBy('id', 'desc')
+            ->get();
 
-        dump($categories);
+        $categories = CategorysModel::when($this->search, function ($query) {
+            $query->where('name', 'like', '%' . $this->search . '%');
+        })
+            ->when($this->filter, function ($query) {
+                $query->orWhere('parent_category_id', $this->filter);
+            })
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('livewire.back.admin.category', [
             "parentCategories" => $categoryParents,

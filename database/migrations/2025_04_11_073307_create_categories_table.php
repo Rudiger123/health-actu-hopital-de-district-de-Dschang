@@ -12,7 +12,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // database/migrations/xxxx_xx_xx_create_categories_table.php
         Schema::create('categories', function (Blueprint $table) {
             $table->id(); // Identifiant unique
             $table->string('name'); // Nom de la catégorie

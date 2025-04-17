@@ -1,15 +1,3 @@
-<?php
-use Livewire\Volt\Component;
-use function Livewire\Volt\{state};
-
-new class extends Component {
-    public function edittest()
-    {
-        dd('hello mon gars');
-    }
-};
-
-?>
 
 <div>
     <!-- En-tête -->

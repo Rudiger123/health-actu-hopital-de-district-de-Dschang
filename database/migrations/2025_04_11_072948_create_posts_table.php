@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Category;
 
 return new class extends Migration
 {
@@ -11,18 +13,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // database/migrations/xxxx_xx_xx_create_posts_table.php
         Schema::create('posts', function (Blueprint $table) {
-            $table->id(); // Identifiant unique
-            $table->string('title'); // Titre de l'article
-            $table->string('slug')->unique(); // Version URL-friendly du titre
-            $table->text('content'); // Contenu complet de l'article (HTML/markdown)
-            $table->text('excerpt')->nullable(); // Résumé court pour les aperçus
-            $table->string('featured_image')->nullable(); // Image mise en avant
-            $table->enum('status', ['draft', 'published', 'archived'])->default('draft'); // État de publication
-            $table->foreignId('author_id')->constrained('users'); // Référence à l'auteur
-            $table->timestamp('published_at')->nullable(); // Date de publication
-            $table->timestamps(); // created_at et updated_at
+            $table->id();
+            $table->string('title');
+            $table->text('content');
+            $table->foreignIdFor(Category::class);
+            $table->string('tags')->nullable();
+            $table->string('status')->default('draft');
+            $table->string('image_path')->nullable();
+            $table->boolean('featured')->default(false);
+            $table->boolean('allow_comments')->default(true);
+            $table->foreignId('user_id')->constrained();
+            $table->string('slug')->unique();
+            $table->date('published_at')->nullable();
+            $table->timestamps();
         });
     }
 
