@@ -16,6 +16,7 @@ Schema::create('tags', function (Blueprint $table) {
     $table->id(); // Identifiant unique
     $table->string('name'); // Nom du tag
     $table->string('slug')->unique(); // Version URL-friendly
+    $table->string('color')->default('#3b82f6');
     $table->timestamps(); // created_at et updated_at
 });
     }

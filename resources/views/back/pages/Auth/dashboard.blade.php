@@ -15,7 +15,7 @@
                                 Vous avez publié <strong>12 articles</strong> ce mois-ci.<br>
                                 Dernier article : "Nouveaux protocoles COVID-19"
                             </p>
-                            <a href="" class="btn btn-light btn-sm">Nouvel Article</a>
+                            <a href="{{ route('admin.posts') }}" class="btn btn-light btn-sm">Nouvel Article</a>
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">

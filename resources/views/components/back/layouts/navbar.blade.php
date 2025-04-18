@@ -87,8 +87,8 @@
         </li>
 
         <!-- Tags -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ Route::is('admin.tags') ? 'active' : '' }}">
+            <a href="{{ route('admin.tags') }}"   class="menu-link">
                 <i class="menu-icon tf-icons bx bx-tag"></i>
                 <div class="text-truncate" data-i18n="Tags">Étiquettes</div>
             </a>

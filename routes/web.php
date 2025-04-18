@@ -49,6 +49,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/profile', Profile::class)->name('profile');
             Route::get('/categories', 'categories')->name('categories');
             Route::get('/posts', 'posts')->name('posts');
+            Route::get('/tags', 'tags')->name('tags');
         });
     });
 });

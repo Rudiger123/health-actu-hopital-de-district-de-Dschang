@@ -632,7 +632,7 @@
                                     <div class="tags mt-4">
                                         <p class="text-muted mb-2">Tags :</p>
                                         @foreach ($currentPost->tags as $tag)
-                                            <span class="badge bg-secondary me-1">{{ $tag->name }}</span>
+                                            <span class="badge me-1" style="background: {{ $tag->color }};">{{ $tag->name }}</span>
                                         @endforeach
                                     </div>
                                 @endif

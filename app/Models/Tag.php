@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 // app/Models/Tag.php
 class Tag extends Model
 {
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['name', 'slug', 'color'];
 
     // Relation many-to-many avec les articles
     public function posts()

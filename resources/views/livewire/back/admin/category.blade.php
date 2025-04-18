@@ -136,7 +136,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nom</th>
-                                        <th>slug</th>
+                                        <th>Nbre Posts</th>
                                         <th>Parent Categorie</th>
                                         <th class="text-end">Actions</th>
                                     </tr>
@@ -145,7 +145,7 @@
                                     @forelse($childCategories as $category)
                                         <tr>
                                             <td>{{ $category->name }}</td>
-                                            <td>{{ $category->slug }}</td>
+                                            <td>{{ $category->posts->count() }}</td>
                                             <td>{{ $category->parentCategory->name ?? '-' }}</td>
                                             <td class="text-end">
                                                 <button wire:click="editCategory({{ $category->id }})"

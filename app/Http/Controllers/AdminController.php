@@ -20,5 +20,10 @@ class AdminController extends Controller
     {
         return view('back.pages.Auth.post');
     }
+
+    public function tags(Request $request)
+    {
+        return view('back.pages.Auth.tag');
+    }
     
 }
