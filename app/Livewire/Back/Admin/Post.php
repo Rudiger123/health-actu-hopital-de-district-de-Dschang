@@ -43,7 +43,8 @@ class Post extends Component
     ];
 
     protected $listeners = [
-        'deletePost'
+        'deletePost',
+        'filters-updated' => 'applyFilters'
     ];
 
     protected $messages = [
@@ -304,12 +305,44 @@ class Post extends Component
             );
         }
     }
+    
+    public $filters = [
+        'search' => '',
+        'category' => '',
+        'tags' => [],
+        'status' => '',
+    ];
+
+    public function applyFilters($filters)
+    {
+        $this->filters = $filters;
+        $this->resetPage();
+    }
 
     public function render()
-    {
+    {   
+        $posts = PostsModel::query()
+        ->when($this->filters['search'], function($query) {
+            $query->where('title', 'like', '%'.$this->filters['search'].'%')
+                  ->orWhere('content', 'like', '%'.$this->filters['search'].'%');
+        })
+        ->when($this->filters['category'], function($query) {
+            $query->where('category_id', $this->filters['category']);
+        })
+        ->when($this->filters['tags'], function($query) {
+            $query->whereHas('tags', function($q) {
+                $q->whereIn('id', $this->filters['tags']);
+            });
+        })
+        ->when($this->filters['status'], function($query) {
+            $query->where('status', $this->filters['status']);
+        })
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
         return view('livewire.back.admin.post', [
-            'posts' => PostsModel::paginate(2),
+            'posts' => $posts,
             'categories' => Category::all()
         ]);
     }
+
 }

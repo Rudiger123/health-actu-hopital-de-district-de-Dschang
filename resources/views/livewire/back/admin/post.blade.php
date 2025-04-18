@@ -28,6 +28,9 @@
             </button>
         </div>
 
+        <!-- Inclure le composant de filtres -->
+        <livewire:elements.filters-search />
+
         <!-- Table -->
         <div class="table-responsive bg-white shadow rounded">
             <table class="table table-hover mb-0">
