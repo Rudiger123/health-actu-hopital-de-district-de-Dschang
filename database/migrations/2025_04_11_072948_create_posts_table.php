@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->foreignIdFor(Category::class);
-            $table->string('tags')->nullable();
             $table->string('status')->default('draft');
             $table->string('image_path')->nullable();
             $table->boolean('featured')->default(false);

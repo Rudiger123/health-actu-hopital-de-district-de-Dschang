@@ -12,7 +12,7 @@ class Post extends Model
     use Sluggable;
   
     protected $fillable = [
-        'title', 'content', 'tags', 'status', 'category_id',
+        'title', 'content', 'status', 'category_id',
         'image_path', 'featured', 'allow_comments', 'user_id', 'slug', 'published_at'
     ];
 
@@ -36,6 +36,11 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'post_tag');
     }
 
 }

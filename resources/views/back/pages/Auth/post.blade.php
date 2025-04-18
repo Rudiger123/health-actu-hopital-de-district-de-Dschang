@@ -10,6 +10,10 @@
             $('#postModal').modal('hide');
         });
 
+        window.addEventListener('showPostModalForm', function() {
+            $('#postModal').modal('show');
+        });
+
        // Écouteur pour la confirmation de suppression
 window.addEventListener('confirm-delete', event => {
     const { title, text, id } = event.detail;
