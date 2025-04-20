@@ -133,21 +133,22 @@
 
                     <div class="swiper-wrapper">
 
-                        @foreach (range(1, 10) as $loop)
+                        @foreach ($posts as $post)
                             <div class="swiper-slide">
                                 <div class="blog-post-item">
-                                    <img src="assets/img/blog/blog-post-1.webp" alt="Médecine de demain">
+                                    <img src="{{ asset("storage/".$post->image_path) }}" alt="Médecine de demain">
                                     <div class="blog-post-content">
                                         <div class="post-meta">
-                                            <span><i class="bi bi-person"></i> Dr. Sophie Bernard</span>
-                                            <span><i class="bi bi-clock"></i> Février 10, 2025</span>
+                                            <span><i class="bi bi-person"></i> {{ $post->author->name }}</span>
+                                            <span>
+                                                <i class="bi bi-clock"></i>
+                                                {{ $post->created_at->format('d F Y \à H:i') }}
+                                              </span>                                              
                                             <span><i class="bi bi-chat-dots"></i> 12 Commentaires</span>
                                         </div>
-                                        <h2><a href="#">Les avancées médicales qui vont révolutionner 2025</a></h2>
-                                        <p>Découvrez les innovations médicales qui pourraient transformer la vie des
-                                            patients
-                                            cette année.</p>
-                                        <a href="#" class="read-more">Lire plus <i class="bi bi-arrow-right"></i></a>
+                                        <h2>  <a href="#">{{ $post->title }}</a></h2>
+                                        <p>{{ $post->content }}</p>
+                                        <a href="{{ route('blog.show', $post->slug) }}" class="read-more">Lire plus <i class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </div><!-- End slide item -->
@@ -158,7 +159,7 @@
                 </div>
         </section><!-- /Featured Posts Section -->
 
-        <!-- Category Section Section -->
+        {{-- <!-- Category Section Section -->
         <section id="category-section" class="category-section section">
 
             <!-- Section Title -->
@@ -318,7 +319,7 @@
                 </div>
             </div>
 
-        </section><!-- /Category Section Section -->
+        </section><!-- /Category Section Section --> --}}
 
         <!-- Call To Action 2 Section -->
         <section id="appel-a-laction-blog" class="call-to-action-2 section">
@@ -370,78 +371,7 @@
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <div class="row gy-4">
-
-                    <div class="col-lg-4">
-                        <article>
-                            <div class="post-img">
-                                <img src="assets/img/blog/blog-post-1.webp" alt="Article sur la santé publique"
-                                    class="img-fluid">
-                            </div>
-                            <p class="post-category">Santé Publique</p>
-                            <h2 class="title">
-                                <a href="blog-details.html">Prévenir les Maladies Chroniques: Nos Meilleures Pratiques</a>
-                            </h2>
-                            <div class="d-flex align-items-center">
-                                <img src="assets/img/person/person-f-12.webp" alt="Docteur Maria Doe"
-                                    class="img-fluid post-author-img flex-shrink-0">
-                                <div class="post-meta">
-                                    <p class="post-author">Dr. Maria Doe</p>
-                                    <p class="post-date">
-                                        <time datetime="2025-03-01">Mars 1, 2025</time>
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-                    </div><!-- End post list item -->
-
-                    <div class="col-lg-4">
-                        <article>
-                            <div class="post-img">
-                                <img src="assets/img/blog/blog-post-2.webp" alt="Article sur les soins d'urgence"
-                                    class="img-fluid">
-                            </div>
-                            <p class="post-category">Urgences Médicales</p>
-                            <h2 class="title">
-                                <a href="blog-details.html">Réagir Vite: Soins d'Urgence en Cas de Crise</a>
-                            </h2>
-                            <div class="d-flex align-items-center">
-                                <img src="assets/img/person/person-f-13.webp" alt="Infirmière Allisa Mayer"
-                                    class="img-fluid post-author-img flex-shrink-0">
-                                <div class="post-meta">
-                                    <p class="post-author">Infirmière Allisa Mayer</p>
-                                    <p class="post-date">
-                                        <time datetime="2025-02-15">Février 15, 2025</time>
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-                    </div><!-- End post list item -->
-
-                    <div class="col-lg-4">
-                        <article>
-                            <div class="post-img">
-                                <img src="assets/img/blog/blog-post-3.webp" alt="Article sur la santé mentale"
-                                    class="img-fluid">
-                            </div>
-                            <p class="post-category">Santé Mentale</p>
-                            <h2 class="title">
-                                <a href="blog-details.html">Équilibre Psychologique: Stratégies pour une Vie Saine</a>
-                            </h2>
-                            <div class="d-flex align-items-center">
-                                <img src="assets/img/person/person-m-10.webp" alt="Psychiatre Mark Dower"
-                                    class="img-fluid post-author-img flex-shrink-0">
-                                <div class="post-meta">
-                                    <p class="post-author">Dr. Mark Dower</p>
-                                    <p class="post-date">
-                                        <time datetime="2025-01-25">Janvier 25, 2025</time>
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-                    </div><!-- End post list item -->
-
-                </div>
+                @livewire('front.post-view')
             </div>
 
         </section><!-- /Latest Posts Section -->

@@ -242,7 +242,9 @@ class Post extends Component
             'user_id' => Auth::user()->id, // Référence à l'auteur
         ]);
 
-        $post->tags()->sync($this->selectedTags);
+        if($this->selectedTags != []){
+            $post->tags()->sync($this->selectedTags);
+        }
 
         $this->hidePostModal();
 

@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Livewire\Back\Admin\Category;
-use App\Livewire\Back\Admin\Post;
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Back\Profile;
 use Illuminate\Support\Facades\DB;
@@ -15,28 +14,34 @@ use App\Models\User;
  * les routes de l'interface utilisateur de la plateforme
  */
 
-Route::middleware('guest')->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('home');
+Route::middleware('guest')->controller(FrontController::class)->group(function () {
 
-    Route::get('/services', function () {
-        return view('pages.services');
-    })->name('services');
+    Route::get('/', 'index')->name('home');
 
-    Route::get('actualités', function () {
-        return view('pages.blog.index');
-    })->name('blog.index');
+    Route::get('/services', 'services')->name('services');
 
-    Route::get('contact', function () {
-        return view('pages.contact');
-    })->name('contact');
+    Route::get('actualités', 'actualités')->name('blog.index');
 
-    // AUTHENTIFICATION ROUTE
-    Route::get('/login', function () {
-        return redirect()->route('home');
-    })->name('login');
+    Route::get('contact', 'contact')->name('contact');
+
+    Route::get('/post/{slug}', 'readPost')->name('read_post');
+
+    Route::get('/post/categories/{slug}', 'categoryPosts')->name('category_posts');
+
+    Route::get('/post/author/{username}', 'authorPosts')->name('author_posts');
+
+    Route::get('/post/tag/{any}', 'tagPosts')->name('tag_posts');
+
+    // search result for Post
+    Route::get('/search', 'searchPosts')->name('search');
+
+    Route::get('/show/{slug}', 'show')->name('blog.show');
 });
+
+// AUTHENTIFICATION ROUTE
+Route::get('/login', function () {
+    return redirect()->route('home');
+})->name('login');
 
 /**
  *  ADMIN ROUTES
@@ -54,7 +59,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 });
 
-// USER ROUTES
 // RESET PASSWORD TOKEN LINK
 Route::get('/reset-password/{token}', function ($token) {
     $tokenData = DB::table('password_reset_tokens')->where('token', $token)->first();
