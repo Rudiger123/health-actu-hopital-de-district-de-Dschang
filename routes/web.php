@@ -26,7 +26,7 @@ Route::middleware('guest')->controller(FrontController::class)->group(function (
 
     Route::get('/post/{slug}', 'readPost')->name('read_post');
 
-    Route::get('/post/categories/{slug}', 'categoryPosts')->name('category_posts');
+    Route::get('/post/categories/{slug}', 'categoryPost')->name('category_posts');
 
     Route::get('/post/author/{username}', 'authorPosts')->name('author_posts');
 

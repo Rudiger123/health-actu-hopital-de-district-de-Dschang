@@ -25,8 +25,8 @@
                             <article class="article">
 
                                 <div class="hero-img" data-aos="zoom-in">
-                                    <img src="{{ asset("storage/".$post->image_path) }}" alt="Featured blog image" class="img-fluid"
-                                        loading="lazy">
+                                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="Featured blog image"
+                                        class="img-fluid" loading="lazy">
                                     <div class="meta-overlay">
                                         <div class="meta-categories">
                                             <a href="#" class="category">{{ $post->category->name }}</a>
@@ -42,15 +42,17 @@
 
                                         <div class="author-info">
                                             <div class="author-details">
-                                                <img src="{{ asset("storage/".$post->author->picture) }}" alt="Author image" class="author-img">
+                                                <img src="{{ asset('storage/' . $post->author->picture) }}"
+                                                    alt="Author image" class="author-img">
                                                 <div class="info">
                                                     <h4>{{ $post->author->name }}</h4>
                                                     <span class="role">{{ $post->author->username }}</span>
                                                 </div>
                                             </div>
                                             <div class="post-meta">
-                                                <span class="date"><i class="bi bi-calendar3"></i> {{ $post->created_at->format('d F Y \à H:i') }}</span>
-                                                <span class="divider">•</span>
+                                                <span class="date"><i class="bi bi-calendar3"></i>
+                                                    {{ $post->created_at->format('d F Y \à H:i') }}</span>
+                                                <span cla ss="divider">•</span>
                                                 <span class="comments"><i class="bi bi-chat-text"></i> 18 Comments</span>
                                             </div>
                                         </div>
@@ -67,7 +69,7 @@
                                             <h4>Related Topics</h4>
                                             <div class="tags">
                                                 @foreach ($post->tags as $tag)
-                                                <a href="#" class="tag">{{ $tag->name }}</a>
+                                                    <a href="#" class="tag">{{ $tag->name }}</a>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -97,8 +99,8 @@
                             <div class="author-box">
                                 <div class="row align-items-center">
                                     <div class="col-lg-3 col-md-4 text-center">
-                                        <img src="{{ asset("storage/".$post->author->picture) }}" class="author-img rounded-circle"
-                                            alt="" loading="lazy">
+                                        <img src="{{ asset('storage/' . $post->author->picture) }}"
+                                            class="author-img rounded-circle" alt="" loading="lazy">
 
                                         <div class="author-social-links mt-3">
                                             <a href="https://twitter.com/#" class="twitter"><i
@@ -124,8 +126,10 @@
 
                                             <div class="author-website mt-3">
 
-                                                <a href="#" class="more-posts">
-                                                    Read More from Sarah <i class="bi bi-arrow-right"></i>
+                                                <a href="{{ route('author_posts', $post->author->username) }}"
+                                                    class="more-posts">
+                                                    Read More from {{ $post->author->name }} <i
+                                                        class="bi bi-arrow-right"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -156,86 +160,34 @@
                         </div><!--/Search Widget -->
 
                         <!-- Categories Widget -->
-                        <div class="categories-widget widget-item">
-
-                            <h3 class="widget-title">Categories</h3>
-                            <ul class="mt-3">
-                                <li><a href="#">General <span>(25)</span></a></li>
-                                <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                                <li><a href="#">Travel <span>(5)</span></a></li>
-                                <li><a href="#">Design <span>(22)</span></a></li>
-                                <li><a href="#">Creative <span>(8)</span></a></li>
-                                <li><a href="#">Educaion <span>(14)</span></a></li>
-                            </ul>
-
-                        </div><!--/Categories Widget -->
+                        <x-front.category-sidebar></x-front.category-sidebar>
+                        <!--/Categories Widget -->
 
                         <!-- Recent Posts Widget -->
                         <div class="recent-posts-widget widget-item">
 
-                            <h3 class="widget-title">Recent Posts</h3>
+                            <h3 class="widget-title">Related Posts</h3>
 
-                            <div class="post-item">
-                                <img src="assets/img/blog/blog-post-square-1.webp" alt="" class="flex-shrink-0">
-                                <div>
-                                    <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
-                                    <time datetime="2020-01-01">Jan 1, 2020</time>
-                                </div>
-                            </div><!-- End recent post item-->
+                            @foreach ($relatedPosts as $post)
+                                <div class="post-item">
+                                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}"
+                                        class="flex-shrink-0">
+                                    <div>
+                                        <h4><a href="{{ route('blog.show', $post->slug) }}">
+                                                {{ Str::words($post->title, 6, '...') }}</a></h4>
+                                        <time datetime="{{ $post->created_at->format('Y-m-d') }}">
+                                            {{ $post->created_at->format('M j, Y') }}
+                                        </time>
+                                    </div>
+                                </div><!-- End recent post item-->
+                            @endforeach
 
-                            <div class="post-item">
-                                <img src="assets/img/blog/blog-post-square-2.webp" alt="" class="flex-shrink-0">
-                                <div>
-                                    <h4><a href="blog-details.html">Quidem autem et impedit</a></h4>
-                                    <time datetime="2020-01-01">Jan 1, 2020</time>
-                                </div>
-                            </div><!-- End recent post item-->
-
-                            <div class="post-item">
-                                <img src="assets/img/blog/blog-post-square-3.webp" alt="" class="flex-shrink-0">
-                                <div>
-                                    <h4><a href="blog-details.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                                    <time datetime="2020-01-01">Jan 1, 2020</time>
-                                </div>
-                            </div><!-- End recent post item-->
-
-                            <div class="post-item">
-                                <img src="assets/img/blog/blog-post-square-4.webp" alt="" class="flex-shrink-0">
-                                <div>
-                                    <h4><a href="blog-details.html">Laborum corporis quo dara net para</a></h4>
-                                    <time datetime="2020-01-01">Jan 1, 2020</time>
-                                </div>
-                            </div><!-- End recent post item-->
-
-                            <div class="post-item">
-                                <img src="assets/img/blog/blog-post-square-5.webp" alt="" class="flex-shrink-0">
-                                <div>
-                                    <h4><a href="blog-details.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                                    <time datetime="2020-01-01">Jan 1, 2020</time>
-                                </div>
-                            </div><!-- End recent post item-->
 
                         </div><!--/Recent Posts Widget -->
 
                         <!-- Tags Widget -->
-                        <div class="tags-widget widget-item">
-
-                            <h3 class="widget-title">Tags</h3>
-                            <ul>
-                                <li><a href="#">App</a></li>
-                                <li><a href="#">IT</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Mac</a></li>
-                                <li><a href="#">Design</a></li>
-                                <li><a href="#">Office</a></li>
-                                <li><a href="#">Creative</a></li>
-                                <li><a href="#">Studio</a></li>
-                                <li><a href="#">Smart</a></li>
-                                <li><a href="#">Tips</a></li>
-                                <li><a href="#">Marketing</a></li>
-                            </ul>
-
-                        </div><!--/Tags Widget -->
+                        <x-front.tag-sidebar></x-front.tag-sidebar>
+                        <!--/Tags Widget -->
 
                     </div>
 

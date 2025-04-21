@@ -177,7 +177,7 @@
         <div class="container-fluid container-p-y">
             {{ $posts->links() }}
         </div>
-        
+
     </div>
 
     <!-- Modal -->
@@ -213,6 +213,37 @@
                                             @enderror
                                         </div>
 
+                                        <!-- Catégorie -->
+                                        <div class="mb-3">
+                                            <label for="category" class="form-label">Catégorie</label>
+                                            <select class="form-select @error('category') is-invalid @enderror"
+                                                id="category" wire:model.defer="category">
+                                                <option value="Développement">selectionner une categorie
+                                                </option>
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('category')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Champs Tags -->
+                                        <div class="mb-3">
+                                            <label for="tagsSelect" class="form-label">Tags</label>
+                                            <select id="tagsSelect" class="form-select" multiple
+                                                wire:model.defer="selectedTags">
+                                                @foreach ($availableTags as $tag)
+                                                    <option value="{{ $tag['id'] }}">{{ $tag['name'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <small class="text-muted">Sélectionnez un ou plusieurs tags
+                                                existants ou ajoutez-en de nouveaux ci-dessous.</small>
+                                        </div>
+
                                         <div class="mb-3">
                                             <label for="content" class="form-label">Contenu</label>
                                             <textarea class="form-control @error('content') is-invalid @enderror" id="content" rows="10"
@@ -221,6 +252,7 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
+
                                     </div>
 
                                     <!-- Colonne de droite -->
@@ -267,37 +299,6 @@
                                                         max)</small>
                                                 </div>
 
-
-                                                <!-- Catégorie -->
-                                                <div class="mb-3">
-                                                    <label for="category" class="form-label">Catégorie</label>
-                                                    <select class="form-select @error('category') is-invalid @enderror"
-                                                        id="category" wire:model.defer="category">
-                                                        <option value="Développement">selectionner une categorie
-                                                        </option>
-                                                        @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}">{{ $category->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('category')
-                                                        <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
-
-                                                <!-- Champs Tags -->
-                                                <div class="mb-3">
-                                                    <label for="tagsSelect" class="form-label">Tags</label>
-                                                    <select id="tagsSelect" class="form-select" multiple
-                                                        wire:model.defer="selectedTags">
-                                                        @foreach ($availableTags as $tag)
-                                                            <option value="{{ $tag['id'] }}">{{ $tag['name'] }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    <small class="text-muted">Sélectionnez un ou plusieurs tags
-                                                        existants ou ajoutez-en de nouveaux ci-dessous.</small>
-                                                </div>
                                                 <div class="mb-3">
                                                     <label for="newTag" class="form-label">Ajouter un nouveau
                                                         tag</label>
@@ -400,6 +401,35 @@
                                             @enderror
                                         </div>
 
+                                        <!-- Catégorie -->
+                                        <div class="mb-3">
+                                            <label for="category" class="form-label">Catégorie</label>
+                                            <select class="form-select @error('category') is-invalid @enderror"
+                                                id="category" wire:model="category">
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('category')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Champs Tags -->
+                                        <div class="mb-3">
+                                            <label for="tagsSelect" class="form-label">Tags</label>
+                                            <select id="tagsSelect" class="form-select" multiple
+                                                wire:model.defer="selectedTags">
+                                                @foreach ($availableTags as $tag)
+                                                    <option value="{{ $tag['id'] }}">{{ $tag['name'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <small class="text-muted">Sélectionnez un ou plusieurs tags
+                                                existants ou ajoutez-en de nouveaux ci-dessous.</small>
+                                        </div>
+
                                         <div class="mb-3">
                                             <label for="content" class="form-label">Contenu</label>
                                             <textarea class="form-control @error('content') is-invalid @enderror" id="content" rows="10"
@@ -408,6 +438,8 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
+
+
                                     </div>
 
                                     <!-- Colonne de droite -->
@@ -466,34 +498,7 @@
                                                 </div>
 
 
-                                                <!-- Catégorie -->
-                                                <div class="mb-3">
-                                                    <label for="category" class="form-label">Catégorie</label>
-                                                    <select class="form-select @error('category') is-invalid @enderror"
-                                                        id="category" wire:model="category">
-                                                        @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}">{{ $category->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('category')
-                                                        <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
 
-                                                <!-- Champs Tags -->
-                                                <div class="mb-3">
-                                                    <label for="tagsSelect" class="form-label">Tags</label>
-                                                    <select id="tagsSelect" class="form-select" multiple
-                                                        wire:model.defer="selectedTags">
-                                                        @foreach ($availableTags as $tag)
-                                                            <option value="{{ $tag['id'] }}">{{ $tag['name'] }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    <small class="text-muted">Sélectionnez un ou plusieurs tags
-                                                        existants ou ajoutez-en de nouveaux ci-dessous.</small>
-                                                </div>
                                                 <div class="mb-3">
                                                     <label for="newTag" class="form-label">Ajouter un nouveau
                                                         tag</label>
@@ -632,7 +637,8 @@
                                     <div class="tags mt-4">
                                         <p class="text-muted mb-2">Tags :</p>
                                         @foreach ($currentPost->tags as $tag)
-                                            <span class="badge me-1" style="background: {{ $tag->color }};">{{ $tag->name }}</span>
+                                            <span class="badge me-1"
+                                                style="background: {{ $tag->color }};">{{ $tag->name }}</span>
                                         @endforeach
                                     </div>
                                 @endif
@@ -660,9 +666,6 @@
                     </div>
                     <div class="modal-footer bg-light py-4">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-primary">
-                            <i class="bi bi-pencil-square"></i> Éditer
-                        </button>
                     </div>
                 </div>
             </div>
