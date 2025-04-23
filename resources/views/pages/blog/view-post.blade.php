@@ -140,7 +140,9 @@
 
                     </section><!-- /Blog Author Section -->
 
-                    {{-- comments section --}}
+                    @livewire('blog.comments-section', [
+                        'post' => $post,
+                    ])
 
                 </div>
 

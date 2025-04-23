@@ -14,15 +14,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
         $this->call([
             UserSeeder::class,
+            CategoriesTableSeeder::class,
+            TagsTableSeeder::class,
+            PostsTableSeeder::class,
+            PostTagTableSeeder::class
         ]);
 
         // 2. Seed des catégories
@@ -53,7 +50,7 @@ class DatabaseSeeder extends Seeder
                 'title' => 'Découverte de Laravel : Les fondamentaux',
                 'slug' => 'decouverte-laravel-fondamentaux',
                 'content' => 'Laravel est un framework PHP élégant qui simplifie le développement web. Dans cet article, nous explorerons ses concepts de base : routes, contrôleurs, modèles et vues.',
-                'image_path' => 'posts/laravel-fundamentals.jpg',
+                'image_path' => 'posts/image.png',
                 'category_id' => '1',
                 'status' => 'published',
                 'featured' => true,
@@ -66,7 +63,7 @@ class DatabaseSeeder extends Seeder
                 'title' => 'Les nouveautés de PHP 8.2',
                 'slug' => 'nouveautes-php-8-2',
                 'content' => 'PHP 8.2 apporte plusieurs améliorations de performance et nouvelles fonctionnalités comme les readonly classes et les types stand-alone.',
-                'image_path' => 'posts/php-8-2.jpg',
+                'image_path' => 'posts/image.png',
                 'category_id' => '1',
                 'status' => 'published',
                 'featured' => false,
@@ -80,7 +77,7 @@ class DatabaseSeeder extends Seeder
                 'slug' => 'best-practices-ui-ux',
                 'content' => 'Article en cours de rédaction sur les bonnes pratiques en design d\'interface...',
                 'image_path' => 'posts/ui-ux.jpg',
-               'category_id' => '1',
+                'category_id' => '1',
                 'status' => 'draft',
                 'featured' => false,
                 'allow_comments' => false,
@@ -99,22 +96,6 @@ class DatabaseSeeder extends Seeder
                 'allow_comments' => true,
                 'user_id' => 1,
                 'created_at' => now()->subDays(2),
-                'updated_at' => now()
-            ]
-        ]);
-
-        DB::table('post_tag')->insert([
-            ['post_id' => 1, 'tag_id' => 1]
-        ]);
-
-        // 6. Seed des commentaires
-        DB::table('comments')->insert([
-            [
-                'post_id' => 1,
-                'user_id' => 2,
-                'content' => 'Super article, merci pour ces informations!',
-                'status' => 'approved',
-                'created_at' => now(),
                 'updated_at' => now()
             ]
         ]);

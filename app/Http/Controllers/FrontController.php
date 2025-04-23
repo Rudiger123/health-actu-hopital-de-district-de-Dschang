@@ -119,4 +119,9 @@ class FrontController extends Controller
 
         return view('pages.blog.view-post', compact('post', 'relatedPosts'));
     }
+
+    public function searchResults()
+    {
+        return view('pages.blog.search-results');
+    }
 }

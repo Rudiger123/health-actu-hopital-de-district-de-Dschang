@@ -311,7 +311,6 @@
               }
             }
           </script>
-
                     <div class="swiper-wrapper">
 
                         @foreach ($posts as $post)
@@ -327,7 +326,7 @@
                                               </span>                                              
                                             <span><i class="bi bi-chat-dots"></i> 12 Commentaires</span>
                                         </div>
-                                        <h2>  <a href="#">{{ $post->title }}</a></h2>
+                                        <h2>  <a href="#"> {{ Str::words($post->title, 10, '...') }}</a></h2>
                                         <p>{{ $post->content }}</p>
                                         <a href="{{ route('blog.show', $post->slug) }}" class="read-more">Lire plus <i class="bi bi-arrow-right"></i></a>
                                     </div>
@@ -339,168 +338,6 @@
                     </div>
                 </div>
         </section><!-- /Featured Posts Section -->
-
-        {{-- <!-- Category Section Section -->
-        <section id="category-section" class="category-section section">
-
-            <!-- Section Title -->
-            <div class="container section-title-1" data-aos="fade-up">
-                <h2>Actualités & Santé</h2>
-                <div> <span class="description-title">Restez informé avec nos experts médicaux</span></div>
-            </div><!-- End Section Title -->
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <!-- Featured Posts -->
-                <div class="row gy-4 mb-4">
-                    <div class="col-lg-4">
-                        <article class="featured-post">
-                            <div class="post-img">
-                                <img src="assets/img/blog/blog-post-2.webp" alt="Recherche Médicale" class="img-fluid"
-                                    loading="lazy">
-                            </div>
-                            <div class="post-content">
-                                <div class="category-meta">
-                                    <span class="post-category">Recherche Médicale</span>
-                                    <div class="author-meta">
-                                        <img src="assets/img/blog/blog-post-2.webp" alt="Dr. Sophie B." class="author-img">
-                                        <span class="author-name">Dr. Sophie B.</span>
-                                        <span class="post-date">28 Février 2025</span>
-                                    </div>
-                                </div>
-                                <h2 class="title">
-                                    <a href="blog-details.html">Les avancées révolutionnaires dans le traitement des
-                                        maladies cardiaques</a>
-                                </h2>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <article class="featured-post">
-                            <div class="post-img">
-                                <img src="assets/img/blog/blog-post-2.webp" alt="Santé Mentale" class="img-fluid"
-                                    loading="lazy">
-                            </div>
-                            <div class="post-content">
-                                <div class="category-meta">
-                                    <span class="post-category">Santé Mentale</span>
-                                    <div class="author-meta">
-                                        <img src="assets/img/blog/blog-post-2.webp" alt="Dr. Paul M." class="author-img">
-                                        <span class="author-name">Dr. Paul M.</span>
-                                        <span class="post-date">10 Mars 2025</span>
-                                    </div>
-                                </div>
-                                <h2 class="title">
-                                    <a href="blog-details.html">Comment réduire le stress au quotidien : conseils de
-                                        spécialistes</a>
-                                </h2>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-lg-4">
-
-                        <article class="featured-post">
-                            <div class="post-img">
-                                <img src="assets/img/blog/blog-post-2.webp" alt="Pédiatrie" class="img-fluid"
-                                    loading="lazy">
-                            </div>
-                            <div class="post-content">
-                                <div class="category-meta">
-                                    <span class="post-category">Pédiatrie</span>
-                                    <div class="author-meta">
-                                        <img src="assets/img/person/doctor-3.webp" alt="Dr. Alice N." class="author-img">
-                                        <span class="author-name">Dr. Alice N.</span>
-                                        <span class="post-date">5 Avril 2025</span>
-                                    </div>
-                                </div>
-                                <h2 class="title">
-                                    <a href="blog-details.html">Vaccination infantile : Ce que chaque parent doit
-                                        savoir</a>
-                                </h2>
-                            </div>
-                        </article>
-
-                    </div>
-                </div>
-
-                <!-- List Posts -->
-                <div class="row">
-                    <div class="col-xl-4 col-lg-6">
-                        @foreach (range(1, 3) as $loop)
-                            <article class="list-post">
-                                <div class="post-img">
-                                    <img src="assets/img/blog/blog-post-3.webp" alt="Diabète" class="img-fluid"
-                                        loading="lazy">
-                                </div>
-                                <div class="post-content">
-                                    <div class="category-meta">
-                                        <span class="post-category">Diabétologie</span>
-                                    </div>
-                                    <h3 class="title">
-                                        <a href="blog-details.html">Nouveaux traitements pour mieux vivre avec le
-                                            diabète</a>
-                                    </h3>
-                                    <div class="post-meta">
-                                        <span class="read-time">3 mins de lecture</span>
-                                        <span class="post-date">20 Mars 2025</span>
-                                    </div>
-                                </div>
-                            </article>
-                        @endforeach
-                    </div>
-
-                    <div class="col-xl-4 col-lg-6">
-                        @foreach (range(1, 3) as $loop)
-                            <article class="list-post">
-                                <div class="post-img">
-                                    <img src="assets/img/blog/blog-post-2.webp" alt="Covid-19" class="img-fluid"
-                                        loading="lazy">
-                                </div>
-                                <div class="post-content">
-                                    <div class="category-meta">
-                                        <span class="post-category">Prévention</span>
-                                    </div>
-                                    <h3 class="title">
-                                        <a href="blog-details.html">Covid-19 : les gestes barrières toujours
-                                            d’actualité</a>
-                                    </h3>
-                                    <div class="post-meta">
-                                        <span class="read-time">2 mins de lecture</span>
-                                        <span class="post-date">12 Avril 2025</span>
-                                    </div>
-                                </div>
-                            </article>
-                        @endforeach
-                    </div>
-
-                    <div class="col-xl-4 col-lg-6">
-                        @foreach (range(1, 3) as $loop)
-                            <article class="list-post">
-                                <div class="post-img">
-                                    <img src="assets/img/blog/blog-post-3.webp" alt="Nutrition" class="img-fluid"
-                                        loading="lazy">
-                                </div>
-                                <div class="post-content">
-                                    <div class="category-meta">
-                                        <span class="post-category">Nutrition</span>
-                                    </div>
-                                    <h3 class="title">
-                                        <a href="blog-details.html">Les 5 super-aliments à intégrer dans votre
-                                            alimentation</a>
-                                    </h3>
-                                    <div class="post-meta">
-                                        <span class="read-time">3 mins de lecture</span>
-                                        <span class="post-date">28 Avril 2025</span>
-                                    </div>
-                                </div>
-                            </article>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-
-        </section><!-- /Category Section Section --> --}}
 
         <!-- Call To Action 2 Section -->
         <section id="appel-a-laction-blog" class="call-to-action-2 section">

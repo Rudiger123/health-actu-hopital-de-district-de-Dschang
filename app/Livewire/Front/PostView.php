@@ -4,9 +4,23 @@ namespace App\Livewire\Front;
 
 use App\Models\Post;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class PostView extends Component
-{
+{   
+    use WithPagination;
+
+    public $query = '';
+
+    public function searchPosts()
+    {
+        logger('search called');
+    
+        if (trim($this->query) !== '') {
+            return redirect()->route('blog.search', ['query' => $this->query]);
+        }
+    }
+
     public function render()
     {
         return view('livewire.front.post-view', [
@@ -14,7 +28,7 @@ class PostView extends Component
             'posts' => Post::query()
                 ->with(['category', 'author']) // Chargement des relations
                 ->orderByDesc('featured') // Classement par nombre de vues décroissant
-                ->paginate(4),
+                ->paginate(6),
     
             // 4 derniers posts (les plus récents)
             'recentPosts' => Post::query()

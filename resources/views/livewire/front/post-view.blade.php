@@ -23,7 +23,7 @@
 
                                         <h2 class="title">
                                             <a href="{{ route('blog.show', $post->slug) }}">
-                                                {{ Str::words($post->title, 10, '...') }}</a>
+                                                {{ Str::words($post->title, 5, '...') }}</a>
                                         </h2>
 
                                         <div class="d-flex align-items-center">
@@ -67,10 +67,17 @@
                     <div class="search-widget widget-item">
 
                         <h3 class="widget-title">Search</h3>
-                        <form action="">
-                            <input type="text">
-                            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-                        </form>
+                        <div class="input-group">
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Rechercher un article..."
+                                   wire:model.defer="query"
+                                   wire:keydown.enter="searchPosts">
+                        
+                            <button class="btn btn-primary" wire:click="search">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
 
                     </div><!--/Search Widget -->
 

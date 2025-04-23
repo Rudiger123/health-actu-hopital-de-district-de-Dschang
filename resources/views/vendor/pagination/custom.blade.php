@@ -33,6 +33,7 @@
     .pagination-list li a:hover {
         background: #f8f9fa;
         border-color: #007bff;
+        color: #007bff;
     }
 
     .pagination-list li.disabled span {

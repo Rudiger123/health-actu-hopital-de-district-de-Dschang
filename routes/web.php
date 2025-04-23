@@ -36,7 +36,10 @@ Route::middleware('guest')->controller(FrontController::class)->group(function (
     Route::get('/search', 'searchPosts')->name('search');
 
     Route::get('/show/{slug}', 'show')->name('blog.show');
+
+    Route::get('/blog/search', 'searchResults')->name('blog.search');
 });
+
 
 // AUTHENTIFICATION ROUTE
 Route::get('/login', function () {
