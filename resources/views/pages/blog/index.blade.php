@@ -394,7 +394,7 @@
 
         </section><!-- /Latest Posts Section -->
 
-        <x-elements.newsletter></x-elements.newsletter>
+       @livewire('blog.newsletter-form')
 
     </main>
 @endsection

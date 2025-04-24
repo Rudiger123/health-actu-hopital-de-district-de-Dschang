@@ -25,5 +25,15 @@ class AdminController extends Controller
     {
         return view('back.pages.Auth.tag');
     }
+
+    public function commentsManager(Request $request)
+    {
+        return view('back.pages.Auth.adminCommentsManager');
+    }
+
+    public function usersManager(Request $request)
+    {
+        return view('back.pages.Auth.adminUsersManager');
+    }
     
 }

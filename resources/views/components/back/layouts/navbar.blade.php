@@ -95,26 +95,18 @@
         </li>
 
         <!-- Commentaires -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ Route::is('admin.commentsManager') ? 'active' : '' }}"">
+            <a href="{{ route('admin.commentsManager') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-comment"></i>
                 <div class="text-truncate" data-i18n="Comments">Commentaires</div>
             </a>
         </li>
 
         <!-- Utilisateurs -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ Route::is('admin.usersManager') ? 'active' : '' }}"">
+            <a href="{{ route('admin.usersManager') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div class="text-truncate" data-i18n="Users">Utilisateurs</div>
-            </a>
-        </li>
-
-        <!-- Médias -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-image"></i>
-                <div class="text-truncate" data-i18n="Media">Médias</div>
             </a>
         </li>
 

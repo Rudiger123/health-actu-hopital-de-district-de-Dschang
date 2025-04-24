@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Back\Admin;
 
+use App\Jobs\SendNewsletterJob;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Post as PostsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Category;
+use App\Models\NewsletterSubscription;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithPagination;
@@ -155,6 +157,22 @@ class Post extends Component
         $post->tags()->sync($this->selectedTags);
 
         $this->hidePostModal();
+
+        if ($post) {
+            // send Email to newsletter subscribers
+            if ($post->status == 'published') {
+                //Get post details
+                $latestPost = PostsModel::latest()->first();
+                if (NewsletterSubscription::count() > 0) {
+                    $subscribers = NewsletterSubscription::pluck('email');
+                    foreach ($subscribers as $subscriber_email) {
+                        SendNewsletterJob::dispatch($subscriber_email,$latestPost);
+                    }
+                    $latestPost->is_notified = true;
+                    $latestPost->save();
+                }
+            }
+        }
 
         $this->dispatch('showAlert', [
             'type' => 'success',

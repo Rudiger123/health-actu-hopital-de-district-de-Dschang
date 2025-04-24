@@ -137,7 +137,6 @@
 
 <livewire:reset-password-form />
 
-
 @push('scripts')
     <script>
         document.addEventListener('livewire:initialized', () => {

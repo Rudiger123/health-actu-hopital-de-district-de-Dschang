@@ -835,50 +835,11 @@
 
                     <!-- Colonne de droite : Formulaire de contact -->
                     <div class="col-lg-7">
-                        <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+                        <div class="contact-form" wire:ignore.self data-aos="fade-up" data-aos-delay="300">
                             <h3>Envoyez-nous un Message</h3>
                             <p>Remplissez le formulaire ci-dessous pour nous poser une question, prendre un rendez-vous ou
                                 discuter d’un partenariat.</p>
-
-                            <form action="" method="post" class="php-email-form" data-aos="fade-up"
-                                data-aos-delay="200">
-                                <div class="row gy-4">
-
-                                    <!-- Nom -->
-                                    <div class="col-md-6">
-                                        <input type="text" name="name" class="form-control"
-                                            placeholder="Votre Nom" required="">
-                                    </div>
-
-                                    <!-- E-mail -->
-                                    <div class="col-md-6">
-                                        <input type="email" class="form-control" name="email"
-                                            placeholder="Votre E-mail" required="">
-                                    </div>
-
-                                    <!-- Sujet -->
-                                    <div class="col-12">
-                                        <input type="text" class="form-control" name="subject" placeholder="Sujet"
-                                            required="">
-                                    </div>
-
-                                    <!-- Message -->
-                                    <div class="col-12">
-                                        <textarea class="form-control" name="message" rows="6" placeholder="Votre Message" required=""></textarea>
-                                    </div>
-
-                                    <!-- Bouton d'envoi -->
-                                    <div class="col-12 text-center">
-                                        <div class="loading">Envoi en cours...</div>
-                                        <div class="error-message"></div>
-                                        <div class="sent-message">Votre message a été envoyé. Merci !</div>
-
-                                        <button type="submit" class="btn">Envoyer</button>
-                                    </div>
-
-                                </div>
-                            </form>
-
+                                @livewire('blog.contactForm')
                         </div>
                     </div>
 

@@ -13,9 +13,7 @@ class PostView extends Component
     public $query = '';
 
     public function searchPosts()
-    {
-        logger('search called');
-    
+    {    
         if (trim($this->query) !== '') {
             return redirect()->route('blog.search', ['query' => $this->query]);
         }

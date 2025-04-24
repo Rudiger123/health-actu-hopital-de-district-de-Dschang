@@ -68,12 +68,9 @@
 
                         <h3 class="widget-title">Search</h3>
                         <div class="input-group">
-                            <input type="text"
-                                   class="form-control"
-                                   placeholder="Rechercher un article..."
-                                   wire:model.defer="query"
-                                   wire:keydown.enter="searchPosts">
-                        
+                            <input type="text" class="form-control" placeholder="Rechercher un article..."
+                                wire:model.defer="query" wire:keydown.enter="searchPosts">
+
                             <button class="btn btn-primary" wire:click="search">
                                 <i class="bi bi-search"></i>
                             </button>

@@ -14,7 +14,7 @@ use App\Models\User;
  * les routes de l'interface utilisateur de la plateforme
  */
 
-Route::middleware('guest')->controller(FrontController::class)->group(function () {
+Route::middleware('guest','preventBackHistory')->controller(FrontController::class)->group(function () {
 
     Route::get('/', 'index')->name('home');
 
@@ -50,7 +50,7 @@ Route::get('/login', function () {
  *  ADMIN ROUTES
  */
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::middleware(['auth'])->group(function () {
+    Route::middleware(['auth','preventBackHistory'])->group(function () {
         Route::controller(AdminController::class)->group(function () {
             Route::get('/dashboard', 'adminDashoard')->name('dashboard');
             Route::post('/logout', 'logoutHandler')->name('logout');
@@ -58,6 +58,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/categories', 'categories')->name('categories');
             Route::get('/posts', 'posts')->name('posts');
             Route::get('/tags', 'tags')->name('tags');
+            Route::get('/comments', 'commentsManager')->name('commentsManager');
+            Route::get('/users', 'usersManager')->name('usersManager');
         });
     });
 });
