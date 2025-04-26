@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'type' => UserType::SuperAdmin,
             'status' => UserStatus::Active,
-            'picture' => '/Profile/image.webp'
+            'picture' => ''
         ]);
 
         // Utilisateur Admin Actif
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'type' => UserType::Admin,
             'status' => UserStatus::Active,
-            'picture' => '/Profile/image.webp'
+            'picture' => ''
         ]);
 
         // Utilisateur Editor Inactif
@@ -44,8 +44,8 @@ class UserSeeder extends Seeder
             'username' => 'editor_inactive',
             'password' => Hash::make('12345678'),
             'type' => UserType::Admin,
-            'status' => UserStatus::Active,
-            'picture' => '/Profile/image.webp'
+            'status' => UserStatus::Inactive,
+            'picture' => ''
         ]);
 
         // Utilisateur User En attente
@@ -56,7 +56,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'type' => UserType::Admin,
             'status' => UserStatus::Active,
-            'picture' => '/Profile/image.webp'
+            'picture' => ''
         ]);
     }
 }

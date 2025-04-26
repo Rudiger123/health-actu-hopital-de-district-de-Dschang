@@ -1,25 +1,5 @@
 <div class="min-h-screen bg-gray-50 p-6">
     
-    <div class="container-fluid py-4 container-xxl flex-grow-1 container-p-y">
-
-        <div class="py-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="#">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                <a href="#" class="text-primary fw-semibold">Gestion des Interactions</a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="max-w-7xl mx-auto">
         <!-- Header -->
         

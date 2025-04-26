@@ -9,7 +9,7 @@ class UserPolicy
 {
     public function viewAny(User $user)
     {
-        return $user->type === UserType::SuperAdmin || $user->type === UserType::Admin;
+        return $user->type === UserType::SuperAdmin;
     }
 
     public function create(User $user)

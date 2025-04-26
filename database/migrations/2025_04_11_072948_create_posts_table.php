@@ -24,7 +24,7 @@ return new class extends Migration
             $table->boolean('allow_comments')->default(true);
             $table->foreignId('user_id')->constrained();
             $table->string('slug')->unique();
-            $table->date('published_at')->nullable();
+            $table->datetime('published_at')->nullable();
             $table->timestamps();
         });
     }

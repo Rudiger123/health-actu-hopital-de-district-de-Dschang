@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('assets/css/blog.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/main-1.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/blog.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main-1.css') }}">
 @endpush
 
 @push('scripts')
-<script src="{{ asset('assets/js/main-1.js') }}"></script>
+    <script src="{{ asset('assets/js/main-1.js') }}"></script>
 @endpush
 @section('content')
 
@@ -45,32 +45,44 @@
                 @if ($posts->count() > 0)
                     <div class="row gy-4">
                         @foreach ($posts as $post)
-                        <div class="col-lg-4">
-                            <article>
+                            <div class="col-lg-4">
+                                <article>
 
-                                <div class="post-img">
-                                    <img src="{{ asset("storage/".$post->image_path) }}" alt="" class="img-fluid">
-                                </div>
-
-                                <p class="post-category">{{$post->category->name}}</p>
-
-                                <h2 class="title">
-                                    <a href="{{ route('blog.show', $post->slug) }}"> {{ Str::words($post->title, 10, '...') }}</a>
-                                </h2>
-
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ asset("storage/".$post->author->picture) }}" alt=""
-                                        class="img-fluid post-author-img flex-shrink-0">
-                                    <div class="post-meta">
-                                        <p class="post-author">{{$post->author->name}}</p>
-                                        <p class="post-date">
-                                            <time datetime="2022-01-01">{{ $post->created_at->format('d F Y \à H:i') }}</time>
-                                        </p>
+                                    <div class="post-img">
+                                        <img src="{{ asset('storage/' . $post->image_path) }}" alt=""
+                                            class="img-fluid">
                                     </div>
-                                </div>
 
-                            </article>
-                        </div><!-- End post list item -->
+                                    <p class="post-category">{{ $post->category->name }}</p>
+
+                                    <h2 class="title">
+                                        <a href="{{ route('blog.show', $post->slug) }}">
+                                            {{ Str::words($post->title, 10, '...') }}</a>
+                                    </h2>
+
+                                    <div class="d-flex align-items-center">
+                                        @if ($post->author->picture)
+                                            <img src="{{ asset('storage/' . $post->author->picture) }}" alt=""
+                                                class="img-fluid post-author-img flex-shrink-0">
+                                        @else
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                                                    {{ substr($post->author->name, 0, 1) }}
+                                                </div>
+                                            </div>
+                                        @endif
+                                        <div class="post-meta">
+                                            <p class="post-author">{{ $post->author->name }}</p>
+                                            <p class="post-date">
+                                                <time
+                                                    datetime="2022-01-01">{{ $post->created_at->format('d F Y \à H:i') }}</time>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </article>
+                            </div><!-- End post list item -->
                         @endforeach
                     </div>
                 @else

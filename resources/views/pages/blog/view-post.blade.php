@@ -42,8 +42,18 @@
 
                                         <div class="author-info">
                                             <div class="author-details">
-                                                <img src="{{ asset('storage/' . $post->author->picture) }}"
+                                                
+                                                @if ($post->author->picture)
+                                                    <img src="{{ asset('storage/' . $post->author->picture) }}"
                                                     alt="Author image" class="author-img">
+                                                @else
+                                                    <div class="flex-shrink-0">
+                                                        <div
+                                                            class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                                                            {{ substr($post->author->name, 0, 1) }}
+                                                        </div>
+                                                    </div>
+                                                @endif
                                                 <div class="info">
                                                     <h4>{{ $post->author->name }}</h4>
                                                     <span class="role">{{ $post->author->username }}</span>
@@ -154,10 +164,7 @@
                         <div class="search-widget widget-item">
 
                             <h3 class="widget-title">Search</h3>
-                            <form action="">
-                                <input type="text">
-                                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-                            </form>
+                            @livewire('partials.search-bar')
 
                         </div><!--/Search Widget -->
 

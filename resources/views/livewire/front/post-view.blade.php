@@ -27,8 +27,17 @@
                                         </h2>
 
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ asset('storage/' . $post->author->picture) }}" alt=""
-                                                class="img-fluid post-author-img flex-shrink-0">
+                                            @if ($post->author->picture)
+                                                <img src="{{ asset('storage/' . $post->author->picture) }}"
+                                                    alt="" class="img-fluid post-author-img flex-shrink-0">
+                                            @else
+                                                <div class="flex-shrink-0 mx-4">
+                                                    <div
+                                                        class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                                                        {{ substr($post->author->name, 0, 1) }}
+                                                    </div>
+                                                </div>
+                                            @endif
                                             <div class="post-meta">
                                                 <p class="post-author">{{ $post->author->name }}</p>
                                                 <p class="post-date">

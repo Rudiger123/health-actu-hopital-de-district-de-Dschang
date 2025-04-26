@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Livewire\Back\Admin;
 
 use Livewire\Component;
 use App\Models\Post;
@@ -12,42 +12,17 @@ use Illuminate\Support\Facades\DB;
 
 class BlogDashboard extends Component
 {
-    public $test;
     public $timeRange = 'month';
     public $selectedCategories = [];
     
     protected $listeners = ['timeRangeUpdated' => 'updateTimeRange'];
 
-    public function mount()
-    {
-        dd('hello');
-    }
-
     public function updateTimeRange($range)
     {
         $this->timeRange = $range;
-        $this->emit('refreshCharts');
+        $this->dispatch('refresh');
     }
 
-    public function render()
-    {
-        $stats = $this->getStats();
-        $recentActivity = $this->getRecentActivity();
-        $popularCategories = $this->getPopularCategories();
-        $activeAuthors = $this->getActiveAuthors();
-
-        return view('livewire.admin.blog-dashboard', [
-            'totalPosts' => $stats['total_posts'],
-            'totalComments' => $stats['total_comments'],
-            'postsIncrease' => $stats['posts_increase'],
-            'commentsIncrease' => $stats['comments_increase'],
-            'recentPosts' => $recentActivity['posts'],
-            'recentComments' => $recentActivity['comments'],
-            'popularCategories' => $popularCategories,
-            'activeAuthors' => $activeAuthors,
-            'timeRange' => $this->timeRange,
-        ]);
-    }
 
     private function getStats()
     {
@@ -83,7 +58,7 @@ class BlogDashboard extends Component
             ->take(5)
             ->get();
 
-        $comments = Comment::with(['post', 'user'])
+        $comments = Comment::with(['post'])
             ->latest()
             ->take(5)
             ->get();
@@ -134,5 +109,25 @@ class BlogDashboard extends Component
         }
 
         return round(($current - $previous) / $previous * 100);
+    }
+
+    public function render()
+    {
+        $stats = $this->getStats();
+        $recentActivity = $this->getRecentActivity();
+        $popularCategories = $this->getPopularCategories();
+        $activeAuthors = $this->getActiveAuthors();
+
+        return view('livewire.back.admin.blog-dashboard',[
+            'totalPosts' => $stats['total_posts'],
+            'totalComments' => $stats['total_comments'],
+            'postsIncrease' => $stats['posts_increase'],
+            'commentsIncrease' => $stats['comments_increase'],
+            'recentPosts' => $recentActivity['posts'],
+            'recentComments' => $recentActivity['comments'],
+            'popularCategories' => $popularCategories,
+            'activeAuthors' => $activeAuthors,
+            'timeRange' => $this->timeRange,
+        ]);
     }
 }

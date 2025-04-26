@@ -90,9 +90,19 @@
                             <td class="align-middle">
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="avatar-container position-relative">
-                                        <img src="{{ '/storage/' . $post->author->picture ?? asset('back/assets/img/avatars/1.png') }}"
+                                        
+                                        @if ($post->author->picture)
+                                            <img src="{{ '/storage/' . $post->author->picture }}"
                                             alt="{{ $post->author->name ?? 'Auteur' }}" class="rounded-circle shadow-sm"
                                             style="width: 40px; height: 40px; object-fit: cover;">
+                                        @else
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                                                    {{ substr($post->author->name, 0, 1) }}
+                                                </div>
+                                            </div>
+                                        @endif
 
                                         @if ($post->author->is_admin ?? false)
                                             <span class="position-absolute bottom-0 end-0 bg-success rounded-circle"
@@ -599,11 +609,20 @@
                                             alt="{{ $currentPost->author->name ?? 'Auteur' }}"
                                             class="rounded-circle shadow-sm border border-secondary"
                                             style="width: 50px; height: 50px; object-fit: cover; margin-right: 15px;">
+                                    @else
+                                    
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                                                    {{ substr($author->name, 0, 1) }}
+                                                </div>
+                                            </div>
+
                                     @endif
                                     <div>
                                         <h5 class="mb-0 text-dark fw-bold">{{ $currentPost->author->name }}</h5>
                                         <small class="text-muted d-block">
-                                            {{ $currentPost->published_at ? $currentPost->published_at?->format('F j, Y') : 'Non publié' }}
+                                            {{ $currentPost->published_at ? $currentPost->published_at : 'Non publié' }}
                                         </small>
                                     </div>
                                 </div>

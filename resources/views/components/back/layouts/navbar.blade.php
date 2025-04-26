@@ -103,12 +103,14 @@
         </li>
 
         <!-- Utilisateurs -->
+        @can('viewAny', App\Models\User::class)
         <li class="menu-item {{ Route::is('admin.usersManager') ? 'active' : '' }}"">
             <a href="{{ route('admin.usersManager') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div class="text-truncate" data-i18n="Users">Utilisateurs</div>
             </a>
         </li>
+        @endcan
 
         <!-- Paramètres -->
         <li class="menu-item">

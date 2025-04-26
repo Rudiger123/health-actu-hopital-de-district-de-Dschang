@@ -1,19 +1,18 @@
 <div>
     <div class="container-xxl flex-grow-1 container-p-y">
-        @dd($test)
         <!-- Filtres période -->
         <div class="mb-4">
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-outline-primary {{ $timeRange === 'week' ? 'active' : '' }}"
-                    wire:click="$emit('timeRangeUpdated', 'week')">
+                    wire:click="updateTimeRange('week')">
                     <i class="bi bi-calendar-week me-1"></i> Semaine
                 </button>
                 <button type="button" class="btn btn-outline-primary {{ $timeRange === 'month' ? 'active' : '' }}"
-                    wire:click="$emit('timeRangeUpdated', 'month')">
+                wire:click="updateTimeRange('month')">
                     <i class="bi bi-calendar-month me-1"></i> Mois
                 </button>
                 <button type="button" class="btn btn-outline-primary {{ $timeRange === 'year' ? 'active' : '' }}"
-                    wire:click="$emit('timeRangeUpdated', 'year')">
+                wire:click="updateTimeRange('year')">
                     <i class="bi bi-calendar me-1"></i> Année
                 </button>
             </div>
@@ -32,15 +31,15 @@
                                     période.<br>
                                     Dernier article : "{{ $recentPosts->first()->title ?? 'Aucun article récent' }}"
                                 </p>
-                                <a href="{{ route('admin.posts.create') }}" class="btn btn-light btn-sm">
+                                <a href="{{ route('admin.posts') }}" class="btn btn-light btn-sm">
                                     <i class="bi bi-plus-circle me-1"></i> Nouvel Article
                                 </a>
                             </div>
                         </div>
                         <div class="col-sm-5 text-center text-sm-left">
                             <div class="card-body pb-0 px-0 px-md-4">
-                                <img src="{{ asset('images/medical-team.png') }}" height="160" alt="Équipe médicale"
-                                    class="img-fluid">
+                                <img src="{{ asset('back/assets/img/backgrounds/1.jpg') }}" height="160"
+                                    alt="Équipe médicale" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -98,9 +97,9 @@
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="{{ route('admin.posts.index') }}">Voir tous les
+                                <li><a class="dropdown-item" href="{{ route('admin.posts') }}">Voir tous les
                                         articles</a></li>
-                                <li><a class="dropdown-item" href="{{ route('admin.comments.index') }}">Voir tous les
+                                <li><a class="dropdown-item" href="{{ route('admin.commentsManager') }}">Voir tous les
                                         commentaires</a></li>
                             </ul>
                         </div>
@@ -136,8 +135,7 @@
                                             @forelse($recentPosts as $post)
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ route('admin.posts.edit', $post->id) }}"
-                                                            class="text-primary">
+                                                        <a href="{{ route('admin.posts') }}" class="text-primary">
                                                             {{ Str::limit($post->title, 40) }}
                                                         </a>
                                                     </td>
@@ -176,7 +174,7 @@
                                                 <tr>
                                                     <td>{{ Str::limit($comment->content, 30) }}</td>
                                                     <td>{{ Str::limit($comment->post->title, 20) }}</td>
-                                                    <td>{{ $comment->user->name }}</td>
+                                                    <td>{{ $comment->guest_name }}</td>
                                                     <td>{{ $comment->created_at->format('d/m/Y') }}</td>
                                                 </tr>
                                             @empty
@@ -230,17 +228,27 @@
                             <div class="card-body">
                                 @forelse($activeAuthors as $author)
                                     <div class="d-flex align-items-center mb-3">
-                                        <div class="avatar me-3">
-                                            <img src="{{ $author->profile_photo_url }}" alt="{{ $author->name }}"
-                                                class="rounded-circle"
-                                                onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($author->name) }}&color=7F9CF5&background=EBF4FF'">
-                                        </div>
+                                        @if ($author->picture)
+                                            <div class="avatar me-3">
+                                                <img src="{{ asset('storage/' . $author->picture) }}"
+                                                    alt="{{ $author->name }}" class="rounded-circle">
+                                            </div>
+                                        @else
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                                                    {{ substr($author->name, 0, 1) }}
+                                                </div>
+                                            </div>
+                                        @endif
+
                                         <div class="flex-grow-1">
                                             <h6 class="mb-0">{{ $author->name }}</h6>
-                                            <small class="text-muted">{{ $author->posts_count }} articles</small>
+                                            <small class="text-muted">{{ $author->posts()->count() }} articles</small>
                                         </div>
                                         <span class="badge bg-success rounded-pill">
                                             <i class="bi bi-check-circle"></i>
+                                            <small class="text-muted">{{ $author->status }}</small>
                                         </span>
                                     </div>
                                 @empty
