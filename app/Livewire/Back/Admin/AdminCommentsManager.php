@@ -61,7 +61,7 @@ class AdminCommentsManager extends Component
     {
         $this->commentStats = [
             'total' => \App\Models\Comment::count(),
-            'approved' => \App\Models\Comment::count(),
+            'posts' => \App\Models\Post::count(),
             'like' => Like::count(),
             'replies' => 0
         ];

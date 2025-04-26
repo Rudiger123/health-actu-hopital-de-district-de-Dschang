@@ -45,8 +45,8 @@
                 <p class="text-3xl font-bold text-gray-800">{{ $commentStats['total'] }}</p>
             </div>
             <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-green-500">
-                <h3 class="text-sm font-medium text-gray-500">Approuvés</h3>
-                <p class="text-3xl font-bold text-gray-800">{{ $commentStats['approved'] }}</p>
+                <h3 class="text-sm font-medium text-gray-500">Total Articles</h3>
+                <p class="text-3xl font-bold text-gray-800">{{ $commentStats['posts'] }}</p>
             </div>
             <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-yellow-500">
                 <h3 class="text-sm font-medium text-gray-500">Likes</h3>

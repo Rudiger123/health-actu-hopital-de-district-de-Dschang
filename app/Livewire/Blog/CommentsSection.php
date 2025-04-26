@@ -45,7 +45,7 @@ class CommentsSection extends Component
 
         return view('livewire.blog.comments-section', [
             'comments' => $this->post->comments()
-                ->with(['user', 'replies', 'likes'])
+                ->with(['likes'])
                 ->whereNull('parent_id')
                 ->take(5)
                 ->orderBy('created_at','desc')

@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@email.com',
             'username' => 'admin',
             'password' => Hash::make('12345678'),
-            'type' => UserType::Admin,
+            'type' => UserType::SuperAdmin,
             'status' => UserStatus::Active,
             'picture' => '/Profile/image.webp'
         ]);

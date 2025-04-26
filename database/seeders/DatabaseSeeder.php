@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             CategoriesTableSeeder::class,
             TagsTableSeeder::class,
             PostsTableSeeder::class,
-            PostTagTableSeeder::class
+            PostTagTableSeeder::class,
+            CommentSeeder::class,
+            LikeSeeder::class
         ]);
 
         // 2. Seed des catégories

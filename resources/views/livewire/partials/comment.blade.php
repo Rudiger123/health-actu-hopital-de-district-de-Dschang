@@ -1,7 +1,12 @@
 <article class="comment-card {{ $comment->parent_id ? 'reply' : '' }}">
     <div class="comment-header">
         <div class="user-info">
-            <img src="{{ $comment->user?->avatar ?? 'assets/img/person/default-avatar.webp' }}" alt="User avatar">
+            <div class="flex-shrink-0">
+                <div
+                    class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                    {{ substr($comment->guest_name, 0, 1) }}
+                </div>
+            </div>
             <div class="meta">
                 <h4 class="name">{{ $comment->user?->name ?? $comment->guest_name }}</h4>
                 <span class="date">
