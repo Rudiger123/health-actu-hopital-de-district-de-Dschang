@@ -29,27 +29,13 @@ class FrontController extends Controller
             ->take(3)
             ->get();
 
-        $posts = Post::all();
-
-        // Récupérer les articles par catégorie
-        $categories = [
-            'Diabétologie' => Post::where('category_id', 1)
-                ->orderBy('published_at', 'desc')
-                ->take(3)
-                ->get(),
-            'Prévention' => Post::where('category_id', 2)
-                ->orderBy('published_at', 'desc')
-                ->take(3)
-                ->get(),
-            'Nutrition' => Post::where('category_id', 3)
-                ->orderBy('published_at', 'desc')
-                ->take(3)
-                ->get(),
-        ];
+        $posts = Post::where('featured', true)
+        ->orderBy('published_at', 'desc')
+        ->take(5)
+        ->get();;
 
         return view('pages.blog.index', [
             'featuredPosts' => $featuredPosts,
-            'categories' => $categories,
             'posts' => $posts,
         ]);
     }

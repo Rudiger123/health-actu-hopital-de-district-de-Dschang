@@ -5,9 +5,9 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\UserStatus;
 use App\UserType;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Faker\Factory as Faker;
 
 class UserSeeder extends Seeder
 {
@@ -16,6 +16,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $faker = Faker::create();
+
         User::create([
             'name' => 'Admin',
             'email' => 'admin@email.com',
@@ -23,7 +25,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'type' => UserType::SuperAdmin,
             'status' => UserStatus::Active,
-            'picture' => ''
+            'picture' => '',
+            'bio' => $faker->paragraphs(random_int(3, 7), true)
         ]);
 
         // Utilisateur Admin Actif
@@ -34,7 +37,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'type' => UserType::Admin,
             'status' => UserStatus::Active,
-            'picture' => ''
+            'picture' => '',
+            'bio' => $faker->paragraphs(random_int(3, 7), true)
         ]);
 
         // Utilisateur Editor Inactif
@@ -45,7 +49,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'type' => UserType::Admin,
             'status' => UserStatus::Inactive,
-            'picture' => ''
+            'picture' => '',
+            'bio' => $faker->paragraphs(random_int(3, 7), true)
         ]);
 
         // Utilisateur User En attente
@@ -56,7 +61,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'type' => UserType::Admin,
             'status' => UserStatus::Active,
-            'picture' => ''
+            'picture' => '',
+            'bio' => $faker->paragraphs(random_int(3, 7), true)
         ]);
     }
 }
