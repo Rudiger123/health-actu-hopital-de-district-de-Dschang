@@ -614,7 +614,7 @@
                                             <div class="flex-shrink-0">
                                                 <div
                                                     class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
-                                                    {{ substr($author->name, 0, 1) }}
+                                                    {{ substr($currentPost->author->name, 0, 1) }}
                                                 </div>
                                             </div>
 

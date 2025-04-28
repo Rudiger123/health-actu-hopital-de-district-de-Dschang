@@ -386,21 +386,64 @@
                             <!-- Colonne de Contenu -->
                             <div class="col-lg-8">
                                 <div class="profile-content-card" style="background-color:white">
-                                    <!-- Navigation par Onglets -->
-                                    <ul class="nav nav-pills profile-tabs" id="profileTab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="details-tab" data-bs-toggle="pill"
-                                                data-bs-target="#details" type="button">
-                                                <i class="bx bx-user-circle me-2"></i> Informations
+                                    <!-- Navigation par Onglets - Version responsive -->
+                                    <ul class="nav nav-pills profile-tabs flex-nowrap overflow-auto pb-2" id="profileTab"
+                                        role="tablist" style="scrollbar-width: none; -ms-overflow-style: none;">
+                                        <li class="nav-item flex-shrink-0" role="presentation">
+                                            <button class="nav-link active d-flex align-items-center" id="details-tab"
+                                                data-bs-toggle="pill" data-bs-target="#details" type="button"
+                                                role="tab">
+                                                <i class="bx bx-user-circle me-1 me-md-2"></i>
+                                                <span class="d-none d-sm-inline">Informations</span>
                                             </button>
                                         </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="security-tab" data-bs-toggle="pill"
-                                                data-bs-target="#security" type="button">
-                                                <i class="bx bx-lock-alt me-2"></i> Sécurité
+                                        <li class="nav-item flex-shrink-0" role="presentation">
+                                            <button class="nav-link d-flex align-items-center" id="security-tab"
+                                                data-bs-toggle="pill" data-bs-target="#security" type="button"
+                                                role="tab">
+                                                <i class="bx bx-shield-alt me-1 me-md-2"></i>
+                                                <span class="d-none d-sm-inline">Sécurité</span>
+                                            </button>
+                                        </li>
+                                        <li class="nav-item flex-shrink-0" role="presentation">
+                                            <button class="nav-link d-flex align-items-center" id="socials-tab"
+                                                data-bs-toggle="pill" data-bs-target="#socials" type="button"
+                                                role="tab">
+                                                <i class="bx bx-share-alt me-1 me-md-2"></i>
+                                                <span class="d-none d-sm-inline">Réseaux sociaux</span>
                                             </button>
                                         </li>
                                     </ul>
+
+                                    <style>
+                                        /* Masquer la scrollbar tout en gardant le défilement */
+                                        .profile-tabs::-webkit-scrollbar {
+                                            display: none;
+                                        }
+
+                                        /* Style responsive */
+                                        @media (max-width: 767.98px) {
+                                            .profile-tabs {
+                                                padding-bottom: 4px;
+                                                /* Espace pour le scroll */
+                                            }
+
+                                            .profile-tabs .nav-link {
+                                                padding: 0.5rem 0.75rem;
+                                                font-size: 0.875rem;
+                                                border-radius: 0.5rem;
+                                            }
+
+                                            .profile-tabs .nav-link i {
+                                                font-size: 1.1rem;
+                                            }
+                                        }
+
+                                        /* Effet hover amélioré */
+                                        .profile-tabs .nav-link:not(.active):hover {
+                                            background-color: rgba(105, 108, 255, 0.1);
+                                        }
+                                    </style>
 
                                     <!-- Contenu des Onglets -->
                                     <div class="tab-content p-4">
@@ -412,6 +455,11 @@
                                         <!-- Onglet Sécurité -->
                                         <div class="tab-pane fade" id="security" role="tabpanel">
                                             @livewire('back.components.update-password-form')
+                                        </div>
+
+                                        <!-- Onglet Sécurité -->
+                                        <div class="tab-pane fade" id="socials" role="tabpanel">
+                                            @livewire('back.components.social-links-manager')
                                         </div>
 
                                     </div>

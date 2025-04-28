@@ -27,8 +27,7 @@
 
                             <div class="hero-buttons">
                                 <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
-                                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
-                                    class="btn btn-link mt-2 mt-sm-0 glightbox">
+                                <a href="{{ route('blog.index') }}" class="btn btn-link mt-2 mt-sm-0 glightbox">
                                     <i class="bi bi-play-circle me-1"></i>
                                     Découvrir nos actualités
                                 </a>
@@ -38,9 +37,9 @@
 
                     <div class="col-lg-6">
                         <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-                            <img src="assets/img/chirurgie.jpg" alt="Hero Image" class="img-fluid rounded">
+                            <img src="assets/images/front/welcome image.jpg" alt="Hero Image" class="img-fluid rounded">
 
-                            <div class="customers-badge">
+                            {{-- <div class="customers-badge">
                                 <div class="customer-avatars">
                                     <img src="assets/img/avatar-1.webp" alt="Customer 1" class="avatar">
                                     <img src="assets/img/avatar-2.webp" alt="Customer 2" class="avatar">
@@ -50,7 +49,7 @@
                                     <span class="avatar more">12+</span>
                                 </div>
                                 <p class="mb-0 mt-2">50+ médecins et experts dans leurs domaines</p>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -184,12 +183,12 @@
         </section><!-- /About Section -->
 
         <!-- Features Section -->
-        <section id="features" class="features section">
+        <section id="features" class="features section  light-background">
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Features</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                <h2>Notre Établissement</h2>
+                <p>Découvrez l'excellence médicale au cœur de la région de l'Ouest Cameroun</p>
             </div><!-- End Section Title -->
 
             <div class="container">
@@ -212,7 +211,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
-                                <h4>Actualites en direct</h4>
+                                <h4>Actualités en direct</h4>
                             </a>
                         </li><!-- End tab nav item -->
 
@@ -228,19 +227,16 @@
                                 class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                                 <h3>Notre Engagement envers Votre Santé</h3>
                                 <p class="fst-italic">
-                                    Depuis plus de 50 ans, l’Hôpital de District de Dschang s’engage à offrir des soins de
-                                    qualité, accessibles à tous. De la prévention aux urgences vitales, notre équipe
-                                    médicale dévouée travaille sans relâche pour protéger la santé de la communauté, avec un
-                                    accent particulier sur la santé maternelle et la lutte contre les épidémies
+                                    Établissement de référence depuis 1985, l'Hôpital Régional Annexe de Dschang allie
+                                    expertise médicale et humanisme pour servir les populations de la région de l'Ouest.
                                 </p>
                                 <ul>
-                                    <li><i class="bi bi-check2-all"></i> <span>Accrédité par l’OMS : Centre de référence
-                                            régional pour la prise en charge du paludisme et de la drépanocytose.</span>
-                                    </li>
-                                    <li><i class="bi bi-check2-all"></i> <span>✅ Formation continue : Ateliers gratuits
-                                            mensuels pour le public (ex : premiers secours, nutrition)</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Gratuité des programmes prioritaires :
-                                            Vaccination, dépistage du VIH, et consultations prénatales.</span></li>
+                                    <li><i class="bi bi-check2-all"></i> <span>Centre agréé par le Ministère de la Santé
+                                            Publique avec plateau technique de niveau régional</span></li>
+                                    <li><i class="bi bi-check2-all"></i> <span>Équipe pluridisciplinaire : 25 médecins
+                                            spécialistes, 150 paramédicaux diplômés</span></li>
+                                    <li><i class="bi bi-check2-all"></i> <span>Infrastructures modernes : 150 lits
+                                            d'hospitalisation, 3 salles d'opération, unité de soins intensifs</span></li>
                                 </ul>
                             </div>
                             <div class="col-lg-6 order-1 order-lg-2 text-center">
@@ -253,22 +249,20 @@
                         <div class="row">
                             <div
                                 class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                                <h3>Neque exercitationem debitis</h3>
+                                <h3>Des Soins Complets et Spécialisés</h3>
                                 <p class="fst-italic">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore
-                                    magna aliqua.
+                                    Offre de soins intégrée couvrant l'ensemble des besoins de santé, de la prévention aux
+                                    traitements complexes.
                                 </p>
                                 <ul>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
-                                            voluptate velit.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores
-                                            dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
-                                            storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+                                    <li><i class="bi bi-check2-all"></i> <span>Urgences 24h/24 : Prise en charge des
+                                            traumatismes et pathologies aiguës</span></li>
+                                    <li><i class="bi bi-check2-all"></i> <span>Maternité de référence : Suivi grossesse,
+                                            accouchement et néonatalogie</span></li>
+                                    <li><i class="bi bi-check2-all"></i> <span>Services spécialisés : Cardiologie,
+                                            Pédiatrie, Chirurgie viscérale</span></li>
+                                    <li><i class="bi bi-check2-all"></i> <span>Plateaux techniques : Scanner, Échographie
+                                            Doppler, Laboratoire d'analyses</span></li>
                                 </ul>
                             </div>
                             <div class="col-lg-6 order-1 order-lg-2 text-center">
@@ -281,19 +275,18 @@
                         <div class="row">
                             <div
                                 class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                                <h3>Voluptatibus commodi accusamu</h3>
+                                <h3>Informations en Temps Réel</h3>
                                 <ul>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
-                                            voluptate velit.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores
-                                            dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
+                                    <li><i class="bi bi-check2-all"></i> <span><strong>Campagne de vaccination</strong> :
+                                            Mois de la santé infantile jusqu'au 30 novembre</span></li>
+                                    <li><i class="bi bi-check2-all"></i> <span><strong>Nouveau service</strong> : Unité de
+                                            dialyse opérationnelle depuis octobre 2023</span></li>
+                                    <li><i class="bi bi-check2-all"></i> <span><strong>Horaires fériés</strong> :
+                                            Consultations sans rendez-vous les jours fériés de 8h à 13h</span></li>
                                 </ul>
                                 <p class="fst-italic">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore
-                                    magna aliqua.
+                                    Suivez nos actualités sur place ou via notre page Facebook officielle pour ne rien
+                                    manquer de nos services.
                                 </p>
                             </div>
                             <div class="col-lg-6 order-1 order-lg-2 text-center">
@@ -307,7 +300,6 @@
             </div>
 
         </section><!-- /Features Section -->
-
         <!-- Features Cards Section -->
         <section id="features-cards" class="features-cards section">
 
@@ -546,7 +538,7 @@
                     <!-- Statistique 2 : Interventions d'urgence -->
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="15000" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="+1500" data-purecounter-duration="1"
                                 class="purecounter"></span>
                             <p>Urgences Traitées</p>
                         </div>
@@ -555,7 +547,7 @@
                     <!-- Statistique 3 : Naissances accompagnées -->
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="2000" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="+2000" data-purecounter-duration="1"
                                 class="purecounter"></span>
                             <p>Naissances Accompagnées</p>
                         </div>
@@ -662,7 +654,7 @@
         </section><!-- /Services Section -->
 
         <!-- Faq Section -->
-        <section class="faq-9 faq section light-background" id="faq">
+        <section class="faq-9 faq section" id="faq">
 
             <div class="container">
                 <div class="row">
@@ -776,7 +768,7 @@
         </section><!-- /Call To Action 2 Section -->
 
         <!-- Contact Section -->
-        <section id="contact" class="contact section light-background">
+        <section id="contact" class="contact section">
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
@@ -839,7 +831,7 @@
                             <h3>Envoyez-nous un Message</h3>
                             <p>Remplissez le formulaire ci-dessous pour nous poser une question, prendre un rendez-vous ou
                                 discuter d’un partenariat.</p>
-                                @livewire('blog.contactForm')
+                            @livewire('blog.contactForm')
                         </div>
                     </div>
 

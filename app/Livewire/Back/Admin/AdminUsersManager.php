@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Back\Admin;
 
+use App\Livewire\Back\UserTopInfo;
 use Livewire\Component;
 use App\Models\User;
 use App\UserStatus;
@@ -134,7 +135,10 @@ class AdminUsersManager extends Component
             $updateData['password'] = Hash::make($this->password);
         }
 
-        $user->update($updateData);
+        $user->update($updateData); 
+
+        // Déclenchement des événements pour mettre à jour d'autres composants
+        $this->dispatch("updateTopUserInfo")->to(UserTopInfo::class);
 
         $this->hideModalForm();
 

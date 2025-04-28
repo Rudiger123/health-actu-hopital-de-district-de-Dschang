@@ -62,6 +62,12 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+        // app/Models/User.php
+    public function socialLinks()
+    {
+        return $this->hasOne(SocialLink::class);
+    }
+
     // Relation avec les commentaires (un utilisateur a plusieurs commentaires)
     public function comments()
     {
