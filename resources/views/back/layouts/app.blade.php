@@ -148,7 +148,31 @@
                 });
             @endif
         });
-    </script>
+
+        
+            // Écouteur pour la confirmation de suppression
+            window.addEventListener('confirm-logout', event => {
+                const {
+                    title,
+                    text
+                } = event.detail;
+
+                Swal.fire({
+                    title: title || 'Confirmer la déconnexion',
+                    text: text || "Êtes-vous sûr de vouloir vous déconnecter ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Oui, deconnexion !',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.dispatch('logout');
+                    }
+                });
+            });
+        </script>
 
 
 </body>

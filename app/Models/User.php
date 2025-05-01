@@ -63,7 +63,7 @@ class User extends Authenticatable
     }
 
         // app/Models/User.php
-    public function socialLinks()
+    public function socialLink()
     {
         return $this->hasOne(SocialLink::class);
     }
@@ -73,4 +73,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
 }

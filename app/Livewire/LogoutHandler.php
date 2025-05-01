@@ -7,6 +7,20 @@ use Livewire\Component;
 
 class LogoutHandler extends Component
 {
+    protected $listeners = [
+        "logout" => 'logout',
+    ];
+
+      // Confirmation de la deconnection
+      public function confirmLogout()
+      {
+        $this->dispatch(
+            'confirm-logout',
+            title: 'Confirmer la déconnexion',
+            text:"Êtes-vous sûr de vouloir vous déconnecter ?",
+        );
+      }
+
     public function logout()
     {
         Auth::logout();

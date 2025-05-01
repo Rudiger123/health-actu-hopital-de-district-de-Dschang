@@ -8,7 +8,7 @@ use Livewire\Component;
 class UserTopInfo extends Component
 {
     protected $listeners = [
-        "updateTopUserInfo" => '$refresh'
+        "updateTopUserInfo" => '$refresh',
     ];
     public function render()
     {
