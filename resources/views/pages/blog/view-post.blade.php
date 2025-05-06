@@ -63,7 +63,7 @@
                                                 <span class="date"><i class="bi bi-calendar3"></i>
                                                     {{ $post->created_at->format('d F Y \à H:i') }}</span>
                                                 <span cla ss="divider">•</span>
-                                                <span class="comments"><i class="bi bi-chat-text"></i> 18 Comments</span>
+                                                <span class="comments"><i class="bi bi-chat-text"></i> {{ $post->comments()->count() }} Comments</span>
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +131,7 @@
                                             <span class="author-title">{{ $post->author->type }}</span>
 
                                             <div class="author-bio mt-3">
-                                                {{ $post->author->bio }}
+                                                {{ Str::words($post->author->bio, 20, '...') }}
                                             </div>
 
                                             <div class="author-website mt-3">

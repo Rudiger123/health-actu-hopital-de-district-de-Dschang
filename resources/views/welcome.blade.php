@@ -26,7 +26,7 @@
                             </p>
 
                             <div class="hero-buttons">
-                                <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
+                                <a href="{{ route('services') }}" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
                                 <a href="{{ route('blog.index') }}" class="btn btn-link mt-2 mt-sm-0 glightbox">
                                     <i class="bi bi-play-circle me-1"></i>
                                     Découvrir nos actualités
@@ -37,7 +37,7 @@
 
                     <div class="col-lg-6">
                         <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-                            <img src="assets/images/front/welcome image.jpg" alt="Hero Image" class="img-fluid rounded">
+                            <img src="assets/images/emergency-urgences.jpg" alt="Hero Image" class="img-fluid rounded">
 
                             {{-- <div class="customers-badge">
                                 <div class="customer-avatars">
@@ -165,9 +165,9 @@
                     <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="image-wrapper">
                             <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
-                                <img src="assets/img/about.jpg" alt="Business Meeting"
+                                <img src="assets/images/guide-2.jpg" alt="Business Meeting"
                                     class="img-fluid main-image rounded-4">
-                                <img src="assets/img/about1.jpg" alt="Team Discussion"
+                                <img src="assets/images/guide-1.jpg" alt="Team Discussion"
                                     class="img-fluid small-image rounded-4">
                             </div>
                             <div class="experience-badge floating">
@@ -240,7 +240,7 @@
                                 </ul>
                             </div>
                             <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="assets/img/features-illustration-1.webp" alt="" class="img-fluid">
+                                <img src="assets/images/welcome image.jpg" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div><!-- End tab content item -->
@@ -266,7 +266,7 @@
                                 </ul>
                             </div>
                             <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="assets/img/features-illustration-2.webp" alt="" class="img-fluid">
+                                <img src="assets/images/guide-3.jpg" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div><!-- End tab content item -->
@@ -290,7 +290,7 @@
                                 </p>
                             </div>
                             <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="assets/img/features-illustration-3.webp" alt="" class="img-fluid">
+                                <img src="assets/images/welcome image.jpg" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div><!-- End tab content item -->
@@ -360,7 +360,7 @@
                             partenaires locaux et internationaux pour améliorer l’accès aux soins et promouvoir la santé
                             publique dans la région de l’Ouest Cameroun. Découvrez comment nous agissons ensemble pour un
                             impact durable</p>
-                        <a href="#" class="btn btn-cta">Découvrir nos actualités</a>
+                        <a href="{{ route('blog.index') }}" class="btn btn-cta">Découvrir nos actualités</a>
                     </div>
 
                     <!-- Abstract Background Elements -->
@@ -529,7 +529,7 @@
                     <!-- Statistique 1 : Patients accompagnés -->
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="80000" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="800" data-purecounter-duration="1"
                                 class="purecounter"></span>
                             <p>Patients Accompagnés</p>
                         </div>
@@ -538,7 +538,7 @@
                     <!-- Statistique 2 : Interventions d'urgence -->
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="+1500" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="+150" data-purecounter-duration="1"
                                 class="purecounter"></span>
                             <p>Urgences Traitées</p>
                         </div>
@@ -547,7 +547,7 @@
                     <!-- Statistique 3 : Naissances accompagnées -->
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="+2000" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="+200" data-purecounter-duration="1"
                                 class="purecounter"></span>
                             <p>Naissances Accompagnées</p>
                         </div>
@@ -556,7 +556,7 @@
                     <!-- Statistique 4 : Professionnels de santé -->
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="1"
                                 class="purecounter"></span>
                             <p>Professionnels de Santé</p>
                         </div>
@@ -593,8 +593,6 @@
                                 <p>Des consultations accessibles à tous, avec des médecins généralistes et spécialistes
                                     (cardiologie, pédiatrie, gynécologie). Prise en charge des maladies chroniques comme le
                                     diabète et l’hypertension.</p>
-                                <a href="service-details.html" class="read-more">En savoir plus <i
-                                        class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div><!-- End Service Card -->
@@ -609,8 +607,6 @@
                                 <h3>Urgences 24h/24</h3>
                                 <p>Un service d’urgences opérationnel jour et nuit, équipé pour traiter les fractures, les
                                     brûlures, les crises hypertensives et les morsures de serpent.</p>
-                                <a href="service-details.html" class="read-more">En savoir plus <i
-                                        class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div><!-- End Service Card -->
@@ -625,8 +621,6 @@
                                 <h3>Programme Mère-Enfant</h3>
                                 <p>Un accompagnement complet pour les femmes enceintes et les nouveau-nés, avec des
                                     consultations prénatales gratuites et un suivi postnatal personnalisé.</p>
-                                <a href="service-details.html" class="read-more">En savoir plus <i
-                                        class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div><!-- End Service Card -->
@@ -641,8 +635,6 @@
                                 <h3>Laboratoire d’Analyses Médicales</h3>
                                 <p>Un laboratoire moderne pour des analyses rapides et fiables : dépistage du VIH,
                                     paludisme, tuberculose, et bilans sanguins complets.</p>
-                                <a href="service-details.html" class="read-more">En savoir plus <i
-                                        class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div><!-- End Service Card -->
@@ -769,7 +761,6 @@
 
         <!-- Contact Section -->
         <section id="contact" class="contact section">
-
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Contactez-Nous</h2>

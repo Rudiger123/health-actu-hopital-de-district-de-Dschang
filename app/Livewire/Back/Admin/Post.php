@@ -309,7 +309,7 @@ class Post extends Component
             if ($post->image_path) {
                 Storage::disk('public')->delete($post->image_path);
             }
-            $post->comments->delete();
+            $post->comments()->delete();
             $post->delete();
 
             $this->dispatch(

@@ -324,9 +324,9 @@
                                                 <i class="bi bi-clock"></i>
                                                 {{ $post->created_at->format('d F Y \à H:i') }}
                                               </span>                                              
-                                            <span><i class="bi bi-chat-dots"></i> 12 Commentaires</span>
+                                            <span><i class="bi bi-chat-dots"></i> {{ $post->comments()->count() }} Commentaires </span>
                                         </div>
-                                        <h2>  <a href="#"> {{ Str::words($post->title, 10, '...') }}</a></h2>
+                                        <h2>  <a href="{{ route('blog.show', $post->slug) }}"> {{ Str::words($post->title, 5, '...') }}</a></h2>
                                         <p>{{ $post->content }}</p>
                                         <a href="{{ route('blog.show', $post->slug) }}" class="read-more">Lire plus <i class="bi bi-arrow-right"></i></a>
                                     </div>
