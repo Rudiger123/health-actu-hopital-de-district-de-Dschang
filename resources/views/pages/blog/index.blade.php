@@ -14,17 +14,17 @@
     <main class="main">
 
         @php
-        $image1 = 'assets/img/departments-1.jpg';
+        $image1 = 'assets/img/IMG-20250509-WA0009.jpg';
         $titel1 = 'Les Dernières Avancées Médicales';
         $text1 =
             'Découvrez les nouvelles technologies et innovations dans le domaine médical qui améliorent la qualité des soins et le confort des patients.';
 
-        $image2 = 'assets/img/departments-2.jpg';
+        $image2 = 'assets/img/IMG-20250509-WA0030.jpg';
         $titel2 = 'Conseils Santé & Prévention';
         $text2 =
             "Nos experts partagent des conseils pratiques pour adopter un mode de vie sain et prévenir les maladies les plus courantes.";
 
-        $image3 = 'assets/img/departments-3.jpg';
+        $image3 = 'assets/img/IMG-20250509-WA0031.jpg';
         $titel3 = 'Témoignages de Patients';
         $text3 =
             'Lisez les histoires inspirantes de nos patients qui ont retrouvé la santé grâce aux soins prodigués par nos équipes médicales.';
@@ -44,7 +44,7 @@
             <!-- Carte Principale -->
             <div class="mission-card" data-aos="zoom-in" data-aos-delay="100">
                 <div class="pulse-effect"></div>
-                <img src="assets/img/departments-3.jpg" alt="Notre équipe médicale" class="mission-hero-img">
+                <img src="assets/img/IMG-20250509-WA0033.jpg" alt="Notre équipe médicale" class="mission-hero-img">
                 
                 <div class="mission-content">
                     <div class="icon-container">
@@ -355,7 +355,7 @@
                     </div>
 
                     <div class="content-right position-relative" data-aos="fade-left" data-aos-delay="300">
-                        <img src="assets/img/misc/misc-1.webp" alt="Actualités Médicales" class="img-fluid rounded-4">
+                        <img src="assets/img/IMG-20250509-WA0024.jpg" alt="Actualités Médicales" class="img-fluid rounded-4 w-24 h-10">
                         <div class="floating-card">
                             <div class="card-icon">
                                 <i class="bi bi-newspaper"></i> <!-- Icône de journal pour plus de pertinence -->

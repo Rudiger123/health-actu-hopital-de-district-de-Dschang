@@ -1,5 +1,5 @@
 @php
-    $currentRoute = request()->route()->getName();
+    $currentRoute = request()->route() ? request()->route()->getName() : null;
 @endphp
 
 @push('css')
@@ -126,7 +126,7 @@
                 <livewire:auth.login-form />
 
                 <div class="text-center mt-3">
-                    <a class="auth-link" data-bs-toggle="modal" data-bs-target="#resetModal" data-bs-dismiss="modal">
+                    <a class="auth-link cursor-pointer" data-bs-toggle="modal" data-bs-target="#resetModal" data-bs-dismiss="modal">
                         Mot de passe oublié ?
                     </a>
                 </div>

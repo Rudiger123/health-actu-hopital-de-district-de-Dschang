@@ -105,9 +105,9 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            {{-- <div class="container-fluid container-p-y">
+                             <div class="container-fluid container-p-y">
                                 {{ $parentCategories->links() }}
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -167,9 +167,9 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            {{-- <div class="container-fluid container-p-y">
+                            <div class="container-fluid container-p-y">
                                 {{ $childCategories->links() }}
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -345,7 +345,7 @@ class Category extends Component
             $query->where('name', 'like', '%' . $this->search . '%');
         })
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(5);
 
         $categories = CategorysModel::when($this->search, function ($query) {
             $query->where('name', 'like', '%' . $this->search . '%');
@@ -354,7 +354,7 @@ class Category extends Component
                 $query->orWhere('parent_category_id', $this->filter);
             })
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(5);
 
         return view('livewire.back.admin.category', [
             "parentCategories" => $categoryParents,

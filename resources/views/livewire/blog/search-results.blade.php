@@ -1,24 +1,36 @@
 <main class="main">
-    <div class="page-title">
-        <div class="breadcrumbs" style="background: transparent;">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('home') }}">
-                            <i class="bi bi-house"></i> Accueil
+
+
+    <!-- Page Title / Banner -->
+    <div class="relative h-64 md:h-96 bg-center bg-cover md:my-28 my-24"
+        style="background-image: url('{{ asset('assets/img/IMG-20250509-WA0033.jpg') }}');">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gray-800 bg-opacity-60"></div>
+
+        <!-- Breadcrumbs + Text -->
+        <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-4 text-white">
+            <!-- Breadcrumbs -->
+            <nav class="mb-4" aria-label="breadcrumb">
+                <ol class="flex space-x-2 text-sm md:text-base">
+                    <li>
+                        <a href="{{ route('home') }}" class="hover:underline flex items-center">
+                            <i class="bi bi-house mr-1"></i> Accueil
                         </a>
                     </li>
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('blog.index') }}">Blog</a>
+                    <li>/</li>
+                    <li>
+                        <a href="{{ route('blog.index') }}" class="hover:underline">Blog</a>
                     </li>
-                    <li class="breadcrumb-item active current">{{ $query }}</li>
+                    <li>/</li>
+                    <li class="font-semibold text-gray-300">{{ $query }}</li>
                 </ol>
             </nav>
-        </div>
-        <div class="title-wrapper text-center">
-            <h1>Résultats de recherche</h1>
-            <p>Nous avons trouvé <strong>{{ $posts->count() }}</strong> résultats pour
-                "<strong>{{ $query }}</strong>"</p>
+
+            <div class="title-wrapper text-center text-gray-300">
+                <h1 class="text-gray-300">Résultats de recherche</h1>
+                <p>Nous avons trouvé <strong>{{ $posts->count() }}</strong> résultats pour
+                    "<strong>{{ $query }}</strong>"</p>
+            </div>
         </div>
     </div>
 

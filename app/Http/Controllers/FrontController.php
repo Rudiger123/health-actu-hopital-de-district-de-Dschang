@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\NewsletterSubscription;
+use App\Models\SocialLink;
 use App\Models\Tag;
 use App\Models\User;
 
@@ -82,6 +84,9 @@ class FrontController extends Controller
 
     public function authorPosts($slug)
     {
+        $post =  User::where('username',$slug)->firstOrFail();
+        $countPosts = $post->count();
+        $newsletter = NewsletterSubscription::count();
         $author = User::withCount('posts')
             ->with(['posts' => function($query) {
                 $query->with('category')
@@ -91,7 +96,16 @@ class FrontController extends Controller
             ->where('username', $slug)
             ->firstOrFail();
 
-        return view('pages.blog.profileAuthor', compact('author'));
+            $socialLinks = SocialLink::all();
+            foreach ($socialLinks as $socialLink) {
+                if ($socialLink->user_id  === $author->id)  {
+                    $link = $socialLink;
+                }else{
+                    $link = null;
+                }
+            }
+
+        return view('pages.blog.profileAuthor', compact(['author','countPosts','newsletter','link']));
     }
 
 

@@ -37,7 +37,7 @@ class SocialLinksManager extends Component
     {
         $this->validate();
 
-        Auth::user()->socialLinks()->updateOrCreate(
+        Auth::user()->socialLink()->updateOrCreate(
             ['user_id' => Auth::user()->id],
             $this->links
         );

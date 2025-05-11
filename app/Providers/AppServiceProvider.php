@@ -6,11 +6,12 @@ use App\Models\User;
 use App\Policies\UserPolicy;
 use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
+use Livewire\WithPagination;
 
 class AppServiceProvider extends ServiceProvider
 {
+    use WithPagination;
     /**
      * Register any application services.
      */
@@ -25,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::policy(User::class, UserPolicy::class);
-        Paginator::defaultView('vendor.pagination.custom');
+        // Paginator::defaultView('vendor.pagination.custom');
         RedirectIfAuthenticated::redirectUsing(function () {
             session()->flash('message', 'Vous êtes déjà connecté !');
             return route('admin.dashboard');
