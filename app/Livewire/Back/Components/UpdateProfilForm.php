@@ -36,8 +36,8 @@ class UpdateProfilForm extends Component
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users,username,' . Auth::id(),
             'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
-            'bio' => 'nullable|string|max:500',
-            'photo' => 'nullable|image|max:1024'
+            'bio' => 'nullable|string',
+            'photo' => 'nullable|image|max:2048'
         ]);
 
         // Mise à jour de l'utilisateur

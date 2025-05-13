@@ -6,7 +6,7 @@
                         </a>
                     </div>
 
-                    <div class="navbar-nav-right d-flex align-items-center justify-content-end" id="navbar-collapse">
+                    <div class="navbar-nav-right d-flex align-items-center justify-content-end gap-2" id="navbar-collapse">
                         <!-- Search -->
                         <div class="navbar-nav align-items-center me-auto">
                             <div class="nav-item d-flex align-items-center">
@@ -17,7 +17,10 @@
                             </div>
                         </div>
                         <!-- /Search -->
-
+                         <!-- Languages -->
+    
+                         <livewire:language-switcher />
+      
                         @livewire('back.user-top-info')
                     </div>
                 </nav>

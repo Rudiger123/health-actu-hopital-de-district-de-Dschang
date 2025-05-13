@@ -5,15 +5,15 @@
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-outline-primary {{ $timeRange === 'week' ? 'active' : '' }}"
                     wire:click="updateTimeRange('week')">
-                    <i class="bi bi-calendar-week me-1"></i> Semaine
+                    <i class="bi bi-calendar-week me-1"></i> {{ __('menu.week') }}
                 </button>
                 <button type="button" class="btn btn-outline-primary {{ $timeRange === 'month' ? 'active' : '' }}"
-                wire:click="updateTimeRange('month')">
-                    <i class="bi bi-calendar-month me-1"></i> Mois
+                    wire:click="updateTimeRange('month')">
+                    <i class="bi bi-calendar-month me-1"></i> {{ __('menu.month') }}
                 </button>
                 <button type="button" class="btn btn-outline-primary {{ $timeRange === 'year' ? 'active' : '' }}"
-                wire:click="updateTimeRange('year')">
-                    <i class="bi bi-calendar me-1"></i> Année
+                    wire:click="updateTimeRange('year')">
+                    <i class="bi bi-calendar me-1"></i> {{ __('menu.year') }}
                 </button>
             </div>
         </div>
@@ -25,21 +25,21 @@
                     <div class="d-flex align-items-start row">
                         <div class="col-sm-7">
                             <div class="card-body">
-                                <h5 class="card-title text-white mb-3">Bienvenue, Équipe Médicale! 👋</h5>
+                                <h5 class="card-title text-white mb-3">{{ __('dashboard.welcome_team') }} 👋</h5>
                                 <p class="mb-4 text-white-75">
-                                    Vous avez publié <strong>{{ $recentPosts->count() }} articles</strong> cette
-                                    période.<br>
-                                    Dernier article : "{{ $recentPosts->first()->title ?? 'Aucun article récent' }}"
+                                    {{ __('dashboard.post_stats', ['count' => $recentPosts->count()]) }}<br>
+                                    {{ __('dashboard.last_post') }}:
+                                    "{{ $recentPosts->first()->title ?? __('dashboard.no_recent_posts') }}"
                                 </p>
                                 <a href="{{ route('admin.posts') }}" class="btn btn-light btn-sm">
-                                    <i class="bi bi-plus-circle me-1"></i> Nouvel Article
+                                    <i class="bi bi-plus-circle me-1"></i> {{ __('menu.new_post') }}
                                 </a>
                             </div>
                         </div>
                         <div class="col-sm-5 text-center text-sm-left">
                             <div class="card-body pb-0 px-0 px-md-4">
                                 <img src="{{ asset('back/assets/img/man-with-laptop.png') }}" height="160"
-                                    alt="Équipe médicale" class="img-fluid">
+                                    alt="{{ __('dashboard.medical_team') }}" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="card-title d-flex justify-content-between mb-3">
-                                    <span>Articles Publiés</span>
+                                    <span>{{ __('menu.published_posts') }}</span>
                                     <i class="bi bi-newspaper text-primary fs-4"></i>
                                 </div>
                                 <h3 class="card-title mb-1">{{ number_format($totalPosts) }}</h3>
@@ -71,7 +71,7 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="card-title d-flex justify-content-between mb-3">
-                                    <span>Commentaires</span>
+                                    <span>{{ __('menu.comments') }}</span>
                                     <i class="bi bi-chat-square-text text-info fs-4"></i>
                                 </div>
                                 <h3 class="card-title mb-1">{{ number_format($totalComments) }}</h3>
@@ -90,17 +90,18 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">
-                            <i class="bi bi-clock-history me-2"></i>Activité Récente
+                            <i class="bi bi-clock-history me-2"></i>{{ __('menu.recent_activity') }}
                         </h5>
                         <div class="dropdown">
                             <button class="btn p-0" type="button" data-bs-toggle="dropdown">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="{{ route('admin.posts') }}">Voir tous les
-                                        articles</a></li>
-                                <li><a class="dropdown-item" href="{{ route('admin.commentsManager') }}">Voir tous les
-                                        commentaires</a></li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('admin.posts') }}">{{ __('menu.view_all_posts') }}</a></li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('admin.commentsManager') }}">{{ __('menu.view_all_comments') }}</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -109,13 +110,13 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="posts-tab" data-bs-toggle="tab"
                                     data-bs-target="#posts" type="button" role="tab">
-                                    <i class="bi bi-newspaper me-1"></i> Articles
+                                    <i class="bi bi-newspaper me-1"></i> {{ __('menu.posts') }}
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="comments-tab" data-bs-toggle="tab"
                                     data-bs-target="#comments" type="button" role="tab">
-                                    <i class="bi bi-chat-square-text me-1"></i> Commentaires
+                                    <i class="bi bi-chat-square-text me-1"></i> {{ __('menu.comments') }}
                                 </button>
                             </li>
                         </ul>
@@ -125,10 +126,10 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Titre</th>
-                                                <th>Auteur</th>
-                                                <th>Date</th>
-                                                <th>Statut</th>
+                                                <th>{{ __('table.title') }}</th>
+                                                <th>{{ __('table.author') }}</th>
+                                                <th>{{ __('table.date') }}</th>
+                                                <th>{{ __('table.status') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -144,14 +145,14 @@
                                                     <td>
                                                         <span
                                                             class="badge bg-{{ $post->published_at ? 'success' : 'warning' }}">
-                                                            {{ $post->published_at ? 'Publié' : 'Brouillon' }}
+                                                            {{ $post->published_at ? __('status.published') : __('status.draft') }}
                                                         </span>
                                                     </td>
                                                 </tr>
                                             @empty
                                                 <tr>
-                                                    <td colspan="4" class="text-center py-4">Aucun article récent
-                                                    </td>
+                                                    <td colspan="4" class="text-center py-4">
+                                                        {{ __('messages.no_records') }}</td>
                                                 </tr>
                                             @endforelse
                                         </tbody>
@@ -163,10 +164,10 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Contenu</th>
-                                                <th>Article</th>
-                                                <th>Auteur</th>
-                                                <th>Date</th>
+                                                <th>{{ __('table.content') }}</th>
+                                                <th>{{ __('table.post') }}</th>
+                                                <th>{{ __('table.author') }}</th>
+                                                <th>{{ __('table.date') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -179,8 +180,8 @@
                                                 </tr>
                                             @empty
                                                 <tr>
-                                                    <td colspan="4" class="text-center py-4">Aucun commentaire
-                                                        récent</td>
+                                                    <td colspan="4" class="text-center py-4">
+                                                        {{ __('messages.no_comments') }}</td>
                                                 </tr>
                                             @endforelse
                                         </tbody>
@@ -200,7 +201,7 @@
                         <div class="card h-100">
                             <div class="card-header">
                                 <h5 class="mb-0">
-                                    <i class="bi bi-tags me-2"></i>Catégories Populaires
+                                    <i class="bi bi-tags me-2"></i>{{ __('menu.popular_categories') }}
                                 </h5>
                             </div>
                             <div class="card-body">
@@ -211,7 +212,7 @@
                                             class="badge bg-primary rounded-pill">{{ $category->posts_count }}</span>
                                     </div>
                                 @empty
-                                    <p class="text-muted mb-0">Aucune catégorie avec des articles</p>
+                                    <p class="text-muted mb-0">{{ __('messages.no_categories') }}</p>
                                 @endforelse
                             </div>
                         </div>
@@ -222,7 +223,7 @@
                         <div class="card h-100">
                             <div class="card-header">
                                 <h5 class="mb-0">
-                                    <i class="bi bi-people me-2"></i>Auteurs Actifs
+                                    <i class="bi bi-people me-2"></i>{{ __('menu.active_authors') }}
                                 </h5>
                             </div>
                             <div class="card-body">
@@ -244,15 +245,16 @@
 
                                         <div class="flex-grow-1">
                                             <h6 class="mb-0">{{ $author->name }}</h6>
-                                            <small class="text-muted">{{ $author->posts()->count() }} articles</small>
+                                            <small class="text-muted">{{ $author->posts()->count() }}
+                                                {{ __('menu.posts') }}</small>
                                         </div>
-                                        <span class="badge bg-success rounded-pill">
+                                        <span class="badge bg-{{ $author->status == App\UserStatus::Active ? 'success' : 'danger' }} rounded-pill">
                                             <i class="bi bi-check-circle"></i>
                                             <small class="text-muted">{{ $author->status }}</small>
                                         </span>
                                     </div>
                                 @empty
-                                    <p class="text-muted mb-0">Aucun auteur actif récemment</p>
+                                    <p class="text-muted mb-0">{{ __('messages.no_active_authors') }}</p>
                                 @endforelse
                             </div>
                         </div>
@@ -261,60 +263,3 @@
             </div>
         </div>
     </div>
-
-    @push('adminjs')
-        <script>
-            document.addEventListener('livewire:load', function() {
-                // Initialisation des tooltips Bootstrap
-                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-                var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-                    return new bootstrap.Tooltip(tooltipTriggerEl)
-                });
-            });
-        </script>
-    @endpush
-
-    @push('admincss')
-        <style>
-            /* Animation des cartes */
-            .card {
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
-            }
-
-            .card:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            }
-
-            /* Style des onglets */
-            .nav-tabs .nav-link {
-                border: none;
-                color: #6c757d;
-                font-weight: 500;
-            }
-
-            .nav-tabs .nav-link.active {
-                color: #4f46e5;
-                border-bottom: 2px solid #4f46e5;
-                background-color: transparent;
-            }
-
-            /* Avatar rond */
-            .avatar {
-                width: 40px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .avatar img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        </style>
-    @endpush
-
-
-</div>

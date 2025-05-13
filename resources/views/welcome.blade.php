@@ -37,7 +37,7 @@
 
                     <div class="col-lg-6">
                         <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-                            <img src="assets/images/emergency-urgences.jpg" alt="Hero Image" class="img-fluid rounded">
+                            <img src="assets/images/hopital.jpeg" alt="Hero Image" class="img-fluid rounded">
 
                             {{-- <div class="customers-badge">
                                 <div class="customer-avatars">

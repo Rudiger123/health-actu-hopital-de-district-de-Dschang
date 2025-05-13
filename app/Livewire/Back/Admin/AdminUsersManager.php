@@ -185,9 +185,9 @@ class AdminUsersManager extends Component
     public function updateStatus($id, $status)
     {
         $user = User::findOrFail($id);
-        $status = ($user->status === UserStatus::Active) ? UserStatus::Inactive : UserStatus::Active;
+        $stat = ($user->status === UserStatus::Active) ? UserStatus::Inactive : UserStatus::Active;
         $user->update([
-            'status' => $status
+            'status' => $stat
         ]);
     }
 

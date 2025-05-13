@@ -26,7 +26,7 @@ class CommentSeeder extends Seeder
         Comment::create([
             'post_id' => $posts->random()->id,
             'parent_id' => null,
-            'guest_name' => $faker->title(),
+            'guest_name' => $faker->name(),
             'guest_email' => $faker->email(),
             'content' => $faker->paragraphs(random_int(3, 7), true)
         ]);

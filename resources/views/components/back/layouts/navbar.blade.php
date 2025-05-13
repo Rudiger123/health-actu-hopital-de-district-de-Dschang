@@ -23,7 +23,7 @@
         <li class="menu-item {{ Route::is('admin.dashboard') ? 'active' : '' }} open">
             <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div class="text-truncate" data-i18n="Dashboard">Tableau de bord</div>
+                <div class="text-truncate" data-i18n="Dashboard">{{ __('menu.dashboard') }}</div>
             </a>
         </li>
 
@@ -31,7 +31,7 @@
         <li class="menu-item {{ Route::is('admin.posts') ? 'active' : '' }}">
             <a href="{{ route('admin.posts') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-news"></i>
-                <div class="text-truncate" data-i18n="Posts">Articles</div>
+                <div class="text-truncate" data-i18n="Posts">{{ __('menu.posts') }}</div>
             </a>
         </li>
 
@@ -39,7 +39,7 @@
         <li class="menu-item {{ Route::is('admin.categories') ? 'active' : '' }}">
             <a href="{{ route('admin.categories') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-category"></i>
-                <div class="text-truncate" data-i18n="Categories">Catégories</div>
+                <div class="text-truncate" data-i18n="Categories">{{ __('menu.categories') }}</div>
             </a>
         </li>
 
@@ -47,7 +47,7 @@
         <li class="menu-item {{ Route::is('admin.tags') ? 'active' : '' }}">
             <a href="{{ route('admin.tags') }}"   class="menu-link">
                 <i class="menu-icon tf-icons bx bx-tag"></i>
-                <div class="text-truncate" data-i18n="Tags">Étiquettes</div>
+                <div class="text-truncate" data-i18n="Tags">{{ __('menu.tags') }}</div>
             </a>
         </li>
 
@@ -55,7 +55,7 @@
         <li class="menu-item {{ Route::is('admin.commentsManager') ? 'active' : '' }}"">
             <a href="{{ route('admin.commentsManager') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-comment"></i>
-                <div class="text-truncate" data-i18n="Comments">Commentaires</div>
+                <div class="text-truncate" data-i18n="Comments">{{ __('menu.comments') }}</div>
             </a>
         </li>
 
@@ -64,7 +64,7 @@
         <li class="menu-item {{ Route::is('admin.usersManager') ? 'active' : '' }}"">
             <a href="{{ route('admin.usersManager') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
-                <div class="text-truncate" data-i18n="Users">Utilisateurs</div>
+                <div class="text-truncate" data-i18n="Users">{{ __('menu.users') }}</div>
             </a>
         </li>
         @endcan
@@ -73,5 +73,10 @@
         <li class="menu-item">
             @livewire('back.admin.general-settings')
         </li>
+
+         {{-- <!-- Languages -->
+         <li class="menu-item mt-auto">
+            <livewire:language-switcher />
+        </li> --}}
     </ul>
 </aside>

@@ -35,7 +35,7 @@ Route::middleware('guest','preventBackHistory')->controller(FrontController::cla
     // search result for Post
     Route::get('/search', 'searchPosts')->name('search');
 
-    Route::get('/show/{slug}', 'show')->name('blog.show');
+    Route::get('/post/{slug}', 'show')->name('blog.show');
 
     Route::get('/blog/search', 'searchResults')->name('blog.search');
 });
