@@ -2,7 +2,7 @@
     <div class="d-flex align-items-center gap-2 menu-link" role="button" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">
         <i class="menu-icon tf-icons bx bx-cog fs-5"></i>
-        <div class="fw-semibold text-truncate" data-i18n="Settings">Paramètres</div>
+        <div class="fw-semibold text-truncate" data-i18n="Settings">{{ __('menu.settings') }}</div>
     </div>
 
     <!-- End Offcanvas -->

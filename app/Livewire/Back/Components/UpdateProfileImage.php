@@ -12,23 +12,23 @@ class UpdateProfileImage extends Component
         "updatePersonalDetails" => '$refresh'
     ];
 
-    public $link;
+    public $social;
 
     public function render()
     {
         $socialLinks = SocialLink::all();
-        if($socialLinks != null){
+        $social = new SocialLink();
+        if (isset($socialLinks)) {
             foreach ($socialLinks as $socialLink) {
                 if ($socialLink->user_id  === Auth::user()->id) {
-                    $link = $socialLink;
+                    $social = $socialLink;
                 }
             }
-        }else{
-            $link = new SocialLink();
         }
+
         return view('livewire.back.components.update-profile-image', [
             'user' => User::findOrFail(Auth::user()->id),
-            'socialLinks' => $link
+            'socialLinks' => $social
         ]);
     }
 }
