@@ -7,7 +7,7 @@
              <div class="container">
                  <h2>{{ $titel1 }}</h2>
                  <p>{{ $text1 }}</p>
-                 <a href="#about" class="btn-get-started">Read More</a>
+                 {{-- <a href="#about" class="btn-get-started">Read More</a> --}}
              </div>
          </div><!-- End Carousel Item -->
 
@@ -16,7 +16,7 @@
              <div class="container">
                  <h2>{{ $titel2 }}</h2>
                  <p>{{ $text2 }}</p>
-                 <a href="#about" class="btn-get-started">Read More</a>
+                 {{-- <a href="#about" class="btn-get-started">Read More</a> --}}
              </div>
          </div><!-- End Carousel Item -->
 
@@ -25,7 +25,7 @@
              <div class="container">
                  <h2>{{ $titel3 }}</h2>
                  <p>{{ $text3 }}</p>
-                 <a href="#about" class="btn-get-started">Read More</a>
+                 {{-- <a href="#about" class="btn-get-started">Read More</a> --}}
              </div>
          </div><!-- End Carousel Item -->
 

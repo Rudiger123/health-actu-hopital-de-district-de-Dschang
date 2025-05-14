@@ -12,15 +12,15 @@
 
 @section('content')
     @php
-        $image1 = 'assets/img/gallery/gallery-1.jpg';
+        $image1 = 'assets/images/carousels/contact-1.jpg';
         $titel1 = 'Hôpital Régional Annexe de Dschang';
         $text1 =
             "Établissement de santé de référence dans la région de l'Ouest Cameroun, offrant des soins de qualité depuis 1985.";
-        $image2 = 'assets/img/gallery/gallery-2.jpg';
+        $image2 = 'assets/images/carousels/contact-1.jpg';
         $titel2 = 'Nos Services Médicaux';
         $text2 =
             'Nous proposons une gamme complète de services médicaux avec un personnel qualifié et des équipements modernes.';
-        $image3 = 'assets/img/gallery/gallery-3.jpg';
+        $image3 = 'assets/images/carousels/contact-1.jpg';
         $titel3 = 'Équipe Médicale Qualifiée';
         $text3 =
             'Notre équipe de professionnels de santé dévoués est à votre service 24h/24 pour des soins personnalisés.';

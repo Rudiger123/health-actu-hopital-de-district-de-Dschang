@@ -24,7 +24,7 @@
               </div>
               <div class="col-lg-4">
                   <div class="cta-image" wire:ignore.self data-aos="zoom-out" data-aos-delay="200">
-                      <img src="assets/img/cta/cta-1.webp" alt="Image informative sur la santé" class="img-fluid">
+                      <img src="assets/images/newsletter.png" alt="Image informative sur la santé" class="img-fluid">
                   </div>
               </div>
           </div>

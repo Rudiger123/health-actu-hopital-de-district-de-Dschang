@@ -5,31 +5,31 @@
 
         <!-- Hero Section -->
         <section id="hero" class="hero section">
-
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
                             <div class="company-badge mb-4">
                                 <i class="bi bi-gear-fill me-2"></i>
-                                Working for your health
+                                {{ __('hero.badge') }}
                             </div>
 
                             <h1 class="mb-4">
-                                Hôpital Régional Annexe de
-                                <span class="accent-text">Dschang</span>
+                                {{ __('hero.title') }}
+                                <span class="accent-text">{{ __('hero.city') }}</span>
                             </h1>
 
                             <p class="mb-4 mb-md-5">
-                                NulSoins innovants, transparence médiatique, engagement communautaire
+                                {{ __('hero.subtitle') }}
                             </p>
 
                             <div class="hero-buttons">
-                                <a href="{{ route('services') }}" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
+                                <a href="{{ route('services') }}" class="btn btn-primary me-0 me-sm-2 mx-1">
+                                    {{ __('hero.get_started') }}
+                                </a>
                                 <a href="{{ route('blog.index') }}" class="btn btn-link mt-2 mt-sm-0 glightbox">
                                     <i class="bi bi-play-circle me-1"></i>
-                                    Découvrir nos actualités
+                                    {{ __('hero.news') }}
                                 </a>
                             </div>
                         </div>
@@ -38,74 +38,29 @@
                     <div class="col-lg-6">
                         <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
                             <img src="assets/images/hopital.jpeg" alt="Hero Image" class="img-fluid rounded">
-
-                            {{-- <div class="customers-badge">
-                                <div class="customer-avatars">
-                                    <img src="assets/img/avatar-1.webp" alt="Customer 1" class="avatar">
-                                    <img src="assets/img/avatar-2.webp" alt="Customer 2" class="avatar">
-                                    <img src="assets/img/avatar-3.webp" alt="Customer 3" class="avatar">
-                                    <img src="assets/img/avatar-4.webp" alt="Customer 4" class="avatar">
-                                    <img src="assets/img/avatar-5.webp" alt="Customer 5" class="avatar">
-                                    <span class="avatar more">12+</span>
-                                </div>
-                                <p class="mb-0 mt-2">50+ médecins et experts dans leurs domaines</p>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
 
+                <!-- Stats -->
                 <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-trophy"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h4>3 Certifications d’Excellence</h4>
-                                <p class="mb-0">
-                                    Reconnus pour la qualité de nos soins et notre engagement social
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-briefcase"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h4>6 500 Interventions d’Urgence en 2023</h4>
-                                <p class="mb-0">Réactivité 24h/24, 7j/7</p>
+                    @foreach (__('hero.stats') as $stat)
+                        <div class="col-lg-3 col-md-6">
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="{{ $stat['icon'] }}"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h4>{{ $stat['title'] }}</h4>
+                                    <p class="mb-0">{{ $stat['text'] }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-graph-up"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h4>80 000 Patients Accompagnés par An</h4>
-                                <p class="mb-0">92% de satisfaction</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-award"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h4>6 Partenaires Internationaux</h4>
-                                <p class="mb-0">Pour une santé accessible à tous</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-
             </div>
+        </section>
 
-        </section><!-- /Hero Section -->
 
         <!-- About Section -->
         <section id="about" class="about section">
@@ -168,7 +123,7 @@
                                 <img src="assets/images/guide-2.jpg" alt="Business Meeting"
                                     class="img-fluid main-image rounded-4">
                                 <img src="assets/images/guide-1.jpg" alt="Team Discussion"
-                                    class="img-fluid small-image rounded-4">
+                                    class="img-fluid small-image rounded-10">
                             </div>
                             <div class="experience-badge floating">
                                 <h3>15+ <span>Years</span></h3>
@@ -240,7 +195,7 @@
                                 </ul>
                             </div>
                             <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="assets/images/welcome image.jpg" alt="" class="img-fluid">
+                                <img src="assets/images/engagement.jpeg" alt="" class="img-fluid rounded-lg">
                             </div>
                         </div>
                     </div><!-- End tab content item -->
@@ -266,7 +221,7 @@
                                 </ul>
                             </div>
                             <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="assets/images/guide-3.jpg" alt="" class="img-fluid">
+                                <img src="assets/images/guide-3.jpg" alt="" class="img-fluid rounded-lg">
                             </div>
                         </div>
                     </div><!-- End tab content item -->
@@ -290,7 +245,7 @@
                                 </p>
                             </div>
                             <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="assets/images/welcome image.jpg" alt="" class="img-fluid">
+                                <img src="assets/images/actualités.jpg" alt="" class="img-fluid rounded-lg">
                             </div>
                         </div>
                     </div><!-- End tab content item -->
@@ -300,6 +255,9 @@
             </div>
 
         </section><!-- /Features Section -->
+
+
+        
         <!-- Features Cards Section -->
         <section id="features-cards" class="features-cards section">
 
@@ -414,105 +372,45 @@
 
         </section><!-- /Call To Action Section -->
 
-        <!-- Testimonials Section -->
+        <!-- Direction Section -->
         <section id="testimonials" class="testimonials section light-background">
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>DIRECTION DE L'HÔPITAL</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                <p>À la tête de l’Hôpital de Dschang, notre équipe de direction œuvre chaque jour pour garantir une gestion
+                    efficace, humaine et innovante des services de santé. Leur engagement est le moteur de notre excellence
+                    médicale et de notre proximité avec la population.</p>
             </div><!-- End Section Title -->
+
 
             <div class="container">
                 <div class="row g-5">
 
-                    <!-- Témoignage 1 : Dr. Jean Dupont – Médecin Chef -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="testimonial-item">
-                            <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img"
-                                alt="Dr. Jean Dupont">
-                            <h3>Dr. Jean Dupont</h3>
-                            <h4>Médecin Chef</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Chaque jour, je suis inspiré par la résilience de nos patients et le dévouement de
-                                    notre équipe. À l’Hôpital de Dschang, nous ne soignons pas seulement des maladies, nous
-                                    redonnons de l’espoir à toute une communauté.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
+                    @php
+                        $testimonials = __('direction');
+                    @endphp
 
-                    <!-- Témoignage 2 : Mme Marie Ngo – Directrice Administrative -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="testimonial-item">
-                            <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img"
-                                alt="Mme Marie Ngo">
-                            <h3>Mme Marie Ngo</h3>
-                            <h4>Directrice Administrative</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
+                    @foreach ($testimonials as $index => $testimonial)
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="{{ 100 * ($index + 1) }}">
+                            <div class="testimonial-item">
+                                <img src="{{ asset($testimonial['image']) }}" class="testimonial-img"
+                                    alt="{{ $testimonial['name'] }}">
+                                <h3>{{ $testimonial['name'] }}</h3>
+                                <h4>{{ $testimonial['position'] }}</h4>
+                                <div class="stars">
+                                    @for ($i = 0; $i < 5; $i++)
+                                        <i class="bi bi-star-fill"></i>
+                                    @endfor
+                                </div>
+                                <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                    <span>{{ $testimonial['message'] }}</span>
+                                    <i class="bi bi-quote quote-icon-right"></i>
+                                </p>
                             </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Notre mission va au-delà des soins médicaux. Nous construisons un système de santé
-                                    inclusif, où chaque patient, qu’il vienne de la ville ou des villages les plus reculés,
-                                    reçoit une attention digne et respectueuse.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
                         </div>
-                    </div><!-- End testimonial item -->
-
-                    <!-- Témoignage 3 : Dr. Amina Ousman – Chef du Service Pédiatrique -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="testimonial-item">
-                            <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img"
-                                alt="Dr. Amina Ousman">
-                            <h3>Dr. Amina Ousman</h3>
-                            <h4>Chef du Service Pédiatrique</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Voir un enfant guérir et retrouver le sourire est la plus grande récompense. Grâce à
-                                    notre programme Mère-Enfant, nous avons réduit de 30% la mortalité infantile dans la
-                                    région.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <!-- Témoignage 4 : M. Paul Tchoupo – Responsable Logistique -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="testimonial-item">
-                            <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img"
-                                alt="M. Paul Tchoupo">
-                            <h3>M. Paul Tchoupo</h3>
-                            <h4>Responsable Logistique</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Notre réseau d’ambulances et de relais communautaires permet d’atteindre les zones les
-                                    plus isolées. La santé est un droit, pas un privilège, et nous travaillons chaque jour
-                                    pour le rendre accessible à tous.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
+                    @endforeach
 
                 </div>
             </div>

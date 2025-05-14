@@ -14,21 +14,21 @@
     <main class="main">
 
         @php
-        $image1 = 'assets/img/IMG-20250509-WA0009.jpg';
-        $titel1 = 'Les Dernières Avancées Médicales';
-        $text1 =
-            'Découvrez les nouvelles technologies et innovations dans le domaine médical qui améliorent la qualité des soins et le confort des patients.';
+            $image1 = 'assets/img/IMG-20250509-WA0009.jpg';
+            $titel1 = 'Les Dernières Avancées Médicales';
+            $text1 =
+                'Découvrez les nouvelles technologies et innovations dans le domaine médical qui améliorent la qualité des soins et le confort des patients.';
 
-        $image2 = 'assets/img/IMG-20250509-WA0030.jpg';
-        $titel2 = 'Conseils Santé & Prévention';
-        $text2 =
-            "Nos experts partagent des conseils pratiques pour adopter un mode de vie sain et prévenir les maladies les plus courantes.";
+            $image2 = 'assets/img/IMG-20250509-WA0009.jpg';
+            $titel2 = 'Conseils Santé & Prévention';
+            $text2 =
+                'Nos experts partagent des conseils pratiques pour adopter un mode de vie sain et prévenir les maladies les plus courantes.';
 
-        $image3 = 'assets/img/IMG-20250509-WA0031.jpg';
-        $titel3 = 'Témoignages de Patients';
-        $text3 =
-            'Lisez les histoires inspirantes de nos patients qui ont retrouvé la santé grâce aux soins prodigués par nos équipes médicales.';
-    @endphp
+            $image3 = 'assets/img/IMG-20250509-WA0009.jpg';
+            $titel3 = 'Témoignages de Patients';
+            $text3 =
+                'Lisez les histoires inspirantes de nos patients qui ont retrouvé la santé grâce aux soins prodigués par nos équipes médicales.';
+        @endphp
 
 
         {{-- hero section  --}}
@@ -37,241 +37,267 @@
         {{-- end hero section --}}
 
         <!-- Blog Hero Section - Message Fondateur -->
-<section id="blog-hero" class="blog-hero mission-section">
+        <section id="blog-hero" class="blog-hero mission-section">
 
-    <div class="container" data-aos="fade-up">
-        <div class="mission-statement">
-            <!-- Carte Principale -->
-            <div class="mission-card" data-aos="zoom-in" data-aos-delay="100">
-                <div class="pulse-effect"></div>
-                <img src="assets/img/IMG-20250509-WA0033.jpg" alt="Notre équipe médicale" class="mission-hero-img">
-                
-                <div class="mission-content">
-                    <div class="icon-container">
-                        <i class="bi bi-heart-pulse-fill heartbeat-anim"></i>
+            <div class="container" data-aos="fade-up">
+                <div class="mission-statement">
+                    <!-- Carte Principale -->
+                    <div class="mission-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="pulse-effect"></div>
+                        <img src="assets/img/IMG-20250509-WA0033.jpg" alt="Notre équipe médicale" class="mission-hero-img">
+
+                        <div class="mission-content">
+                            <div class="icon-container">
+                                <i class="bi bi-heart-pulse-fill heartbeat-anim"></i>
+                            </div>
+                            <h2 class="mission-title">Votre Santé, Notre Engagement</h2>
+                            <p class="mission-text">
+                                Ce blog incarne notre promesse : <span class="highlight">transmettre un savoir médical
+                                    fiable</span>,
+                                <span class="highlight">éclairer vos choix de santé</span> et
+                                <span class="highlight">créer un dialogue bienveillant</span> entre soignants et patients.
+                            </p>
+
+                            <div class="mission-pillars">
+                                <!-- Pilier 1 -->
+                                <div class="pillar" data-aos="fade-right" data-aos-delay="200">
+                                    <div class="pillar-icon">
+                                        <i class="bi bi-lightbulb-fill"></i>
+                                    </div>
+                                    <h3>Éclairer</h3>
+                                    <p>Décryptage des enjeux santé sans jargon</p>
+                                </div>
+
+                                <!-- Pilier 2 -->
+                                <div class="pillar" data-aos="fade-right" data-aos-delay="300">
+                                    <div class="pillar-icon">
+                                        <i class="bi bi-people-fill"></i>
+                                    </div>
+                                    <h3>Accompagner</h3>
+                                    <p>Conseils pratiques pour votre bien-être</p>
+                                </div>
+
+                                <!-- Pilier 3 -->
+                                <div class="pillar" data-aos="fade-right" data-aos-delay="400">
+                                    <div class="pillar-icon">
+                                        <i class="bi bi-search-heart-fill"></i>
+                                    </div>
+                                    <h3>Innover</h3>
+                                    <p>Avancées médicales expliquées simplement</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="mission-title">Votre Santé, Notre Engagement</h2>
-                    <p class="mission-text">
-                        Ce blog incarne notre promesse : <span class="highlight">transmettre un savoir médical fiable</span>, 
-                        <span class="highlight">éclairer vos choix de santé</span> et 
-                        <span class="highlight">créer un dialogue bienveillant</span> entre soignants et patients.
-                    </p>
-                    
-                    <div class="mission-pillars">
-                        <!-- Pilier 1 -->
-                        <div class="pillar" data-aos="fade-right" data-aos-delay="200">
-                            <div class="pillar-icon">
-                                <i class="bi bi-lightbulb-fill"></i>
-                            </div>
-                            <h3>Éclairer</h3>
-                            <p>Décryptage des enjeux santé sans jargon</p>
+
+                    <!-- Bandeau Engagements -->
+                    <div class="commitment-band" data-aos="fade-up" data-aos-delay="500">
+                        <div class="commitment-item">
+                            <span class="commitment-number">100%</span>
+                            <span class="commitment-text">Informations validées par nos experts</span>
                         </div>
-                        
-                        <!-- Pilier 2 -->
-                        <div class="pillar" data-aos="fade-right" data-aos-delay="300">
-                            <div class="pillar-icon">
-                                <i class="bi bi-people-fill"></i> 
-                            </div>
-                            <h3>Accompagner</h3>
-                            <p>Conseils pratiques pour votre bien-être</p>
+                        <div class="commitment-separator"></div>
+                        <div class="commitment-item">
+                            <span class="commitment-number">0</span>
+                            <span class="commitment-text">Articles sponsorisés</span>
                         </div>
-                        
-                        <!-- Pilier 3 -->
-                        <div class="pillar" data-aos="fade-right" data-aos-delay="400">
-                            <div class="pillar-icon">
-                                <i class="bi bi-search-heart-fill"></i>
-                            </div>
-                            <h3>Innover</h3>
-                            <p>Avancées médicales expliquées simplement</p>
+                        <div class="commitment-separator"></div>
+                        <div class="commitment-item">
+                            <span class="commitment-number">∞</span>
+                            <span class="commitment-text">Détermination à vous informer</span>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Bandeau Engagements -->
-            <div class="commitment-band" data-aos="fade-up" data-aos-delay="500">
-                <div class="commitment-item">
-                    <span class="commitment-number">100%</span>
-                    <span class="commitment-text">Informations validées par nos experts</span>
-                </div>
-                <div class="commitment-separator"></div>
-                <div class="commitment-item">
-                    <span class="commitment-number">0</span>
-                    <span class="commitment-text">Articles sponsorisés</span>
-                </div>
-                <div class="commitment-separator"></div>
-                <div class="commitment-item">
-                    <span class="commitment-number">∞</span>
-                    <span class="commitment-text">Détermination à vous informer</span>
-                </div>
-            </div>
-        </div>
-    </div>
 
-</section>
+        </section>
 
-<style>
-    /* Section Mission */
-.mission-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9f5ff 100%);
-    padding: 5rem 0;
-    position: relative;
-    overflow: hidden;
-}
+        <style>
+            /* Section Mission */
+            .mission-section {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9f5ff 100%);
+                padding: 5rem 0;
+                position: relative;
+                overflow: hidden;
+            }
 
-.mission-card {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0, 98, 204, 0.1);
-    overflow: hidden;
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+            .mission-card {
+                background: white;
+                border-radius: 20px;
+                box-shadow: 0 15px 30px rgba(0, 98, 204, 0.1);
+                overflow: hidden;
+                position: relative;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
 
-.pulse-effect {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(0, 123, 255, 0.1) 0%, transparent 70%);
-    animation: pulse 8s infinite;
-    z-index: 0;
-}
+            .pulse-effect {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at center, rgba(0, 123, 255, 0.1) 0%, transparent 70%);
+                animation: pulse 8s infinite;
+                z-index: 0;
+            }
 
-@keyframes pulse {
-    0% { transform: scale(0.95); opacity: 0.7; }
-    50% { transform: scale(1.05); opacity: 0.3; }
-    100% { transform: scale(0.95); opacity: 0.7; }
-}
+            @keyframes pulse {
+                0% {
+                    transform: scale(0.95);
+                    opacity: 0.7;
+                }
 
-.mission-hero-img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    object-position: center;
-}
+                50% {
+                    transform: scale(1.05);
+                    opacity: 0.3;
+                }
 
-.mission-content {
-    padding: 3rem;
-    position: relative;
-    z-index: 1;
-}
+                100% {
+                    transform: scale(0.95);
+                    opacity: 0.7;
+                }
+            }
 
-.icon-container {
-    width: 80px;
-    height: 80px;
-    background: #007bff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: -70px auto 2rem auto;
-    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
-}
+            .mission-hero-img {
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+                object-position: center;
+            }
 
-.heartbeat-anim {
-    color: white;
-    font-size: 2.5rem;
-    animation: heartbeat 1.5s infinite;
-}
+            .mission-content {
+                padding: 3rem;
+                position: relative;
+                z-index: 1;
+            }
 
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    25% { transform: scale(1.1); }
-    50% { transform: scale(1); }
-    75% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
+            .icon-container {
+                width: 80px;
+                height: 80px;
+                background: #007bff;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: -70px auto 2rem auto;
+                box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+            }
 
-.mission-title {
-    text-align: center;
-    color: #2c3e50;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
-}
+            .heartbeat-anim {
+                color: white;
+                font-size: 2.5rem;
+                animation: heartbeat 1.5s infinite;
+            }
 
-.mission-text {
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #555;
-    max-width: 800px;
-    margin: 0 auto 3rem auto;
-}
+            @keyframes heartbeat {
+                0% {
+                    transform: scale(1);
+                }
 
-.highlight {
-    color: #007bff;
-    font-weight: 600;
-}
+                25% {
+                    transform: scale(1.1);
+                }
 
-.mission-pillars {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
+                50% {
+                    transform: scale(1);
+                }
 
-.pillar {
-    text-align: center;
-    padding: 2rem;
-    border-radius: 15px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+                75% {
+                    transform: scale(1.1);
+                }
 
-.pillar:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
+                100% {
+                    transform: scale(1);
+                }
+            }
 
-.pillar-icon {
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, #007bff 0%, #00b4ff 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem auto;
-    color: white;
-    font-size: 1.8rem;
-}
+            .mission-title {
+                text-align: center;
+                color: #2c3e50;
+                font-weight: 700;
+                margin-bottom: 1.5rem;
+                font-size: 2.5rem;
+            }
 
-.commitment-band {
-    display: flex;
-    justify-content: space-around;
-    background: white;
-    border-radius: 15px;
-    padding: 2rem;
-    margin-top: 3rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
+            .mission-text {
+                text-align: center;
+                font-size: 1.2rem;
+                line-height: 1.6;
+                color: #555;
+                max-width: 800px;
+                margin: 0 auto 3rem auto;
+            }
 
-.commitment-item {
-    text-align: center;
-    flex: 1;
-}
+            .highlight {
+                color: #007bff;
+                font-weight: 600;
+            }
 
-.commitment-number {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #007bff;
-    line-height: 1;
-}
+            .mission-pillars {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+                margin-top: 3rem;
+            }
 
-.commitment-text {
-    font-size: 1rem;
-    color: #555;
-    margin-top: 0.5rem;
-}
+            .pillar {
+                text-align: center;
+                padding: 2rem;
+                border-radius: 15px;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
 
-.commitment-separator {
-    width: 1px;
-    background: #eee;
-    margin: 0 1rem;
-}
-</style>
+            .pillar:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .pillar-icon {
+                width: 70px;
+                height: 70px;
+                background: linear-gradient(135deg, #007bff 0%, #00b4ff 100%);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1.5rem auto;
+                color: white;
+                font-size: 1.8rem;
+            }
+
+            .commitment-band {
+                display: flex;
+                justify-content: space-around;
+                background: white;
+                border-radius: 15px;
+                padding: 2rem;
+                margin-top: 3rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            }
+
+            .commitment-item {
+                text-align: center;
+                flex: 1;
+            }
+
+            .commitment-number {
+                display: block;
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #007bff;
+                line-height: 1;
+            }
+
+            .commitment-text {
+                font-size: 1rem;
+                color: #555;
+                margin-top: 0.5rem;
+            }
+
+            .commitment-separator {
+                width: 1px;
+                background: #eee;
+                margin: 0 1rem;
+            }
+        </style>
 
 
         <!-- Featured Posts Section -->
@@ -280,7 +306,8 @@
             <!-- Section Title -->
             <div class="container section-title-1" data-aos="fade-up">
                 <h2>Actualités Médicales</h2>
-                <div><span class="description-title" style="color: #007bff;">Découvrez nos articles incontournables</span></div>
+                <div><span class="description-title" style="color: #007bff;">Découvrez nos articles incontournables</span>
+                </div>
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -316,19 +343,22 @@
                         @foreach ($posts as $post)
                             <div class="swiper-slide">
                                 <div class="blog-post-item">
-                                    <img src="{{ asset("storage/".$post->image_path) }}" alt="Médecine de demain">
+                                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="Médecine de demain">
                                     <div class="blog-post-content">
                                         <div class="post-meta">
                                             <span><i class="bi bi-person"></i> {{ $post->author->name }}</span>
                                             <span>
                                                 <i class="bi bi-clock"></i>
                                                 {{ $post->created_at->format('d F Y \à H:i') }}
-                                              </span>                                              
-                                            <span><i class="bi bi-chat-dots"></i> {{ $post->comments()->count() }} Commentaires </span>
+                                            </span>
+                                            <span><i class="bi bi-chat-dots"></i> {{ $post->comments()->count() }}
+                                                Commentaires </span>
                                         </div>
-                                        <h2>  <a href="{{ route('blog.show', $post->slug) }}"> {{ Str::words($post->title, 5, '...') }}</a></h2>
+                                        <h2> <a href="{{ route('blog.show', $post->slug) }}">
+                                                {{ Str::words($post->title, 5, '...') }}</a></h2>
                                         <p>{{ $post->content }}</p>
-                                        <a href="{{ route('blog.show', $post->slug) }}" class="read-more">Lire plus <i class="bi bi-arrow-right"></i></a>
+                                        <a href="{{ route('blog.show', $post->slug) }}" class="read-more">Lire plus <i
+                                                class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </div><!-- End slide item -->
@@ -355,7 +385,8 @@
                     </div>
 
                     <div class="content-right position-relative" data-aos="fade-left" data-aos-delay="300">
-                        <img src="assets/img/IMG-20250509-WA0024.jpg" alt="Actualités Médicales" class="img-fluid rounded-4 w-24 h-10">
+                        <img src="assets/img/IMG-20250509-WA0024.jpg" alt="Actualités Médicales"
+                            class="img-fluid rounded-4 w-24 h-10">
                         <div class="floating-card">
                             <div class="card-icon">
                                 <i class="bi bi-newspaper"></i> <!-- Icône de journal pour plus de pertinence -->
@@ -385,7 +416,8 @@
             <!-- Section Title -->
             <div class="container section-title-1" data-aos="fade-up">
                 <h2>Nos Derniers Articles</h2>
-                <div><span class="description-title" style="color: #007bff;">Découvrez Nos Dernières Actualités Médicales</span></div>
+                <div><span class="description-title" style="color: #007bff;">Découvrez Nos Dernières Actualités
+                        Médicales</span></div>
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -394,7 +426,7 @@
 
         </section><!-- /Latest Posts Section -->
 
-       @livewire('blog.newsletter-form')
+        @livewire('blog.newsletter-form')
 
     </main>
 @endsection
