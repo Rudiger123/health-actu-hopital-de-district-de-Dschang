@@ -12,9 +12,9 @@
 
 @section('content')
 @php
-$image1 = 'assets/images/carousels/contact-1.jpg';
-$image2 = 'assets/images/carousels/contact-1.jpg';
-$image3 = 'assets/images/carousels/contact-1.jpg';
+$image1 = 'assets/images/contact-2.jpg';
+$image2 = 'assets/images/contact-3.jpg';
+$image3 = 'assets/images/contact-2.jpg';
 
 $titel1 = __('contact.titel1');
 $text1 = __('contact.text1');

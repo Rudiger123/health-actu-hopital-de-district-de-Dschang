@@ -14,9 +14,9 @@
     <main class="main">
 
         @php
-            $image1 = 'assets/img/IMG-20250509-WA0009.jpg';
-            $image2 = 'assets/img/IMG-20250509-WA0009.jpg';
-            $image3 = 'assets/img/IMG-20250509-WA0009.jpg';
+            $image1 = 'assets/images/blog-1.jpg';
+            $image2 = 'assets/images/blog-2.jpg';
+            $image3 = 'assets/images/blog-3.jpg';
 
             $titel1 = __('blog.hero.titel1');
             $text1 = __('blog.hero.text1');
@@ -365,7 +365,7 @@
                     </div>
 
                     <div class="content-right position-relative" data-aos="fade-left" data-aos-delay="300">
-                        <img src="assets/img/IMG-20250509-WA0024.jpg" alt="Actualités Médicales"
+                        <img src="assets/images/news.jpg" alt="Actualités Médicales"
                             class="img-fluid rounded-4 w-24 h-10">
                         <div class="floating-card">
                             <div class="card-icon">

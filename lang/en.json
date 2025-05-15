@@ -23,4 +23,22 @@
     "general": {
         "call_us": "Call us anytime"
     }
+,  "Related Topics": "Related Topics",
+        "Share Article": "Share Article",
+        "Share on Twitter": "Share on Twitter",
+        "Share on Facebook": "Share on Facebook",
+        "Share on LinkedIn": "Share on LinkedIn",
+        "Copy Link": "Copy Link",
+        "comments" : "Comments",
+        "Read More from" : "Read More from",
+        "search" : "Search a Post",
+        "Search" : "Search a post...",
+        "Share Your Thoughts": "Share Your Thoughts",
+        "Your email address will not be published. Required fields are marked *": "Your email address will not be published. Required fields are marked *",
+        "Full Name": "Full Name",
+        "Email Address": "Email Address",
+        "Your Comment": "Your Comment",
+        "Post Comment": "Post Comment"
+    
+    
 }

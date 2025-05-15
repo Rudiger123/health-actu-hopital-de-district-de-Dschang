@@ -13,7 +13,7 @@
 
         <!-- Page Title / Banner -->
             <div class="relative h-64 md:h-96 bg-center bg-cover md:my-28 my-24"
-                style="background-image: url('{{ asset('assets/img/IMG-20250509-WA0035.jpg') }}');">
+                style="background-image: url('{{ asset('assets/images/contact-1.jpg') }}');">
                 <!-- Overlay -->
                 <div class="absolute inset-0 bg-gray-700 bg-opacity-60"></div>
 
@@ -24,7 +24,7 @@
                         <ol class="flex space-x-2 text-sm md:text-base">
                             <li>
                                 <a href="{{ route('home') }}" class="hover:underline flex items-center">
-                                    <i class="bi bi-house mr-1"></i> Accueil
+                                    <i class="bi bi-house mr-1"></i> {{ __('home') }}
                                 </a>
                             </li>
                             <li>/</li>
@@ -37,7 +37,7 @@
                     </nav>
 
                     <!-- Title and Description -->
-                    <h1 class="text-2xl md:text-4xl font-bold">Profil de l'Auteur</h1>
+                    <h1 class="text-2xl md:text-4xl font-bold text-gray-200">Profil de l'Auteur</h1>
                     <p class="mt-2 text-sm md:text-lg text-gray-200">
                         Ici une petite présentation de ce que contient la page.
                     </p>

@@ -63,7 +63,7 @@
                                                 <span class="date"><i class="bi bi-calendar3"></i>
                                                     {{ $post->created_at->format('d F Y \à H:i') }}</span>
                                                 <span cla ss="divider">•</span>
-                                                <span class="comments"><i class="bi bi-chat-text"></i> {{ $post->comments()->count() }} Comments</span>
+                                                <span class="comments"><i class="bi bi-chat-text"></i> {{ $post->comments()->count() }} {{ __('comments') }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -76,25 +76,25 @@
 
                                     <div class="meta-bottom">
                                         <div class="tags-section">
-                                            <h4>Related Topics</h4>
+                                            <h4>{{ __('Related Topics') }}</h4>
                                             <div class="tags">
                                                 @foreach ($post->tags as $tag)
                                                     <a href="#" class="tag">{{ $tag->name }}</a>
                                                 @endforeach
                                             </div>
                                         </div>
-
+                                    
                                         <div class="share-section">
-                                            <h4>Share Article</h4>
+                                            <h4>{{ __('Share Article') }}</h4>
                                             <div class="social-links">
-                                                <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-                                                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                                                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                                                <a href="#" class="copy-link" title="Copy Link"><i
-                                                        class="bi bi-link-45deg"></i></a>
+                                                <a href="#" class="twitter" title="{{ __('Share on Twitter') }}"><i class="bi bi-twitter-x"></i></a>
+                                                <a href="#" class="facebook" title="{{ __('Share on Facebook') }}"><i class="bi bi-facebook"></i></a>
+                                                <a href="#" class="linkedin" title="{{ __('Share on LinkedIn') }}"><i class="bi bi-linkedin"></i></a>
+                                                <a href="#" class="copy-link" title="{{ __('Copy Link') }}"><i class="bi bi-link-45deg"></i></a>
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
 
                             </article>
@@ -138,7 +138,7 @@
 
                                                 <a href="{{ route('author_posts', $post->author->username) }}"
                                                     class="more-posts">
-                                                    Read More from {{ $post->author->name }} <i
+                                                    {{ __('Read More from') }} {{ $post->author->name }} <i
                                                         class="bi bi-arrow-right"></i>
                                                 </a>
                                             </div>
@@ -163,7 +163,7 @@
                         <!-- Search Widget -->
                         <div class="search-widget widget-item">
 
-                            <h3 class="widget-title">Search</h3>
+                            <h3 class="widget-title">{{__('search')}}</h3>
                             @livewire('partials.search-bar')
 
                         </div><!--/Search Widget -->

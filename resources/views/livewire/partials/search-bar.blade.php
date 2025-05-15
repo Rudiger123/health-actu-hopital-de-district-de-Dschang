@@ -15,7 +15,7 @@ new class extends Component {
 }; ?>
 
 <div class="input-group">
-    <input type="text" class="form-control" placeholder="Rechercher un article..." wire:model.defer="query"
+    <input type="text" class="form-control" placeholder="{{__('Search')}}" wire:model.defer="query"
         wire:keydown.enter="searchPosts">
 
     <button class="btn btn-primary" wire:click="search">

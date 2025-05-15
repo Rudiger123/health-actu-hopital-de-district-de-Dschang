@@ -10,11 +10,11 @@
 @section('content')
 
     <main class="main">
-
+ 
         <!-- Page Title / Banner -->
         <div class="relative h-64 md:h-96 bg-center bg-cover md:my-28 my-24"
-            style="background-image: url('{{ asset('assets/img/IMG-20250509-WA0033.jpg') }}');">
-            <!-- Overlay -->
+        style="background-image: url('{{ asset('assets/images/blog-4.jpg') }}');">
+        <!-- Overlay -->
             <div class="absolute inset-0 bg-gray-800 bg-opacity-60"></div>
 
             <!-- Breadcrumbs + Text -->
