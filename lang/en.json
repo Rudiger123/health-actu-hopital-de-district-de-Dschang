@@ -1,0 +1,26 @@
+{
+    "about": {
+        "title": "ABOUT US",
+        "subtitle": "Committed to your health, yesterday, today and tomorrow",
+        "description": "Since 1985, Dschang District Hospital has worked to provide accessible, modern and humane care...",
+        "features": {
+            "list1": [
+                "50 years of excellence: First ISO 9001 certified hospital in the region",
+                "24/7 emergency care: Immediate treatment, even at night",
+                "3 specialized centers: Cardiology, pediatrics, and minimally invasive surgery"
+            ]
+        }
+    },
+    "features": {
+        "title": "Our Institution",
+        "subtitle": "Discover medical excellence in the heart of Western Cameroon",
+        "tabs": [
+            {"title": "Who are we?"},
+            {"title": "Our services"},
+            {"title": "Live news"}
+        ]
+    },
+    "general": {
+        "call_us": "Call us anytime"
+    }
+}

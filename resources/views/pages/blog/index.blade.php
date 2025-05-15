@@ -15,76 +15,52 @@
 
         @php
             $image1 = 'assets/img/IMG-20250509-WA0009.jpg';
-            $titel1 = 'Les Dernières Avancées Médicales';
-            $text1 =
-                'Découvrez les nouvelles technologies et innovations dans le domaine médical qui améliorent la qualité des soins et le confort des patients.';
-
             $image2 = 'assets/img/IMG-20250509-WA0009.jpg';
-            $titel2 = 'Conseils Santé & Prévention';
-            $text2 =
-                'Nos experts partagent des conseils pratiques pour adopter un mode de vie sain et prévenir les maladies les plus courantes.';
-
             $image3 = 'assets/img/IMG-20250509-WA0009.jpg';
-            $titel3 = 'Témoignages de Patients';
-            $text3 =
-                'Lisez les histoires inspirantes de nos patients qui ont retrouvé la santé grâce aux soins prodigués par nos équipes médicales.';
+
+            $titel1 = __('blog.hero.titel1');
+            $text1 = __('blog.hero.text1');
+            $titel2 = __('blog.hero.titel2');
+            $text2 = __('blog.hero.text2');
+            $titel3 = __('blog.hero.titel3');
+            $text3 = __('blog.hero.text3');
         @endphp
 
-
-        {{-- hero section  --}}
         <x-layouts.hero :image1="$image1" :image2="$image2" :image3="$image3" :text1="$text1" :text2="$text2"
             :text3="$text3" :titel1="$titel1" :titel2="$titel2" :titel3="$titel3"></x-layouts.hero>
-        {{-- end hero section --}}
-
-        <!-- Blog Hero Section - Message Fondateur -->
         <section id="blog-hero" class="blog-hero mission-section">
-
             <div class="container" data-aos="fade-up">
                 <div class="mission-statement">
                     <!-- Carte Principale -->
                     <div class="mission-card" data-aos="zoom-in" data-aos-delay="100">
                         <div class="pulse-effect"></div>
-                        <img src="assets/img/IMG-20250509-WA0033.jpg" alt="Notre équipe médicale" class="mission-hero-img">
+                        <img src="assets/img/IMG-20250509-WA0033.jpg" alt="{{ __('blog.mission.title') }}"
+                            class="mission-hero-img">
 
                         <div class="mission-content">
                             <div class="icon-container">
                                 <i class="bi bi-heart-pulse-fill heartbeat-anim"></i>
                             </div>
-                            <h2 class="mission-title">Votre Santé, Notre Engagement</h2>
-                            <p class="mission-text">
-                                Ce blog incarne notre promesse : <span class="highlight">transmettre un savoir médical
-                                    fiable</span>,
-                                <span class="highlight">éclairer vos choix de santé</span> et
-                                <span class="highlight">créer un dialogue bienveillant</span> entre soignants et patients.
-                            </p>
+                            <h2 class="mission-title">{{ __('blog.mission.title') }}</h2>
+                            <p class="mission-text">{!! __('blog.mission.text') !!}</p>
 
                             <div class="mission-pillars">
-                                <!-- Pilier 1 -->
-                                <div class="pillar" data-aos="fade-right" data-aos-delay="200">
-                                    <div class="pillar-icon">
-                                        <i class="bi bi-lightbulb-fill"></i>
+                                @foreach (__('blog.mission.pillars') as $pillar)
+                                    <div class="pillar" data-aos="fade-right" data-aos-delay="200">
+                                        <div class="pillar-icon">
+                                            @php
+                                                $icons = [
+                                                    '1' => 'bi-lightbulb-fill',
+                                                    '2' => 'bi-people-fill',
+                                                    '3' => 'bi-search-heart-fill',
+                                                ];
+                                            @endphp
+                                            <i class="bi {{ $icons[$loop->iteration] ?? 'bi-lightbulb-fill' }}"></i>
+                                        </div>
+                                        <h3>{{ $pillar['title'] }}</h3>
+                                        <p>{{ $pillar['text'] }}</p>
                                     </div>
-                                    <h3>Éclairer</h3>
-                                    <p>Décryptage des enjeux santé sans jargon</p>
-                                </div>
-
-                                <!-- Pilier 2 -->
-                                <div class="pillar" data-aos="fade-right" data-aos-delay="300">
-                                    <div class="pillar-icon">
-                                        <i class="bi bi-people-fill"></i>
-                                    </div>
-                                    <h3>Accompagner</h3>
-                                    <p>Conseils pratiques pour votre bien-être</p>
-                                </div>
-
-                                <!-- Pilier 3 -->
-                                <div class="pillar" data-aos="fade-right" data-aos-delay="400">
-                                    <div class="pillar-icon">
-                                        <i class="bi bi-search-heart-fill"></i>
-                                    </div>
-                                    <h3>Innover</h3>
-                                    <p>Avancées médicales expliquées simplement</p>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -93,23 +69,23 @@
                     <div class="commitment-band" data-aos="fade-up" data-aos-delay="500">
                         <div class="commitment-item">
                             <span class="commitment-number">100%</span>
-                            <span class="commitment-text">Informations validées par nos experts</span>
+                            <span class="commitment-text">{{ __('blog.mission.commitments.validated_info') }}</span>
                         </div>
                         <div class="commitment-separator"></div>
                         <div class="commitment-item">
                             <span class="commitment-number">0</span>
-                            <span class="commitment-text">Articles sponsorisés</span>
+                            <span class="commitment-text">{{ __('blog.mission.commitments.no_sponsored') }}</span>
                         </div>
                         <div class="commitment-separator"></div>
                         <div class="commitment-item">
                             <span class="commitment-number">∞</span>
-                            <span class="commitment-text">Détermination à vous informer</span>
+                            <span class="commitment-text">{{ __('blog.mission.commitments.determination') }}</span>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
+
 
         <style>
             /* Section Mission */
@@ -305,10 +281,14 @@
 
             <!-- Section Title -->
             <div class="container section-title-1" data-aos="fade-up">
-                <h2>Actualités Médicales</h2>
-                <div><span class="description-title" style="color: #007bff;">Découvrez nos articles incontournables</span>
+                <h2>{{ __('blog.news_section.title') }}</h2>
+                <div>
+                    <span class="description-title" style="color: #007bff;">
+                        {{ __('blog.news_section.subtitle') }}
+                    </span>
                 </div>
             </div><!-- End Section Title -->
+
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -343,22 +323,26 @@
                         @foreach ($posts as $post)
                             <div class="swiper-slide">
                                 <div class="blog-post-item">
-                                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="Médecine de demain">
+                                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}">
                                     <div class="blog-post-content">
                                         <div class="post-meta">
                                             <span><i class="bi bi-person"></i> {{ $post->author->name }}</span>
                                             <span>
                                                 <i class="bi bi-clock"></i>
-                                                {{ $post->created_at->format('d F Y \à H:i') }}
+                                                {{ $post->created_at->isoFormat('DD MMMM YYYY [à] HH:mm') }}
                                             </span>
                                             <span><i class="bi bi-chat-dots"></i> {{ $post->comments()->count() }}
-                                                Commentaires </span>
+                                                {{ __('blog.comments') }}</span>
                                         </div>
-                                        <h2> <a href="{{ route('blog.show', $post->slug) }}">
-                                                {{ Str::words($post->title, 5, '...') }}</a></h2>
-                                        <p>{{ $post->content }}</p>
-                                        <a href="{{ route('blog.show', $post->slug) }}" class="read-more">Lire plus <i
-                                                class="bi bi-arrow-right"></i></a>
+                                        <h2>
+                                            <a href="{{ route('blog.show', $post->slug) }}">
+                                                {{ Str::words($post->title, 5, '...') }}
+                                            </a>
+                                        </h2>
+                                        <p>{{ Str::limit(strip_tags($post->content), 100) }}</p>
+                                        <a href="{{ route('blog.show', $post->slug) }}" class="read-more">
+                                            {{ __('blog.read_more') }} <i class="bi bi-arrow-right"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div><!-- End slide item -->
@@ -371,17 +355,13 @@
 
         <!-- Call To Action 2 Section -->
         <section id="appel-a-laction-blog" class="call-to-action-2 section">
-
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-
                 <div class="advertise-1 d-flex flex-column flex-lg-row gap-4 align-items-center position-relative">
 
                     <div class="content-left flex-grow-1" data-aos="fade-right" data-aos-delay="200">
-                        <span class="badge text-uppercase mb-2">Ne Manquez Rien !</span>
-                        <h2>Plongez au Cœur de l'Information Médicale Locale</h2>
-                        <p class="my-4">Votre source fiable pour les dernières actualités de santé, les avancées
-                            médicales et les événements marquants de l'Hôpital Annexe. Restez informé pour mieux prendre
-                            soin de vous et de vos proches.</p>
+                        <span class="badge text-uppercase mb-2">{{ __('blog.badge') }}</span>
+                        <h2>{{ __('blog.title') }}</h2>
+                        <p class="my-4">{{ __('blog.text') }}</p>
                     </div>
 
                     <div class="content-right position-relative" data-aos="fade-left" data-aos-delay="300">
@@ -389,11 +369,11 @@
                             class="img-fluid rounded-4 w-24 h-10">
                         <div class="floating-card">
                             <div class="card-icon">
-                                <i class="bi bi-newspaper"></i> <!-- Icône de journal pour plus de pertinence -->
+                                <i class="bi bi-newspaper"></i>
                             </div>
                             <div class="card-content">
                                 <span class="stats-number">100%</span>
-                                <span class="stats-text">Actualités Vérifiées</span>
+                                <span class="stats-text">{{ __('blog.stat') }}</span>
                             </div>
                         </div>
                     </div>
@@ -404,10 +384,9 @@
                     </div>
 
                 </div>
-
             </div>
+        </section>
 
-        </section><!-- /Call To Action 2 Section -->
 
 
         <!-- Latest Posts Section -->
@@ -415,10 +394,14 @@
 
             <!-- Section Title -->
             <div class="container section-title-1" data-aos="fade-up">
-                <h2>Nos Derniers Articles</h2>
-                <div><span class="description-title" style="color: #007bff;">Découvrez Nos Dernières Actualités
-                        Médicales</span></div>
+                <h2>{{ __('blog.section_title') }}</h2>
+                <div>
+                    <span class="description-title" style="color: #007bff;">
+                        {{ __('blog.section_subtitle') }}
+                    </span>
+                </div>
             </div><!-- End Section Title -->
+
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 @livewire('front.post-view')

@@ -3,8 +3,8 @@
         <div class="modal-content modal-auth">
             <div class="modal-header">
                 <div class="w-100 text-center">
-                    <h5 class="modal-title">Réinitialisation du mot de passe</h5>
-                    <p class="modal-subtitle text-muted">Entrez votre email pour recevoir le lien de réinitialisation</p>
+                    <h5 class="modal-title">{{ __('messages.reset_password_title') }}</h5>
+                    <p class="modal-subtitle text-muted">{{ __('messages.reset_password_subtitle') }}</p>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" wire:click="resetForm"></button>
             </div>
@@ -18,7 +18,7 @@
                 <form wire:submit.prevent="sendResetLink" novalidate>
                     <div class="mb-3">
                         <label for="resetEmail" class="form-label">
-                            <i class="bi bi-envelope-fill me-2"></i>Adresse Email
+                            <i class="bi bi-envelope-fill me-2"></i>{{ __('messages.email_label') }}
                         </label>
                         <div class="input-group">
                             <span class="input-group-text">
@@ -28,7 +28,7 @@
                                    type="email" 
                                    id="resetEmail"
                                    class="form-control @error('email') is-invalid @enderror" 
-                                   placeholder="votre@email.com"
+                                   placeholder="{{ __('messages.email_placeholder') }}"
                                    autofocus
                                    autocomplete="email"
                                    wire:loading.attr="disabled">
@@ -45,11 +45,11 @@
                             wire:loading.attr="disabled"
                             wire:target="sendResetLink">
                         <span wire:loading.remove wire:target="sendResetLink">
-                            <i class="bi bi-send-fill me-2"></i>Envoyer le lien
+                            <i class="bi bi-send-fill me-2"></i>{{ __('messages.send_link') }}
                         </span>
                         <span wire:loading wire:target="sendResetLink">
                             <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                            Envoi en cours...
+                            {{ __('messages.sending') }}
                         </span>
                     </button>
                 </form>
@@ -61,13 +61,14 @@
                        data-bs-target="#loginModal"
                        data-bs-dismiss="modal"
                        wire:click="resetForm">
-                        <i class="bi bi-arrow-left me-2"></i>Retour à la connexion
+                        <i class="bi bi-arrow-left me-2"></i>{{ __('messages.back_to_login') }}
                     </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 @script
 <script>

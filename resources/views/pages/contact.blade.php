@@ -11,20 +11,21 @@
 
 
 @section('content')
-    @php
-        $image1 = 'assets/images/carousels/contact-1.jpg';
-        $titel1 = 'Hôpital Régional Annexe de Dschang';
-        $text1 =
-            "Établissement de santé de référence dans la région de l'Ouest Cameroun, offrant des soins de qualité depuis 1985.";
-        $image2 = 'assets/images/carousels/contact-1.jpg';
-        $titel2 = 'Nos Services Médicaux';
-        $text2 =
-            'Nous proposons une gamme complète de services médicaux avec un personnel qualifié et des équipements modernes.';
-        $image3 = 'assets/images/carousels/contact-1.jpg';
-        $titel3 = 'Équipe Médicale Qualifiée';
-        $text3 =
-            'Notre équipe de professionnels de santé dévoués est à votre service 24h/24 pour des soins personnalisés.';
-    @endphp
+@php
+$image1 = 'assets/images/carousels/contact-1.jpg';
+$image2 = 'assets/images/carousels/contact-1.jpg';
+$image3 = 'assets/images/carousels/contact-1.jpg';
+
+$titel1 = __('contact.titel1');
+$text1 = __('contact.text1');
+
+$titel2 = __('contact.titel2');
+$text2 = __('contact.text2');
+
+$titel3 = __('contact.titel3');
+$text3 = __('contact.text3');
+@endphp
+
 
     {{-- hero section  --}}
     <x-layouts.hero :image1="$image1" :image2="$image2" :image3="$image3" :text1="$text1" :text2="$text2"
@@ -37,9 +38,8 @@
         background: color-mix(in srgb, #ffffff, transparent 70%);
         border-radius: 15px;">
         <div class="title-wrapper">
-            <h1>Contact</h1>
-            <p>Pour toute demande d'information ou prise de rendez-vous, notre équipe est à votre disposition.
-            </p>
+            <h1>{{ __('contact.title') }}</h1>
+            <p>{{ __('contact.description') }}</p>
         </div>
 
 
@@ -62,34 +62,31 @@
                         <div class="icon-box">
                             <i class="bi bi-geo-alt"></i>
                         </div>
-                        <h3>Adresse</h3>
-                        <p>Quartier Nzometeu, Dschang<br>Région de l'Ouest, Cameroun</p>
+                        <h3>{{ __('contact.address') }}</h3>
+                        <p>{!! nl2br(e(__('contact.address_text'))) !!}</p>
                     </div>
                 </div>
-
+                
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="info-card">
                         <div class="icon-box">
                             <i class="bi bi-telephone"></i>
                         </div>
-                        <h3>Contacts</h3>
-                        <p>Tél: (+237) 233 45 67 89<br>
-                            Urgences: (+237) 677 89 45 23<br>
-                            Email: contact@hradschang.cm</p>
+                        <h3>{{ __('contact.contacts') }}</h3>
+                        <p>{!! nl2br(e(__('contact.contacts_text'))) !!}</p>
                     </div>
                 </div>
-
+                
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="info-card">
                         <div class="icon-box">
                             <i class="bi bi-clock"></i>
                         </div>
-                        <h3>Heures d'Ouverture</h3>
-                        <p>Lundi - Vendredi: 7h30 - 16h30<br>
-                            Samedi: 8h00 - 13h00<br>
-                            Urgences: 24h/24</p>
+                        <h3>{{ __('contact.hours') }}</h3>
+                        <p>{!! nl2br(e(__('contact.hours_text'))) !!}</p>
                     </div>
                 </div>
+                
             </div>
 
             <div class="row">

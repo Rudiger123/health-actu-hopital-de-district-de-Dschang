@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center gap-2 flex-wrap">
+<div class="d-flex align-items-center gap-2 flex-wrap" id='switch'>
     <div class="dropdown">
         <button class="btn btn-light dropdown-toggle d-flex align-items-center gap-2 menu-link"
                 type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">

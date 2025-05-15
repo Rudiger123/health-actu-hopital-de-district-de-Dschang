@@ -1,7 +1,5 @@
 <div>
     <form wire:submit.prevent="login">
-        @csrf
-
         <!-- Affichage des alertes -->
         <div id="login-alerts" class="mb-3" wire:ignore.self>
             @if (session('alertType') && session('alertMessage'))
@@ -9,36 +7,35 @@
                     {!! session('alertMessage') !!}
                 </div>
             @endif
-
+    
             @if ($alertType && $alertMessage)
                 <div class="alert alert-{{ $alertType }}">
                     {{ $alertMessage }}
                 </div>
             @endif
         </div>
-
+    
         <div class="mb-3">
             <label for="login-email" class="form-label">
-                <i class="bi bi-envelope-fill me-2"></i>Adresse Email
+                <i class="bi bi-envelope-fill me-2"></i>{{ __('auth.email_label') }}
             </label>
             <div class="input-group">
-                <span class="input-group-text">
-                    @
-                </span>
+                <span class="input-group-text">@</span>
                 <input wire:model="login_id" type="text" class="form-control" id="login-email"
-                    placeholder="Entrez votre email / username" required>
+                    placeholder="{{ __('auth.email_placeholder') }}" required>
             </div>
             @error('login_id')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
-
+    
         <div class="mb-3">
             <label for="login-password" class="form-label">
-                <i class="bi bi-lock-fill me-2"></i>Mot de passe
+                <i class="bi bi-lock-fill me-2"></i>{{ __('auth.password_label') }}
             </label>
             <div class="input-group form-password-toggle">
                 <span class="input-group-text">
+                    <!-- Ton SVG ici -->
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -47,7 +44,7 @@
                     </svg>
                 </span>
                 <input wire:model="password" type="password" class="form-control" id="login-password"
-                    placeholder="*************" aria-describedby="basic-default-password" required>
+                    placeholder="{{ __('auth.password_placeholder') }}" aria-describedby="basic-default-password" required>
                 <span id="basic-default-password" class="input-group-text cursor-pointer"><i
                         class="icon-base bi bi-eye-slash"></i></span>
             </div>
@@ -55,24 +52,25 @@
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
-
+    
         <div class="mb-3 form-check">
             <input wire:model="remember" type="checkbox" class="form-check-input" id="remember">
             <label class="form-check-label" for="remember">
-                <i class="bi bi-check2-square me-2"></i>Se souvenir de moi
+                <i class="bi bi-check2-square me-2"></i>{{ __('auth.remember_me') }}
             </label>
         </div>
-
+    
         <button type="submit" class="btn btn-primary btn-login w-100 py-2" wire:loading.attr="disabled">
             <span wire:loading.remove>
-                <i class="bi bi-box-arrow-in-right me-2"></i>Se connecter
+                <i class="bi bi-box-arrow-in-right me-2"></i>{{ __('auth.login_button') }}
             </span>
             <span wire:loading>
                 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                Connexion...
+                {{ __('auth.login_loading') }}
             </span>
         </button>
     </form>
+    
 
     @push('scripts')
         <script>
