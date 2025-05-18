@@ -34,7 +34,7 @@
                     <!-- Carte Principale -->
                     <div class="mission-card" data-aos="zoom-in" data-aos-delay="100">
                         <div class="pulse-effect"></div>
-                        <img src="assets/img/IMG-20250509-WA0033.jpg" alt="{{ __('blog.mission.title') }}"
+                        <img src="assets/images/IMG-20250509-WA0033.jpg" alt="{{ __('blog.mission.title') }}"
                             class="mission-hero-img">
 
                         <div class="mission-content">
@@ -323,6 +323,7 @@
                         @foreach ($posts as $post)
                             <div class="swiper-slide">
                                 <div class="blog-post-item">
+                                    {{-- @dump($post) --}}
                                     <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}">
                                     <div class="blog-post-content">
                                         <div class="post-meta">

@@ -13,8 +13,8 @@
 @section('content')
 @php
 $image1 = 'assets/images/contact-2.jpg';
-$image2 = 'assets/images/contact-3.jpg';
-$image3 = 'assets/images/contact-2.jpg';
+$image2 = 'assets/images/contact-6.jpg';
+$image3 = 'assets/images/contact-5.jpg';
 
 $titel1 = __('contact.titel1');
 $text1 = __('contact.text1');

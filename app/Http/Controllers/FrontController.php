@@ -32,9 +32,9 @@ class FrontController extends Controller
             ->get();
 
         $posts = Post::where('featured', true)
-        ->orderBy('published_at', 'desc')
-        ->take(5)
-        ->get();;
+            ->orderBy('published_at', 'desc')
+            ->take(5)
+            ->get();;
 
         return view('pages.blog.index', [
             'featuredPosts' => $featuredPosts,
@@ -84,28 +84,27 @@ class FrontController extends Controller
 
     public function authorPosts($slug)
     {
-        $post =  User::where('username',$slug)->firstOrFail();
+        $post =  User::where('username', $slug)->firstOrFail();
         $countPosts = $post->count();
         $newsletter = NewsletterSubscription::count();
         $author = User::withCount('posts')
-            ->with(['posts' => function($query) {
+            ->with(['posts' => function ($query) {
                 $query->with('category')
-                      ->latest()
-                      ->take(2);
+                    ->latest()
+                    ->take(2);
             }])
             ->where('username', $slug)
             ->firstOrFail();
 
-            $socialLinks = SocialLink::all();
-            foreach ($socialLinks as $socialLink) {
-                if ($socialLink->user_id  === $author->id)  {
-                    $link = $socialLink;
-                }else{
-                    $link = null;
-                }
+        $socialLinks = SocialLink::all();
+        $link = new SocialLink();
+        foreach ($socialLinks as $socialLink) {
+            if ($socialLink->user_id  === $author->id) {
+                $link = $socialLink;
             }
+        }
 
-        return view('pages.blog.profileAuthor', compact(['author','countPosts','newsletter','link']));
+        return view('pages.blog.profileAuthor', compact(['author', 'countPosts', 'newsletter', 'link']));
     }
 
 

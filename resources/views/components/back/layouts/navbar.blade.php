@@ -45,7 +45,7 @@
 
         <!-- Tags -->
         <li class="menu-item {{ Route::is('admin.tags') ? 'active' : '' }}">
-            <a href="{{ route('admin.tags') }}"   class="menu-link">
+            <a href="{{ route('admin.tags') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-tag"></i>
                 <div class="text-truncate" data-i18n="Tags">{{ __('menu.tags') }}</div>
             </a>
@@ -61,12 +61,12 @@
 
         <!-- Utilisateurs -->
         @can('viewAny', App\Models\User::class)
-        <li class="menu-item {{ Route::is('admin.usersManager') ? 'active' : '' }}"">
-            <a href="{{ route('admin.usersManager') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div class="text-truncate" data-i18n="Users">{{ __('menu.users') }}</div>
-            </a>
-        </li>
+            <li class="menu-item {{ Route::is('admin.usersManager') ? 'active' : '' }}"">
+                <a href="{{ route('admin.usersManager') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div class="text-truncate" data-i18n="Users">{{ __('menu.users') }}</div>
+                </a>
+            </li>
         @endcan
 
         <!-- Paramètres -->
@@ -74,9 +74,12 @@
             @livewire('back.admin.general-settings')
         </li>
 
-         {{-- <!-- Languages -->
-         <li class="menu-item mt-auto">
-            <livewire:language-switcher />
+        {{-- <li class="menu-item mt-auto">
+            <div class="fixed bottom-4 right-4">
+                <a href="{{ route('home') }}" class="btn btn-primary">
+                    Aller à l’espace utilisateur
+                </a>
+            </div>
         </li> --}}
     </ul>
 </aside>
