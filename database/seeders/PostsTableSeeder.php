@@ -31,9 +31,8 @@ class PostsTableSeeder extends Seeder
 
         // Créer 20 articles fictifs
         foreach (range(1, 20) as $index) {
-            $title = 'Article ' . $index;
             Post::create([
-                'title' => $title,
+                'title' => $faker->sentence,
                 'content' => $faker->paragraphs(random_int(3, 7), true), // 3 à 7 paragraphes
                 'category_id' => $categories->random()->id,
                 'status' => ['draft', 'published', 'archived'][array_rand(['draft', 'published', 'archived'])],
@@ -43,7 +42,6 @@ class PostsTableSeeder extends Seeder
                 'user_id' => $users->random()->id,
                 'published_at' => now()->subDays(random_int(0, 30)),
             ]);
-            
         }
         $this->command->info('30 articles ont été créés avec succès.');
     }

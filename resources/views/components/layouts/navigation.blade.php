@@ -81,7 +81,7 @@
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
         <a href="{{route('home')}}" class="logo d-flex align-items-center me-auto me-xl-0">
-            <img src="favicon.webp" alt="">
+            <img src="favicon.png" alt="Logo">
         </a>
 
         <nav id="navmenu" class="navmenu">

@@ -10,7 +10,12 @@ class NewsletterForm extends Component
     public $email = '';
 
     protected $rules = [
-        'email' => 'required|email|unique:newsletter_subscriptions,email'
+        'email' => [
+            'required',
+            'email:rfc,dns,filter,spoof,strict',
+            'unique:newsletter_subscriptions,email',
+            'max:255',
+        ]
     ];
 
     protected $messages = [

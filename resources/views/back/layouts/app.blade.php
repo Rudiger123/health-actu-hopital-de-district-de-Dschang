@@ -9,7 +9,7 @@
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title> {{ config('app.name') }}</title>
-    <link rel="shortcut icon" href="{{ asset('favicon.webp') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon" />
 
     {{--  import tailwindcss and alpinejs  --}}
     <!-- Styles / Scripts -->

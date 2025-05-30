@@ -8,7 +8,6 @@
     <script src="{{ asset('assets/js/main-1.js') }}"></script>
 @endpush
 @section('content')
-
     <main class="main">
 
         <!-- Page Title / Banner -->

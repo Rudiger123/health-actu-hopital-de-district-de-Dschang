@@ -3,10 +3,10 @@
         <a href="{{ route('home') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <span class="text-primary">
-                    <img src="{{ asset('favicon.webp') }}" class="w-8" alt="">
+                    <img src="{{ asset('favicon.png') }}" class="w-8" alt="">
                 </span>
             </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2">ActuHosto</span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2">H.R.A.Dsch</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">

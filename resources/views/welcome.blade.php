@@ -305,6 +305,8 @@
 
         </section><!-- /Call To Action Section -->
 
+        @include('components.certifications')
+
         <!-- Direction Section -->
         <section id="testimonials" class="testimonials section light-background">
 
@@ -345,7 +347,7 @@
                 </div>
             </div>
 
-        </section><!-- /Testimonials Section -->
+        </section>
 
         <!-- Stats Section -->
         <section id="stats" class="stats section">

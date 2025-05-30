@@ -16,7 +16,7 @@
 
 
     <title>@yield('title',config('app.name'))</title>
-    <link rel="shortcut icon" href="{{ asset('favicon.webp') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon" />
 
     @livewireStyles
 

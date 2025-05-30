@@ -18,12 +18,12 @@ class LikeSeeder extends Seeder
         $comments = Comment::all();
         $faker = Faker::create();
 
-        foreach (range(1, 100) as $index) {
+        foreach (range(1, 10) as $index) {
             Like::create([
                 'comment_id' => $comments->random()->id,
                 'ip_address' => $faker->uuid(),
             ]);
         }
-        $this->command->info('100 likes ont été créés avec succès.');
+        $this->command->info('10 likes ont été créés avec succès.');
     }
 }

@@ -13,7 +13,7 @@
                                 <span class="w-px-22 h-px-22"><i class="icon-base bx bx-search icon-md"></i></span>
                                 <input type="text"
                                     class="form-control border-0 shadow-none ps-1 ps-sm-2 d-md-block d-none"
-                                    placeholder="Searchback." aria-label="Searchback." />
+                                    placeholder="Search..." aria-label="Search..." />
                             </div>
                         </div>
                         <!-- /Search -->

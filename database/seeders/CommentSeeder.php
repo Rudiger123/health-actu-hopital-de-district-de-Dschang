@@ -21,7 +21,7 @@ class CommentSeeder extends Seeder
  
  
          // Créer 20 articles fictifs
-         foreach (range(1, 100) as $index) {
+         foreach (range(1, 25) as $index) {
             
         Comment::create([
             'post_id' => $posts->random()->id,

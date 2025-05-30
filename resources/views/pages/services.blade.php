@@ -100,7 +100,7 @@
                         data-aos-delay="100">
                         <img src="assets/images/department.jpg" class="img-fluid rounded-lg"
                             alt="{{ __('services.about.section_title') }}">
-                        <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"
+                        <a href="#" class="glightbox pulsating-play-btn"
                             title="{{ __('services.about.section_title') }}"></a>
                     </div>
                     <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">

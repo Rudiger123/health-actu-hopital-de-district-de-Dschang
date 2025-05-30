@@ -14,7 +14,7 @@ class CategoriesTableSeeder extends Seeder
     public function run(): void
     {
         // Créer des sous-catégories pour chaque catégorie parente
-        foreach (range(1, 5) as $index) {
+        foreach (range(1, 3) as $index) {
             $name = 'Catégorie parente' . $index;
             ParentCategory::create([
                 'name' => $name,
@@ -23,7 +23,7 @@ class CategoriesTableSeeder extends Seeder
 
         $categoryParents = ParentCategory::all();
         // Créer des sous-catégories pour chaque catégorie parente
-            foreach (range(1, 10) as $index) {
+            foreach (range(1, 5) as $index) {
                 $name = 'Catégorie ' . $index;
                 Category::create([
                     'name' => $name,
