@@ -78,21 +78,55 @@
     </style>
 @endpush
 <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <div
+        class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-        <a href="{{route('home')}}" class="logo d-flex align-items-center me-auto me-xl-0">
+        <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
             <img src="favicon.png" alt="Logo">
         </a>
 
         <nav id="navmenu" class="navmenu">
-            <ul>
-                <li><a href="{{ route('home') }}" @class(['active' => str_starts_with($currentRoute, 'home')])>{{ __('general.home') }}</a></li>
-                <li><a href="{{ route('services') }}" @class(['active' => str_starts_with($currentRoute, 'services')])>{{ __('general.services') }}</a></li>
-                <li><a href="{{ route('blog.index') }}" @class(['active' => str_starts_with($currentRoute, 'blog.')])>{{ __('general.news') }}</a></li>
-                <li><a href="{{ route('contact') }}" @class(['active' => str_starts_with($currentRoute, 'contact')])>{{ __('general.contact') }}</a></li>
+            <ul class="space-x-6 flex">
+                <li>
+                    <a href="{{ route('home') }}" @class([
+                        'underline-hover',
+                        'text-indigo-600',
+                        'active' => str_starts_with($currentRoute, 'home'),
+                    ])>
+                        {{ __('general.home') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('services') }}" @class([
+                        'underline-hover',
+                        'text-indigo-600',
+                        'active' => str_starts_with($currentRoute, 'services'),
+                    ])>
+                        {{ __('general.services') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('blog.index') }}" @class([
+                        'underline-hover',
+                        'text-indigo-600',
+                        'active' => str_starts_with($currentRoute, 'blog.'),
+                    ])>
+                        {{ __('general.news') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('contact') }}" @class([
+                        'underline-hover',
+                        'text-indigo-600',
+                        'active' => str_starts_with($currentRoute, 'contact'),
+                    ])>
+                        {{ __('general.contact') }}
+                    </a>
+                </li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
+
 
         <div class="d-flex align-items-center justify-content-between btn-elements">
             <livewire:language-switcher />
@@ -127,7 +161,8 @@
                 <livewire:auth.login-form />
 
                 <div class="text-center mt-3">
-                    <a class="auth-link cursor-pointer" data-bs-toggle="modal" data-bs-target="#resetModal" data-bs-dismiss="modal">
+                    <a class="auth-link cursor-pointer" data-bs-toggle="modal" data-bs-target="#resetModal"
+                        data-bs-dismiss="modal">
                         {{ __('general.forgot_password') }}
                     </a>
                 </div>

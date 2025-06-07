@@ -14,12 +14,12 @@
                                 {{ __('hero.badge') }}
                             </div>
 
-                            <h1 class="mb-4">
+                            <h1 class="mb-4 text-4xl text-gray-900">
                                 {{ __('hero.title') }}
-                                <span class="accent-text">{{ __('hero.city') }}</span>
+                                <span class="accent-text text-indigo-600">{{ __('hero.city') }}</span>
                             </h1>
 
-                            <p class="mb-4 mb-md-5">
+                            <p class="mb-4 mb-md-5 text-lg">
                                 {{ __('hero.subtitle') }}
                             </p>
 
@@ -36,9 +36,15 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-                            <img src="assets/images/hopital.jpeg" alt="Hero Image" class="img-fluid rounded">
-                        </div>
+                        <div class="hero-image relative h-[250px] md:h-[275px] lg:h-[400px] rounded-2xl overflow-hidden shadow-xl  bg-gray-100" 
+                        data-aos="zoom-out" 
+                        data-aos-delay="300">
+                       
+                       <img src="assets/images/hopital.jpeg" 
+                            alt="Hero Image" 
+                            class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105" />
+                   </div>
+                   
                     </div>
                 </div>
 
@@ -51,8 +57,8 @@
                                     <i class="{{ $stat['icon'] }}"></i>
                                 </div>
                                 <div class="stat-content">
-                                    <h4>{{ $stat['title'] }}</h4>
-                                    <p class="mb-0">{{ $stat['text'] }}</p>
+                                    <h4 class="text-lg font-semibold text-gray-800">{{ $stat['title'] }}</h4>
+                                    <p class="mb-0 text-sm text-gray-600">{{ $stat['text'] }}</p>
                                 </div>
                             </div>
                         </div>

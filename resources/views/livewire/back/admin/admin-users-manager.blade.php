@@ -39,8 +39,7 @@
                     <div class="flex items-center gap-2">
                         <span class="text-gray-700">{{ count($selectedUsers) }} sélectionné(s)</span>
                         <div class="flex gap-2">
-                            <select wire:change="bulkStatusUpdate($event.target.value)"
-                                class="form-control">
+                            <select wire:change="bulkStatusUpdate($event.target.value)" class="form-control">
                                 <option value="">Modifier statut...</option>
                                 @foreach ($statuses as $status)
                                     <option value="{{ $status }}">{{ ucfirst($status) }}</option>
@@ -233,9 +232,14 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <label class="inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" class="sr-only peer"
-                                            wire:change="updateStatus('{{ $user->id }}', $event.target.checked ? 'active' : 'inactive')"
-                                            @checked($user->status === App\UserStatus::Active)>
+
+                                        @if ($user->type === App\UserType::SuperAdmin)
+                                            <input type="checkbox" class="sr-only peer" checked disabled>
+                                        @else
+                                            <input type="checkbox" class="sr-only peer"
+                                                wire:change="updateStatus('{{ $user->id }}', $event.target.checked ? 'active' : 'inactive')"
+                                                @checked($user->status === App\UserStatus::Active)>
+                                        @endif
                                         <div
                                             class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600">
                                         </div>
@@ -308,8 +312,9 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
-                                <div class="col mb-6">
+
+                            <div class="row g-6">
+                                <div class="col mb-4">
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" id="nameWithTitle" class="form-control" wire:model="name"
                                         placeholder="Enter Name" />
@@ -317,17 +322,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div>
 
-                            <div class="row g-6">
-                                <div class="col mb-0">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" id="emailWithTitle" class="form-control"
-                                        wire:model="email" placeholder="xxxx@xxx.xx" />
-                                    @error('email')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
                                 <div class="col mb-0">
                                     <label for="dobWithTitle" class="form-label">Username</label>
                                     <input type="text" class="form-control" placeholder="Enter UserName"
@@ -338,8 +333,20 @@
                                 </div>
                             </div>
 
-                            <div class="row g-6 my-6">
-                                <div class="col mb-0">
+                            <div class="row">
+                                <div class="col mb-4">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" id="emailWithTitle" class="form-control"
+                                        wire:model="email" placeholder="xxxx@xxx.xx" />
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                            <div class="row g-6">
+                                <div class="col mb-4">
                                     <label for="emailWithTitle" class="form-label">Password</label>
                                     <div class="input-group input-group-merge">
                                         <input type="password" class="form-control" wire:model="password"
@@ -366,7 +373,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col mb-6">
+                                <div class="col mb-4">
                                     <label for="nameWithTitle" class="form-label">Bio (Optionnel)</label>
                                     <textarea id="bio" class="form-control" wire:model="bio" placeholder="Enter la biographie..."></textarea>
                                     @error('bio')
@@ -394,23 +401,13 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
-                                <div class="col mb-6">
+                            <div class="row g-6">
+
+                                <div class="col mb-4">
                                     <label for="nameWithTitle" class="form-label">Name</label>
                                     <input type="text" id="nameWithTitle" class="form-control" wire:model="name"
                                         placeholder="Enter Name" />
                                     @error('name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row g-6">
-                                <div class="col mb-0">
-                                    <label for="emailWithTitle" class="form-label">Email</label>
-                                    <input type="email" id="emailWithTitle" class="form-control"
-                                        wire:model="email" placeholder="xxxx@xxx.xx" />
-                                    @error('email')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -424,8 +421,19 @@
                                 </div>
                             </div>
 
-                            <div class="row g-6 my-6">
-                                <div class="col mb-0">
+                            <div class="row">
+                                <div class="col mb-4">
+                                    <label for="emailWithTitle" class="form-label">Email</label>
+                                    <input type="email" id="emailWithTitle" class="form-control"
+                                        wire:model="email" placeholder="xxxx@xxx.xx" />
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row g-6">
+                                <div class="col mb-4">
                                     <label for="emailWithTitle" class="form-label">Password</label>
                                     <div class="input-group input-group-merge">
                                         <input type="password" class="form-control" wire:model="password"
@@ -452,7 +460,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col mb-6">
+                                <div class="col mb-4">
                                     <label for="bio" class="form-label">Bio (Optionnel)</label>
                                     <textarea id="bio" class="form-control" wire:model="bio" placeholder="Enter la biographie..."></textarea>
                                     @error('bio')

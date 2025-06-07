@@ -169,3 +169,6 @@ return [
     'faq_5_question' => 'Quelles sont les modalités de paiement ?',
     'faq_5_answer' => 'Nous acceptons les paiements en espèces, par carte bancaire et les prises en charge par les mutuelles agréées. Des facilités de paiement peuvent être envisagées sur demande.',
 ];
+
+
+

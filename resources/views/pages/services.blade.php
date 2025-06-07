@@ -22,6 +22,75 @@
             $text2 = __('services.text2');
             $titel3 = __('services.titel3');
             $text3 = __('services.text3');
+
+            $testimonials = [
+                [
+                    'quote' =>
+                        'Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.',
+                    'image' => 'assets/img/testimonials/testimonials-1.jpg',
+                    'name' => 'Saul Goodman',
+                    'position' => 'Ceo & Founder',
+                ],
+                [
+                    'quote' =>
+                        'Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.',
+                    'image' => 'assets/img/testimonials/testimonials-2.jpg',
+                    'name' => 'Sara Wilsson',
+                    'position' => 'Designer',
+                ],
+                [
+                    'quote' =>
+                        'Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.',
+                    'image' => 'assets/img/testimonials/testimonials-3.jpg',
+                    'name' => 'Jena Karlis',
+                    'position' => 'Store Owner',
+                ],
+                [
+                    'quote' =>
+                        'Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.',
+                    'image' => 'assets/img/testimonials/testimonials-4.jpg',
+                    'name' => 'Matt Brandon',
+                    'position' => 'Freelancer',
+                ],
+                [
+                    'quote' =>
+                        'Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.',
+                    'image' => 'assets/img/testimonials/testimonials-5.jpg',
+                    'name' => 'John Larson',
+                    'position' => 'Entrepreneur',
+                ],
+            ];
+
+            $doctors = [
+                [
+                    'image' => 'assets/images/doctors/doctor-1.jpg',
+                    'name' => 'Dr. Walter White',
+                    'position' => 'Directeur Médical',
+                    'description' =>
+                        'Spécialiste en médecine interne avec plus de 15 ans d\'expérience. Expert dans le diagnostic et le traitement des maladies complexes.',
+                ],
+                [
+                    'image' => 'assets/images/doctors/doctor-2.jpg',
+                    'name' => 'Dr. Sarah Johnson',
+                    'position' => 'Anesthésiste',
+                    'description' =>
+                        'Anesthésiste qualifiée avec une expertise particulière en anesthésie pédiatrique et obstétrique.',
+                ],
+                [
+                    'image' => 'assets/images/doctors/doctor-3.jpg',
+                    'name' => 'Dr. William Anderson',
+                    'position' => 'Cardiologue',
+                    'description' =>
+                        'Cardiologue renommé spécialisé dans les interventions cardiaques non invasives et la prévention des maladies cardiovasculaires.',
+                ],
+                [
+                    'image' => 'assets/images/doctors/doctor-4.jpg',
+                    'name' => 'Dr. Amanda Jepson',
+                    'position' => 'Neurochirurgien',
+                    'description' =>
+                        'Neurochirurgien expérimenté avec une expertise dans les interventions cérébrales complexes et la chirurgie mini-invasive.',
+                ],
+            ];
         @endphp
 
         <x-layouts.hero :image1="$image1" :image2="$image2" :image3="$image3" :text1="$text1" :text2="$text2"
@@ -38,8 +107,8 @@
                     <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
                         <div class="service-item position-relative">
                             <div class="icon"><i class="bi bi-heart-pulse"></i></div>
-                            <<h4><a href="" class="stretched-link">{{ __('services.cardiology') }}</a></h4>
-                                <p>{{ __('services.cardiology_desc') }}</p>
+                            <h4><a href="" class="stretched-link">{{ __('services.cardiology') }}</a></h4>
+                            <p>{{ __('services.cardiology_desc') }}</p>
                         </div>
                     </div><!-- End Service Item -->
 
@@ -320,163 +389,105 @@
                    }
                  </script>
                     <div class="swiper-wrapper">
+                        @foreach ($testimonials as $testimonial)
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <p>
+                                        <i class="bi bi-quote quote-icon-left"></i>
+                                        <span>{{ $testimonial['quote'] }}</span>
+                                        <i class="bi bi-quote quote-icon-right"></i>
+                                    </p>
+                                    <img src="{{ $testimonial['image'] }}" class="testimonial-img"
+                                        alt="{{ $testimonial['name'] }}">
+                                    <h3>{{ $testimonial['name'] }}</h3>
+                                    <h4>{{ $testimonial['position'] }}</h4>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section><!-- /Testimonials Section -->
 
-                        <div class="swiper-slide">
-                            <div class="testimonial-item" "="">
-                                                                                                                   <p>
-                                                                                                                     <i class=" bi bi-quote quote-icon-left"></i>
-                                                                                                                       <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                                                                                                                       <i class="bi bi-quote quote-icon-right"></i>
-                                                                                                                       </p>
-                                                                                                                       <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                                                                                                                       <h3>Saul Goodman</h3>
-                                                                                                                       <h4>Ceo &amp; Founder</h4>
-                                                                                                                     </div>
-                                                                                                                   </div><!-- End testimonial item -->
-           
-                                                                                                                   <div class="swiper-slide">
-                                                                                                                     <div class="testimonial-item">
-                                                                                                                       <p>
-                                                                                                                         <i class="bi bi-quote quote-icon-left"></i>
-                                                                                                                         <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                                                                                                                         <i class="bi bi-quote quote-icon-right"></i>
-                                                                                                                       </p>
-                                                                                                                       <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                                                                                                                       <h3>Sara Wilsson</h3>
-                                                                                                                       <h4>Designer</h4>
-                                                                                                                     </div>
-                                                                                                                   </div><!-- End testimonial item -->
-           
-                                                                                                                   <div class="swiper-slide">
-                                                                                                                     <div class="testimonial-item">
-                                                                                                                       <p>
-                                                                                                                         <i class="bi bi-quote quote-icon-left"></i>
-                                                                                                                         <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                                                                                                                         <i class="bi bi-quote quote-icon-right"></i>
-                                                                                                                       </p>
-                                                                                                                       <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                                                                                                                       <h3>Jena Karlis</h3>
-                                                                                                                       <h4>Store Owner</h4>
-                                                                                                                     </div>
-                                                                                                                   </div><!-- End testimonial item -->
-           
-                                                                                                                   <div class="swiper-slide">
-                                                                                                                     <div class="testimonial-item">
-                                                                                                                       <p>
-                                                                                                                         <i class="bi bi-quote quote-icon-left"></i>
-                                                                                                                         <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                                                                                                                         <i class="bi bi-quote quote-icon-right"></i>
-                                                                                                                       </p>
-                                                                                                                       <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                                                                                                                       <h3>Matt Brandon</h3>
-                                                                                                                       <h4>Freelancer</h4>
-                                                                                                                     </div>
-                                                                                                                   </div><!-- End testimonial item -->
-           
-                                                                                                                   <div class="swiper-slide">
-                                                                                                                     <div class="testimonial-item">
-                                                                                                                       <p>
-                                                                                                                         <i class="bi bi-quote quote-icon-left"></i>
-                                                                                                                         <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                                                                                                                         <i class="bi bi-quote quote-icon-right"></i>
-                                                                                                                       </p>
-                                                                                                                       <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                                                                                                                       <h3>John Larson</h3>
-                                                                                                                       <h4>Entrepreneur</h4>
-                                                                                                                     </div>
-                                                                                                                   </div><!-- End testimonial item -->
-           
-                                                                                                                 </div>
-                                                                                                                 <div class="swiper-pagination"></div>
-                                                                                                               </div>
-           
-                                                                                                             </div>
-           
-                                                                                                           </section><!-- /Testimonials Section -->
-           
-                                                                                                           <!-- Doctors Section -->
-                                                                                                           <section id="doctors" class="doctors section">
-           
-                                                                                                             <!-- Section Title -->
-                                                                                                             <div class="container section-title" data-aos="fade-up">
-                                                                                                               <h2>Doctors</h2>
-                                                                                                               <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-                                                                                                             </div><!-- End Section Title -->
-           
-                                                                                                             <div class="container">
-           
-                                                                                                               <div class="row gy-4">
-           
-                                                                                                                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                                                                                                                   <div class="team-member">
-                                                                                                                     <div class="member-img">
-                                                                                                                       <img src="assets/images/doctors/doctor-1.jpg" class="img-fluid" alt="">
-                                                                                                                     </div>
-                                                                                                                     <div class="member-info">
-                                                                                                                       <h4>Walter White</h4>
-                                                                                                                       <span>Chief Medical Officer</span>
-                                                                                                                     </div>
-                                                                                                                   </div>
-                                                                                                                 </div><!-- End Team Member -->
-           
-                                                                                                                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-                                                                                                                   <div class="team-member">
-                                                                                                                     <div class="member-img">
-                                                                                                                       <img src="assets/images/doctors/doctor-2.jpg" class="img-fluid" alt="">
-                                                                                                                       
-                                                                                                                     </div>
-                                                                                                                     <div class="member-info">
-                                                                                                                       <h4>Sarah Jhonson</h4>
-                                                                                                                       <span>Anesthesiologist</span>
-                                                                                                                     </div>
-                                                                                                                   </div>
-                                                                                                                 </div><!-- End Team Member -->
-           
-                                                                                                                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-                                                                                                                   <div class="team-member">
-                                                                                                                     <div class="member-img">
-                                                                                                                       <img src="assets/images/doctors/doctor-3.jpg" class="img-fluid" alt="">
-                                                                                                                       
-                                                                                                                     </div>
-                                                                                                                     <div class="member-info">
-                                                                                                                       <h4>William Anderson</h4>
-                                                                                                                       <span>Cardiology</span>
-                                                                                                                     </div>
-                                                                                                                   </div>
-                                                                                                                 </div><!-- End Team Member -->
-           
-                                                                                                                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-                                                                                                                   <div class="team-member">
-                                                                                                                     <div class="member-img">
-                                                                                                                       <img src="assets/images/doctors/doctor-4.jpg" class="img-fluid" alt="">
-                                                                                                                       
-                                                                                                                     </div>
-                                                                                                                     <div class="member-info">
-                                                                                                                       <h4>Amanda Jepson</h4>
-                                                                                                                       <span>Neurosurgeon</span>
-                                                                                                                     </div>
-                                                                                                                   </div>
-                                                                                                                 </div><!-- End Team Member -->
-           
-                                                                                                               </div>
-           
-                                                                                                             </div>
-           
-                                                                                                           </section><!-- /Doctors Section -->
-           
-                                                                                                           <!-- Gallery Section -->
-                                                                                                           <section id="gallery" class="gallery section light-background">
-           
-                                                                                                             <!-- Section Title -->
-                                                                                                             <div class="container section-title" data-aos="fade-up">
-                                                                                                               <h2>{{ __('services.gallery_title') }}</h2>
-                                                                                                               <p>{{ __('services.gallery_desc') }}</p>
-                                                                                                           </div><!-- End Section Title -->
-           
-                                                                                                             <div class="container" data-aos="fade-up" data-aos-delay="100">
-           
-                                                                                                               <div class="swiper init-swiper">
-                                                                                                                 <script type="application/json" class="swiper-config">
+        <!-- Doctors Section -->
+        <section id="doctors" class="doctors section">
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>{{ __('services.doctors_title') != 'services.doctors_title' ? __('services.doctors_title') : 'Notre Équipe Médicale' }}
+                </h2>
+
+                <p>{{ __('services.doctors_subtitle') != 'services.doctors_subtitle' ? __('services.doctors_subtitle') : 'Une équipe de professionnels de santé dévoués et expérimentés à votre service' }}
+                </p>
+                </p>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper init-swiper">
+                    <script type="application/json" class="swiper-config">
+                    {
+                        "loop": true,
+                        "speed": 600,
+                        "autoplay": {
+                            "delay": 5000
+                        },
+                        "slidesPerView": "auto",
+                        "pagination": {
+                            "el": ".swiper-pagination",
+                            "type": "bullets",
+                            "clickable": true
+                        },
+                        "breakpoints": {
+                            "320": {
+                                "slidesPerView": 1,
+                                "spaceBetween": 20
+                            },
+                            "768": {
+                                "slidesPerView": 2,
+                                "spaceBetween": 30
+                            },
+                            "1200": {
+                                "slidesPerView": 3,
+                                "spaceBetween": 40
+                            }
+                        }
+                    }
+                    </script>
+                    <div class="swiper-wrapper">
+                        @foreach ($doctors as $doctor)
+                            <div class="swiper-slide">
+                                <div class="team-member">
+                                    <div class="member-img">
+                                        <img src="{{ $doctor['image'] }}" class="img-fluid"
+                                            alt="{{ $doctor['name'] }}">
+                                    </div>
+                                    <div class="member-info">
+                                        <h4>{{ $doctor['name'] }}</h4>
+                                        <span>{{ $doctor['position'] }}</span>
+                                        <p class="mt-3">{{ $doctor['description'] }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section><!-- /Doctors Section -->
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery section light-background">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>{{ __('services.gallery_title') }}</h2>
+                <p>{{ __('services.gallery_desc') }}</p>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="swiper init-swiper">
+                    <script type="application/json" class="swiper-config">
                    {
                      "loop": true,
                      "speed": 600,
@@ -506,64 +517,75 @@
                      }
                    }
                  </script>
-                                                                                                                 <div class="swiper-wrapper align-items-center">
-                                                                                                                   <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/images/gallery/gallery-1.jpeg"><img src="assets/images/gallery/gallery-1.jpeg" class="img-fluid" alt=""></a></div>
-                                                                                                                   <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/images/gallery/gallery-2.jpeg"><img src="assets/images/gallery/gallery-2.jpeg" class="img-fluid" alt=""></a></div>
-                                                                                                                   <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/images/gallery/gallery-3.jpeg"><img src="assets/images/gallery/gallery-3.jpeg" class="img-fluid" alt=""></a></div>
-                                                                                                                 </div>
-                                                                                                                 <div class="swiper-pagination"></div>
-                                                                                                               </div>
-           
-                                                                                                             </div>
-                                                   <!-- Faq Section -->
-                                                   <section id="faq" class="faq section" style='background : white'>
-                                                       <!-- Section Title -->
-                                                       <div class="container section-title" data-aos="fade-up">
-                                                           <h2>{{ __('services.faq_title') }}</h2>
-                                                           <p>{{ __('services.faq_desc') }}</p>
-                                                       </div><!-- End Section Title -->
-           
-                                                       <div class="container">
-                                                           <div class="faq-container">
-                                                               <div class="faq-item">
-                                                                   <h3>{{ __('services.faq_1_question') }}</h3>
-                                                                   <div class="faq-content">
-                                                                       <p>{{ __('services.faq_1_answer') }}</p>
-                                                                   </div>
-                                                                   <i class="faq-toggle bi bi-chevron-right"></i>
-                                                               </div>
-                                                               <div class="faq-item">
-                                                                   <h3>{{ __('services.faq_2_question') }}</h3>
-                                                                   <div class="faq-content">
-                                                                       <p>{{ __('services.faq_2_answer') }}</p>
-                                                                   </div>
-                                                                   <i class="faq-toggle bi bi-chevron-right"></i>
-                                                               </div>
-                                                               <div class="faq-item">
-                                                                   <h3>{{ __('services.faq_3_question') }}</h3>
-                                                                   <div class="faq-content">
-                                                                       <p>{{ __('services.faq_3_answer') }}</p>
-                                                                   </div>
-                                                                   <i class="faq-toggle bi bi-chevron-right"></i>
-                                                               </div>
-                                                               <div class="faq-item">
-                                                                   <h3>{{ __('services.faq_4_question') }}</h3>
-                                                                   <div class="faq-content">
-                                                                       <p>{{ __('services.faq_4_answer') }}</p>
-                                                                   </div>
-                                                                   <i class="faq-toggle bi bi-chevron-right"></i>
-                                                               </div>
-                                                               <div class="faq-item">
-                                                                   <h3>{{ __('services.faq_5_question') }}</h3>
-                                                                   <div class="faq-content">
-                                                                       <p>{{ __('services.faq_5_answer') }}</p>
-                                                                   </div>
-                                                                   <i class="faq-toggle bi bi-chevron-right"></i>
-                                                               </div>
-                                                           </div>
-                                                       </div>
-                                                   </section><!-- /Faq Section -->
+                    <div class="swiper-wrapper align-items-center">
+                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                href="assets/images/gallery/gallery-1.jpeg"><img
+                                    src="assets/images/gallery/gallery-1.jpeg" class="img-fluid" alt=""></a>
+                        </div>
+                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                href="assets/images/gallery/gallery-2.jpeg"><img
+                                    src="assets/images/gallery/gallery-2.jpeg" class="img-fluid" alt=""></a>
+                        </div>
+                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                href="assets/images/gallery/gallery-3.jpeg"><img
+                                    src="assets/images/gallery/gallery-3.jpeg" class="img-fluid" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </section><!-- /Gallery Section -->
+
+        <!-- Faq Section -->
+        <section id="faq" class="faq section" style='background : white'>
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>{{ __('services.faq_title') }}</h2>
+                <p>{{ __('services.faq_desc') }}</p>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h3>{{ __('services.faq_1_question') }}</h3>
+                        <div class="faq-content">
+                            <p>{{ __('services.faq_1_answer') }}</p>
+                        </div>
+                        <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+                    <div class="faq-item">
+                        <h3>{{ __('services.faq_2_question') }}</h3>
+                        <div class="faq-content">
+                            <p>{{ __('services.faq_2_answer') }}</p>
+                        </div>
+                        <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+                    <div class="faq-item">
+                        <h3>{{ __('services.faq_3_question') }}</h3>
+                        <div class="faq-content">
+                            <p>{{ __('services.faq_3_answer') }}</p>
+                        </div>
+                        <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+                    <div class="faq-item">
+                        <h3>{{ __('services.faq_4_question') }}</h3>
+                        <div class="faq-content">
+                            <p>{{ __('services.faq_4_answer') }}</p>
+                        </div>
+                        <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+                    <div class="faq-item">
+                        <h3>{{ __('services.faq_5_question') }}</h3>
+                        <div class="faq-content">
+                            <p>{{ __('services.faq_5_answer') }}</p>
+                        </div>
+                        <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /Faq Section -->
 
 
-                                         </main>
+    </main>
 @endsection
