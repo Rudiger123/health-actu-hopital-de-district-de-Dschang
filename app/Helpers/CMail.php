@@ -7,8 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 use Illuminate\Support\Facades\Log;
 
 class CMail
-{
-    /**
+{    /**
      * Envoi d'un email via SMTP
      * 
      * @param array $config Configuration de l'email
@@ -39,9 +38,12 @@ class CMail
 
             // Contenu
             $mail->isHTML(true);
+            $mail->CharSet = 'UTF-8';
+            $mail->Encoding = 'base64';
             $mail->Subject = $config['subject'];
             $mail->Body = $config['body'];
-            $mail->AltBody = strip_tags($config['body']); // Version texte brut
+            $mail->AltBody = strip_tags($config['body']);
+            
 
             // Pièces jointes
             if (!empty($config['attachments'])) {

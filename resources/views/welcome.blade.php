@@ -16,7 +16,7 @@
 
                             <h1 class="mb-4 text-4xl text-gray-900">
                                 {{ __('hero.title') }}
-                                <span class="accent-text text-indigo-600">{{ __('hero.city') }}</span>
+                                <span class="accent-text" style="color :#4F46E5">{{ __('hero.city') }}</span>
                             </h1>
 
                             <p class="mb-4 mb-md-5 text-lg">

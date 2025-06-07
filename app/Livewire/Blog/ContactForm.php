@@ -3,46 +3,94 @@
 namespace App\Livewire\Blog;
 
 use App\Helpers\CMail;
+use App\Models\ContactMessage;
 use App\Models\SiteSetting;
-use Illuminate\Support\Facades\Session;
 use Livewire\Component;
+use Illuminate\Support\Facades\Session;
 
 class ContactForm extends Component
 {
-    public $name, $email, $phone, $message, $subject;
+    public $name;
+    public $email;
+    public $phone;
+    public $subject;
+    public $message;
 
     protected $rules = [
-        'email' => 'required|min:5|max:255',
-        'phone' => 'required',
-        'message' => 'required|min:5|max:255',
-        'name' => 'required',
+        'name' => 'required|min:3',
+        'email' => 'required|email',
+        'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8',
         'subject' => 'required|min:5',
+        'message' => 'required|min:10'
+    ];
+
+    protected $messages = [
+        'phone.required' => 'Le numéro de téléphone est requis.',
+        'phone.regex' => 'Le format du numéro de téléphone est invalide.',
+        'phone.min' => 'Le numéro de téléphone doit contenir au moins 8 chiffres.'
     ];
 
     public function sendMessage()
     {
-        $data = $this->validate();
+        try {
+            // Validation des données
+            $data = $this->validate();
 
-        $siteInfo = SiteSetting::first();
+            // Créer le message dans la base de données
+            $contactMessage = ContactMessage::create([
+                'name' => $this->name,
+                'email' => $this->email,
+                'phone' => $this->phone,
+                'subject' => $this->subject,
+                'message' => $this->message,
+                'is_read' => false
+            ]);
 
-        $email_body = view('email-templates.contact-template', ['data' => $data])->render();
+            $siteInfo = SiteSetting::first();
 
-        $emailConfig = [
-            'recipient_address' => $siteInfo->site_email,
-            'recipient_name' => $siteInfo->site_title,
-            'subject' => $this->subject,
-            'body' => $email_body,
-            'form_name' => $this->name,
-            'form_email' => $this->email
-        ];
+            // Envoyer l'email de notification à l'administrateur
+            $email_body = view('email-templates.contact-template', ['data' => $data])->render();
 
-        $emailResult = CMail::send($emailConfig);
+            $emailConfig = [
+                'recipient_address' => $siteInfo->site_email,
+                'recipient_name' => $siteInfo->site_title,
+                'subject' => $this->subject,
+                'body' => $email_body,
+                'form_name' => $this->name,
+                'form_email' => $this->email
+            ];
 
-        if ($emailResult['success']) {
-            $this->reset();
-            Session::flash('status', $emailResult['message']);
-        } else {
-            Session::flash('error', $emailResult['message']);
+            $emailResult = CMail::send($emailConfig);
+
+            // Envoyer l'email de confirmation à l'expéditeur
+            $confirmationEmail = view('emails.contact-confirmation', [
+                'message' => $contactMessage,
+                'siteInfo' => $siteInfo
+            ])->render();
+
+            $confirmationConfig = [
+                'recipient_address' => $this->email,
+                'recipient_name' => $this->name,
+                'subject' => '=?UTF-8?B?' . base64_encode('Confirmation de réception de votre message') . '?=',
+                'body' => $confirmationEmail,
+                'form_name' => $siteInfo->site_title ?? config('app.name'),
+                'form_email' => $siteInfo->site_email ?? config('mail.from.address'),
+                'headers' => [
+                    'Content-Type' => 'text/html; charset=UTF-8',
+                    'Content-Transfer-Encoding' => '8bit'
+                ]
+            ];
+
+            CMail::send($confirmationConfig);
+
+            if ($emailResult['success']) {
+                $this->reset();
+                Session::flash('status', 'Votre message a été envoyé avec succès. Vous recevrez bientôt une confirmation par email.');
+            } else {
+                Session::flash('error', 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.');
+            }
+        } catch (\Exception $e) {
+            Session::flash('error', 'Une erreur est survenue : ' . $e->getMessage());
         }
     }
 

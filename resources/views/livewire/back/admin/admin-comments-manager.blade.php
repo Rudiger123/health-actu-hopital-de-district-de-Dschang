@@ -140,7 +140,7 @@
                                                             Approuver
                                                         </button>
                                                     @endif
-                                                    <button wire:click="deleteComment({{ $comment->id }})"
+                                                    <button c
                                                         class="text-sm text-red-600 hover:text-red-800 flex items-center">
                                                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor"
                                                             viewBox="0 0 24 24">

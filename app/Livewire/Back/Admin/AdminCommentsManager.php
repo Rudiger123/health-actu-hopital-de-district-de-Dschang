@@ -12,6 +12,10 @@ class AdminCommentsManager extends Component
 {
     use WithPagination;
 
+    protected $listeners = [
+        'deleteComment' => 'deleteComment'
+    ];
+
     public $search = '';
     public $sortField = 'created_at';
     public $sortDirection = 'desc';
@@ -51,10 +55,35 @@ class AdminCommentsManager extends Component
         $this->updateStats();
     }
 
-    public function deleteComment($commentId)
+    // Confirmation de suppression
+    public function confirmDelete($id)
     {
-        \App\Models\Comment::destroy($commentId);
-        $this->updateStats();
+        $this->dispatch(
+            'confirm-delete',
+            title: 'Confirmer la suppression',
+            text: 'Voulez-vous vraiment supprimer ce commentaire ?',
+            id: $id
+        );
+    }
+
+    public function deleteComment($id)
+    {
+        try {
+            \App\Models\Comment::destroy($id);
+            $this->updateStats();
+
+            $this->dispatch(
+                'show-toast',
+                type: 'success',
+                message: 'commentaire supprimée avec succès'
+            );
+        } catch (\Exception $e) {
+            $this->dispatch(
+                'show-toast',
+                type: 'error',
+                message: $e->getMessage()
+            );
+        }
     }
 
     public function updateStats()

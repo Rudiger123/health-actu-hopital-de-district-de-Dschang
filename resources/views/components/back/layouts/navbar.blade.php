@@ -59,6 +59,14 @@
             </a>
         </li>
 
+        <!-- messages -->
+        <li class="menu-item {{ Route::is('admin.contact-messages.index') ? 'active' : '' }}"">
+            <a href="{{ route('admin.contact-messages.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-message"></i>
+                <div class="text-truncate" data-i18n="messages">Messages</div>
+            </a>
+        </li>
+
         <!-- Utilisateurs -->
         @can('viewAny', App\Models\User::class)
             <li class="menu-item {{ Route::is('admin.usersManager') ? 'active' : '' }}"">

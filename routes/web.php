@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Controllers\Admin\ContactMessageController;
 
 /**
  * les routes de l'interface utilisateur de la plateforme
  */
 
-Route::middleware('guest','preventBackHistory')->controller(FrontController::class)->group(function () {
+Route::middleware('guest', 'preventBackHistory')->controller(FrontController::class)->group(function () {
 
     Route::get('/', 'index')->name('home');
 
@@ -50,7 +51,7 @@ Route::get('/login', function () {
  *  ADMIN ROUTES
  */
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::middleware(['auth','preventBackHistory'])->group(function () {
+    Route::middleware(['auth', 'preventBackHistory'])->group(function () {
         Route::controller(AdminController::class)->group(function () {
             Route::get('/dashboard', 'adminDashoard')->name('dashboard');
             Route::post('/logout', 'logoutHandler')->name('logout');
@@ -62,6 +63,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/users', 'usersManager')->name('usersManager');
         });
     });
+});
+
+// Routes pour la gestion des messages de contact
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/contact-messages', [ContactMessageController::class, 'index'])->name('contact-messages.index');
+    Route::get('/contact-messages/{message}', [ContactMessageController::class, 'show'])->name('contact-messages.show');
+    Route::post('/contact-messages/{message}/reply', [ContactMessageController::class, 'reply'])->name('contact-messages.reply');
+    Route::delete('/contact-messages/{message}', [ContactMessageController::class, 'destroy'])->name('contact-messages.destroy');
 });
 
 // RESET PASSWORD TOKEN LINK
