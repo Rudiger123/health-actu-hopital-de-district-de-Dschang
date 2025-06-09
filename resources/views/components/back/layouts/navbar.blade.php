@@ -67,6 +67,14 @@
             </a>
         </li>
 
+         <!-- newsletter -->
+         <li class="menu-item {{ Route::is('admin.subscribers') ? 'active' : '' }}"">
+            <a href="{{ route('admin.subscribers') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-message"></i>
+                <div class="text-truncate" data-i18n="messages">Newsletters</div>
+            </a>
+        </li>
+
         <!-- Utilisateurs -->
         @can('viewAny', App\Models\User::class)
             <li class="menu-item {{ Route::is('admin.usersManager') ? 'active' : '' }}"">

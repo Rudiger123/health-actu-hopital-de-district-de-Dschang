@@ -35,5 +35,10 @@ class AdminController extends Controller
     {
         return view('back.pages.Auth.adminUsersManager');
     }
+
+    public function subscribers()
+    {
+        return view('back.pages.adminSubscribersManager');
+    }
     
 }

@@ -2,78 +2,99 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\NewsletterUnsubscribeController;
 use App\Livewire\Back\Profile;
+use App\Livewire\NewsletterSubscribers;
+use App\Livewire\SendNewsletterForm;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Http\Controllers\Admin\ContactMessageController;
 
 /**
- * les routes de l'interface utilisateur de la plateforme
+ * Routes publiques (Front-end)
  */
-
-Route::middleware('guest', 'preventBackHistory')->controller(FrontController::class)->group(function () {
-
+Route::controller(FrontController::class)->group(function () {
+    // Pages principales
     Route::get('/', 'index')->name('home');
-
     Route::get('/services', 'services')->name('services');
-
-    Route::get('actualités', 'actualités')->name('blog.index');
-
     Route::get('contact', 'contact')->name('contact');
 
+    // Blog et articles
+    Route::get('actualités', 'actualités')->name('blog.index');
     Route::get('/post/{slug}', 'readPost')->name('read_post');
-
-    Route::get('/post/categories/{slug}', 'categoryPost')->name('category_posts');
-
-    Route::get('/post/author/{username}', 'authorPosts')->name('author_posts');
-
-    Route::get('/post/tag/{any}', 'tagPosts')->name('tag_posts');
-
-    // search result for Post
-    Route::get('/search', 'searchPosts')->name('search');
-
     Route::get('/post/{slug}', 'show')->name('blog.show');
-
+    Route::get('/post/categories/{slug}', 'categoryPost')->name('category_posts');
+    Route::get('/post/author/{username}', 'authorPosts')->name('author_posts');
+    Route::get('/post/tag/{any}', 'tagPosts')->name('tag_posts');
     Route::get('/blog/search', 'searchResults')->name('blog.search');
+    Route::get('/search', 'searchPosts')->name('search');
 });
 
-
-// AUTHENTIFICATION ROUTE
+/**
+ * Routes d'authentification
+ */
 Route::get('/login', function () {
     return redirect()->route('home');
 })->name('login');
 
 /**
- *  ADMIN ROUTES
+ * Routes d'administration
  */
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::middleware(['auth', 'preventBackHistory'])->group(function () {
-        Route::controller(AdminController::class)->group(function () {
-            Route::get('/dashboard', 'adminDashoard')->name('dashboard');
-            Route::post('/logout', 'logoutHandler')->name('logout');
-            Route::get('/profile', Profile::class)->name('profile');
-            Route::get('/categories', 'categories')->name('categories');
-            Route::get('/posts', 'posts')->name('posts');
-            Route::get('/tags', 'tags')->name('tags');
-            Route::get('/comments', 'commentsManager')->name('commentsManager');
-            Route::get('/users', 'usersManager')->name('usersManager');
-        });
+Route::prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        // Routes protégées par authentification
+        Route::middleware(['auth', 'preventBackHistory'])
+            ->controller(AdminController::class)
+            ->group(function () {
+                Route::get('/dashboard', 'adminDashoard')->name('dashboard');
+                Route::post('/logout', 'logoutHandler')->name('logout');
+                Route::get('/profile', Profile::class)->name('profile');
+                Route::get('/categories', 'categories')->name('categories');
+                Route::get('/posts', 'posts')->name('posts');
+                Route::get('/tags', 'tags')->name('tags');
+                Route::get('/comments', 'commentsManager')->name('commentsManager');
+                Route::get('/users', 'usersManager')->name('usersManager');
+                Route::get('/newsletter-subscribers', 'newsletterSubscribers')->name('newsletter.subscribers');
+                Route::get('/subscribers','subscribers')->name('subscribers');
+            });
+
+        // Routes de gestion des messages de contact
+        Route::middleware(['auth'])
+            ->group(function () {
+                Route::get('/contact-messages', [ContactMessageController::class, 'index'])->name('contact-messages.index');
+                Route::get('/contact-messages/{message}', [ContactMessageController::class, 'show'])->name('contact-messages.show');
+                Route::post('/contact-messages/{message}/reply', [ContactMessageController::class, 'reply'])->name('contact-messages.reply');
+                Route::delete('/contact-messages/{message}', [ContactMessageController::class, 'destroy'])->name('contact-messages.destroy');
+            });
     });
-});
 
-// Routes pour la gestion des messages de contact
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/contact-messages', [ContactMessageController::class, 'index'])->name('contact-messages.index');
-    Route::get('/contact-messages/{message}', [ContactMessageController::class, 'show'])->name('contact-messages.show');
-    Route::post('/contact-messages/{message}/reply', [ContactMessageController::class, 'reply'])->name('contact-messages.reply');
-    Route::delete('/contact-messages/{message}', [ContactMessageController::class, 'destroy'])->name('contact-messages.destroy');
-});
+/**
+ * Routes de la newsletter
+ */
+Route::prefix('newsletter')
+    ->name('newsletter.')
+    ->group(function () {
+        Route::get('unsubscribe/{token}', [NewsletterUnsubscribeController::class, 'confirm'])
+            ->where('token', '^(?!success$|error$).*$')
+            ->name('unsubscribe.confirm');
+        Route::post('unsubscribe', [NewsletterUnsubscribeController::class, 'unsubscribe'])->name('unsubscribe');
+        Route::get('unsubscribe/success', [NewsletterUnsubscribeController::class, 'success'])->name('unsubscribe.success');
+        Route::get('unsubscribe/error', [NewsletterUnsubscribeController::class, 'error'])->name('unsubscribe.error');
+    });
+    
+    Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/newsletter-subscribers', NewsletterSubscribers::class)->name('newsletter.subscribers');
+        Route::get('/newsletter-send', SendNewsletterForm::class)->name('newsletter.send');
+    });
 
-// RESET PASSWORD TOKEN LINK
+/**
+ * Routes de réinitialisation de mot de passe
+ */
 Route::get('/reset-password/{token}', function ($token) {
     $tokenData = DB::table('password_reset_tokens')->where('token', $token)->first();
     if (!$tokenData) {

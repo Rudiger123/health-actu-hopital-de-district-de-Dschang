@@ -4,7 +4,7 @@ namespace App\Livewire\Blog;
 
 use App\Models\NewsletterSubscription;
 use Livewire\Component;
-
+use Illuminate\Support\Str;
 class NewsletterForm extends Component
 {
     public $email = '';
@@ -34,7 +34,8 @@ class NewsletterForm extends Component
         $this->validate();
 
         NewsletterSubscription::create([
-            'email' => $this->email
+            'email' => $this->email,
+            'unsubscribe_token' => Str::random(60)
         ]);
 
         $this->email  = '';
