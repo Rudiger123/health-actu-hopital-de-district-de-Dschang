@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Jobs\SendNewsletterJob;
+use App\Jobs\SendNewsletterCustomJob;
 use App\Models\NewsletterSubscription;
 use Livewire\Component;
 
@@ -38,7 +38,7 @@ class SendNewsletterForm extends Component
 
         foreach ($activeSubscribers as $subscriber) {
             // Dispatcher le job, en lui passant l'objet abonné, le sujet et le contenu
-            SendNewsletterJob::dispatch($subscriber, $this->newsletterSubject, $this->newsletterContent);
+            SendNewsletterCustomJob::dispatch($subscriber, $this->newsletterSubject, $this->newsletterContent);
         }
 
         $this->message = 'La newsletter a été envoyée avec succès à ' . $this->subscribersCount . ' abonnés.';

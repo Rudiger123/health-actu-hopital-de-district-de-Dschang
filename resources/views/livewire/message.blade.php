@@ -1,27 +1,14 @@
+
 <div class="container-fluid py-4 container-xxl flex-grow-1 container-p-y">
 
-    <div class="py-4">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('home') }}">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            <a href="#" class="text-primary fw-semibold">Messages</a>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+    <div>
+        <h1 class="text-3xl font-bold text-gray-900">Messages de contact</h1>
+        <p class="text-gray-600">Gérez tous les messages de votre plateforme</p>
     </div>
+
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Messages de contact</h3>
-                </div>
                 <div class="card-body">
                     <!-- Filtres -->
                     <div class="row mb-4">
