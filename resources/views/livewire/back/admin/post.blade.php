@@ -1,33 +1,22 @@
 <div>
     <!-- En-tête -->
     <div class="container-fluid py-4 container-xxl flex-grow-1 container-p-y">
-        <div class="py-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="#">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                <a href="#" class="text-primary fw-semibold">Gestion des articles</a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Gestion du Blog</h1>
+                <p class="text-gray-600">Gérez tous les articles de votre blog</p>
             </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <!-- Create Button -->
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h3 class="fw-bold">Posts</h3>
+            <!-- Create Button -->
             <button class="btn btn-primary" wire:click="addPost">
                 + Create Post
             </button>
         </div>
+    </div>
 
+
+
+    <div class="container">
         <!-- Inclure le composant de filtres -->
         <livewire:elements.filters-search />
 
@@ -90,11 +79,12 @@
                             <td class="align-middle">
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="avatar-container position-relative">
-                                        
+
                                         @if ($post->author->picture)
                                             <img src="{{ '/storage/' . $post->author->picture }}"
-                                            alt="{{ $post->author->name ?? 'Auteur' }}" class="rounded-circle shadow-sm"
-                                            style="width: 40px; height: 40px; object-fit: cover;">
+                                                alt="{{ $post->author->name ?? 'Auteur' }}"
+                                                class="rounded-circle shadow-sm"
+                                                style="width: 40px; height: 40px; object-fit: cover;">
                                         @else
                                             <div class="flex-shrink-0">
                                                 <div
@@ -216,8 +206,8 @@
                                         <div class="mb-3">
                                             <label for="title" class="form-label">Titre</label>
                                             <input type="text" placeholder="entrez le titre de votre article...."
-                                                class="form-control @error('title') is-invalid @enderror"
-                                                id="title" wire:model.defer="title">
+                                                class="form-control @error('title') is-invalid @enderror" id="title"
+                                                wire:model.defer="title">
                                             @error('title')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -241,17 +231,45 @@
                                         </div>
 
                                         <!-- Champs Tags -->
+                                        <div class="mb-4">
+                                            <label for="tagsSelect" class="form-label fw-semibold">🧩 Tags
+                                                associés</label>
+
+                                            <div class="form-floating">
+                                                <select id="tagsSelect" class="form-select" multiple
+                                                    style="height: 180px;" wire:model.defer="selectedTags"
+                                                    aria-label="Sélectionnez les tags">
+                                                    @foreach ($availableTags as $tag)
+                                                        <option value="{{ $tag['id'] }}">{{ $tag['name'] }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="tagsSelect">Sélectionnez un ou plusieurs tags</label>
+                                            </div>
+
+                                            <div class="form-text mt-1">
+                                                Vous pouvez sélectionner plusieurs tags existants ou en créer de
+                                                nouveaux.
+                                            </div>
+                                        </div>
+
+                                        <!-- Statut -->
                                         <div class="mb-3">
-                                            <label for="tagsSelect" class="form-label">Tags</label>
-                                            <select id="tagsSelect" class="form-select" multiple
-                                                wire:model.defer="selectedTags">
-                                                @foreach ($availableTags as $tag)
-                                                    <option value="{{ $tag['id'] }}">{{ $tag['name'] }}
-                                                    </option>
+                                            <label class="form-label">Statut</label>
+                                            <div class="btn-group w-100" role="group">
+                                                @foreach (['draft' => 'Brouillon', 'published' => 'Publié', 'pending' => 'En attente', 'private' => 'Privé'] as $value => $label)
+                                                    <input type="radio" class="btn-check" name="status"
+                                                        id="status-{{ $value }}" value="{{ $value }}"
+                                                        wire:model.defer="status">
+                                                    <label class="btn btn-outline-{{ $this->getStatusColor($value) }}"
+                                                        for="status-{{ $value }}">
+                                                        {{ $label }}
+                                                    </label>
                                                 @endforeach
-                                            </select>
-                                            <small class="text-muted">Sélectionnez un ou plusieurs tags
-                                                existants ou ajoutez-en de nouveaux ci-dessous.</small>
+                                            </div>
+                                            @error('status')
+                                                <span class="text-danger small">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
                                         <div class="mb-3">
@@ -325,27 +343,6 @@
                                                     </div>
                                                     <small class="text-muted">Entrez un nom de tag et appuyez sur
                                                         "Ajouter" pour l'ajouter à la liste.</small>
-                                                </div>
-
-                                                <!-- Statut -->
-                                                <div class="mb-3">
-                                                    <label class="form-label">Statut</label>
-                                                    <div class="btn-group w-100" role="group">
-                                                        @foreach (['draft' => 'Brouillon', 'published' => 'Publié', 'pending' => 'En attente', 'private' => 'Privé'] as $value => $label)
-                                                            <input type="radio" class="btn-check" name="status"
-                                                                id="status-{{ $value }}"
-                                                                value="{{ $value }}"
-                                                                wire:model.defer="status">
-                                                            <label
-                                                                class="btn btn-outline-{{ $this->getStatusColor($value) }}"
-                                                                for="status-{{ $value }}">
-                                                                {{ $label }}
-                                                            </label>
-                                                        @endforeach
-                                                    </div>
-                                                    @error('status')
-                                                        <span class="text-danger small">{{ $message }}</span>
-                                                    @enderror
                                                 </div>
 
                                                 <!-- Options -->
@@ -610,14 +607,12 @@
                                             class="rounded-circle shadow-sm border border-secondary"
                                             style="width: 50px; height: 50px; object-fit: cover; margin-right: 15px;">
                                     @else
-                                    
-                                            <div class="flex-shrink-0">
-                                                <div
-                                                    class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
-                                                    {{ substr($currentPost->author->name, 0, 1) }}
-                                                </div>
+                                        <div class="flex-shrink-0">
+                                            <div
+                                                class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                                                {{ substr($currentPost->author->name, 0, 1) }}
                                             </div>
-
+                                        </div>
                                     @endif
                                     <div>
                                         <h5 class="mb-0 text-dark fw-bold">{{ $currentPost->author->name }}</h5>
