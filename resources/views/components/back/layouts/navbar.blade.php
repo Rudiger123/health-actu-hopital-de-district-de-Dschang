@@ -52,28 +52,30 @@
         </li>
 
         <!-- Commentaires -->
-        <li class="menu-item {{ Route::is('admin.commentsManager') ? 'active' : '' }}"">
-            <a href="{{ route('admin.commentsManager') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-comment"></i>
-                <div class="text-truncate" data-i18n="Comments">{{ __('menu.comments') }}</div>
-            </a>
-        </li>
+        <!-- Commentaires -->
+<li class="menu-item {{ Route::is('admin.commentsManager') ? 'active' : '' }}">
+    <a href="{{ route('admin.commentsManager') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-comment"></i>
+        <div class="text-truncate" data-i18n="Comments">{{ __('menu.comments') }}</div>
+    </a>
+</li>
 
-        <!-- messages -->
-        <li class="menu-item {{ Route::is('admin.contact-messages.index') ? 'active' : '' }}"">
-            <a href="{{ route('admin.contact-messages.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-message"></i>
-                <div class="text-truncate" data-i18n="messages">Messages</div>
-            </a>
-        </li>
+<!-- Messages de contact -->
+<li class="menu-item {{ Route::is('admin.contact-messages.index') ? 'active' : '' }}">
+    <a href="{{ route('admin.contact-messages.index') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-message"></i>
+        <div class="text-truncate" data-i18n="messages">Messages</div>
+    </a>
+</li>
 
-         <!-- newsletter -->
-         <li class="menu-item {{ Route::is('admin.subscribers') ? 'active' : '' }}"">
-            <a href="{{ route('admin.subscribers') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-message"></i>
-                <div class="text-truncate" data-i18n="messages">Newsletters</div>
-            </a>
-        </li>
+<!-- Abonnés à la newsletter -->
+<li class="menu-item {{ Route::is('admin.subscribers') ? 'active' : '' }}">
+    <a href="{{ route('admin.subscribers') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-envelope"></i>
+        <div class="text-truncate" data-i18n="newsletter">Newsletters</div>
+    </a>
+</li>
+
 
         <!-- Utilisateurs -->
         @can('viewAny', App\Models\User::class)

@@ -1,22 +1,15 @@
 <div>
     <div class="container-fluid py-4 container-xxl flex-grow-1 container-p-y">
-
-        <div class="py-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="#">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                <a href="#" class="text-primary fw-semibold">Gestion des Etiquettes</a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
+         <!-- En-tête -->
+    <div class="container-fluid py-4 container-xxl flex-grow-1 container-p-y">
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Gestion des Tags</h1>
+                <p class="text-gray-600">Gérez tous les etiquettes</p>
             </div>
         </div>
+    </div>
 
         <div class="flex flex-col md:flex-row gap-6 ">
             <!-- Tableau des tags -->
