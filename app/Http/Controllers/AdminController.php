@@ -41,4 +41,19 @@ class AdminController extends Controller
         return view('back.pages.adminSubscribersManager');
     }
     
+    public function gallery()
+    {
+        return view ('back.pages.Auth.imageAdminManager');
+    }
+
+    public function testimonials()
+    {
+        return view('back.pages.Auth.testimonialAdminManager');
+    }
+
+    public function doctors()
+    {
+        return view ('back.pages.Auth.doctorAdminManager');
+    }
+
 }

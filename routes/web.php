@@ -61,6 +61,9 @@ Route::prefix('admin')
                 Route::get('/users', 'usersManager')->name('usersManager');
                 Route::get('/newsletter-subscribers', 'newsletterSubscribers')->name('newsletter.subscribers');
                 Route::get('/subscribers','subscribers')->name('subscribers');
+                Route::get('/testimonials','testimonials')->name('testimonials');
+                Route::get('/gallery','gallery')->name('gallery');
+                Route::get('/doctors','doctors')->name('doctors');
             });
 
         // Routes de gestion des messages de contact

@@ -174,6 +174,16 @@
 
 <livewire:reset-password-form />
 
+@can('viewAny', App\Models\User::class)
+<div class="menu-item mt-auto">
+    <div class="fixed bottom-4 right-4">
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">
+            Aller à l’espace administrateur
+        </a>
+    </div>
+</div> 
+@endcan
+
 @push('scripts')
     <script>
         document.addEventListener('livewire:initialized', () => {

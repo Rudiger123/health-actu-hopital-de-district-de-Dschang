@@ -19,7 +19,6 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <!-- Dashboard -->
         <li class="menu-item {{ Route::is('admin.dashboard') ? 'active' : '' }} open">
             <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
@@ -27,7 +26,6 @@
             </a>
         </li>
 
-        <!-- Articles -->
         <li class="menu-item {{ Route::is('admin.posts') ? 'active' : '' }}">
             <a href="{{ route('admin.posts') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-news"></i>
@@ -35,7 +33,6 @@
             </a>
         </li>
 
-        <!-- Catégories -->
         <li class="menu-item {{ Route::is('admin.categories') ? 'active' : '' }}">
             <a href="{{ route('admin.categories') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-category"></i>
@@ -43,43 +40,48 @@
             </a>
         </li>
 
-        <!-- Tags -->
         <li class="menu-item {{ Route::is('admin.tags') ? 'active' : '' }}">
             <a href="{{ route('admin.tags') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-tag"></i>
-                <div class="text-truncate" data-i18n="Tags">{{ __('menu.tags') }}</div>
+                <i class="menu-icon tf-icons bx bx-purchase-tag"></i> <div class="text-truncate" data-i18n="Tags">{{ __('menu.tags') }}</div>
             </a>
         </li>
 
-        <!-- Commentaires -->
-        <!-- Commentaires -->
-<li class="menu-item {{ Route::is('admin.commentsManager') ? 'active' : '' }}">
-    <a href="{{ route('admin.commentsManager') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-comment"></i>
-        <div class="text-truncate" data-i18n="Comments">{{ __('menu.comments') }}</div>
-    </a>
-</li>
+        <li class="menu-item {{ Route::is('admin.gallery') ? 'active' : '' }}">
+            <a href="{{ route('admin.gallery') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-image"></i> <div class="text-truncate" data-i18n="Gallery">Galerie</div> </a>
+        </li>
 
-<!-- Messages de contact -->
-<li class="menu-item {{ Route::is('admin.contact-messages.index') ? 'active' : '' }}">
-    <a href="{{ route('admin.contact-messages.index') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-message"></i>
-        <div class="text-truncate" data-i18n="messages">Messages</div>
-    </a>
-</li>
+        <li class="menu-item {{ Route::is('admin.testimonials') ? 'active' : '' }}"> <a href="{{ route('admin.testimonials') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chat"></i> <div class="text-truncate" data-i18n="Testimonials">Témoignages</div> </a>
+        </li>
 
-<!-- Abonnés à la newsletter -->
-<li class="menu-item {{ Route::is('admin.subscribers') ? 'active' : '' }}">
-    <a href="{{ route('admin.subscribers') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-envelope"></i>
-        <div class="text-truncate" data-i18n="newsletter">Newsletters</div>
-    </a>
-</li>
+        <li class="menu-item {{ Route::is('admin.doctors') ? 'active' : '' }}">
+            <a href="{{ route('admin.doctors') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-plus"></i> <div class="text-truncate" data-i18n="Doctors">Docteurs</div> </a>
+        </li>
 
+        <li class="menu-item {{ Route::is('admin.commentsManager') ? 'active' : '' }}">
+            <a href="{{ route('admin.commentsManager') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-comment"></i>
+                <div class="text-truncate" data-i18n="Comments">{{ __('menu.comments') }}</div>
+            </a>
+        </li>
 
-        <!-- Utilisateurs -->
+        <li class="menu-item {{ Route::is('admin.contact-messages.index') ? 'active' : '' }}">
+            <a href="{{ route('admin.contact-messages.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-message"></i>
+                <div class="text-truncate" data-i18n="Messages">Messages</div>
+            </a>
+        </li>
+
+        <li class="menu-item {{ Route::is('admin.subscribers') ? 'active' : '' }}">
+            <a href="{{ route('admin.subscribers') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-envelope"></i>
+                <div class="text-truncate" data-i18n="Newsletter">Abonnés Newsletter</div> </a>
+        </li>
+
         @can('viewAny', App\Models\User::class)
-            <li class="menu-item {{ Route::is('admin.usersManager') ? 'active' : '' }}"">
+            <li class="menu-item {{ Route::is('admin.usersManager') ? 'active' : '' }}">
                 <a href="{{ route('admin.usersManager') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-user"></i>
                     <div class="text-truncate" data-i18n="Users">{{ __('menu.users') }}</div>
@@ -87,17 +89,16 @@
             </li>
         @endcan
 
-        <!-- Paramètres -->
         <li class="menu-item">
             @livewire('back.admin.general-settings')
         </li>
 
-        {{-- <li class="menu-item mt-auto">
+        <li class="menu-item mt-auto">
             <div class="fixed bottom-4 right-4">
                 <a href="{{ route('home') }}" class="btn btn-primary">
                     Aller à l’espace utilisateur
                 </a>
             </div>
-        </li> --}}
+        </li> 
     </ul>
 </aside>

@@ -16,7 +16,7 @@
 
                             <h1 class="mb-4 text-4xl text-gray-900">
                                 {{ __('hero.title') }}
-                                <span class="accent-text" style="color :#4F46E5">{{ __('hero.city') }}</span>
+                                <span class="accent-text" style="color :#008000">{{ __('hero.city') }}</span>
                             </h1>
 
                             <p class="mb-4 mb-md-5 text-lg">
@@ -100,7 +100,7 @@
                             <div class="row gy-4">
                                 <div class="col-lg-7">
                                     <div class="contact-info d-flex align-items-center gap-2">
-                                        <i class="bi bi-telephone-fill"></i>
+                                        <i class="bi bi-telephone-fill" style="color : #FF0000"></i>
                                         <div>
                                             <p class="contact-label">@lang('welcome.contact.label')</p>
                                             <p class="contact-number">@lang('welcome.contact.number')</p>
@@ -119,7 +119,7 @@
                                 <img src="{{ asset('assets/images/guide-1.jpg') }}" alt="@lang('welcome.images.team_discussion')"
                                     class="img-fluid small-image rounded-10">
                             </div>
-                            <div class="experience-badge floating">
+                            <div class="experience-badge floating" style="background: #4F46E5">
                                 <h3>@lang('welcome.experience.years', ['years' => 15])</h3>
                                 <p>@lang('welcome.experience.text')</p>
                             </div>
@@ -258,7 +258,6 @@
                         <p class="mb-4">{{ __('general.hospital_description') }}</p>
                         <a href="{{ route('blog.index') }}" class="btn btn-cta">{{ __('general.discover_news') }}</a>
                     </div>
-
 
                     <!-- Abstract Background Elements -->
                     <div class="shape shape-1">

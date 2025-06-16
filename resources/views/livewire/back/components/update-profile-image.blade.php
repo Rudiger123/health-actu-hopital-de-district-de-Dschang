@@ -37,7 +37,7 @@
                     <a href="{{ $socialLinks->facebook }}" style="width: 36px; height: 36px; border-radius: 50%; background-color: #3b5998; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="bx bxl-facebook"></i></a>
                     <a href="{{ $socialLinks->twitter}}" style="width: 36px; height: 36px; border-radius: 50%; background-color: #1da1f2; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="bx bxl-twitter"></i></a>
                     <a href="{{ $socialLinks->instagram }}" style="width: 36px; height: 36px; border-radius: 50%; background-color: #e1306c; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="bx bxl-instagram"></i></a>
-                    <a href="{{ $socialLinks->linkedn }}" style="width: 36px; height: 36px; border-radius: 50%; background-color: #0077b5; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="bx bxl-linkedin"></i></a>
+                    <a href="{{ $socialLinks->linkedin }}" style="width: 36px; height: 36px; border-radius: 50%; background-color: #0077b5; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="bx bxl-linkedin"></i></a>
                 </div>
             </div>
         </div>

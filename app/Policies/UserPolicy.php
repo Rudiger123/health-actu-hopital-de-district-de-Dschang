@@ -12,6 +12,11 @@ class UserPolicy
         return $user->type === UserType::SuperAdmin;
     }
 
+    public function view(User $user)
+    {
+        return $user->type === UserType::Admin || $user->type === UserType::SuperAdmin;
+    }
+
     public function create(User $user)
     {
         return $user->type === UserType::SuperAdmin;

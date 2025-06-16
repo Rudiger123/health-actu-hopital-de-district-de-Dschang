@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        \App\Models\Doctor::factory(15)->create(); // Crée 15 faux docteurs
+        \App\Models\Testimonial::factory(10)->create();
+        
         $this->call([
             UserSeeder::class,
             CategoriesTableSeeder::class,
