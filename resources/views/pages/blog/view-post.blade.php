@@ -42,10 +42,10 @@
 
                                         <div class="author-info">
                                             <div class="author-details">
-                                                
+
                                                 @if ($post->author->picture)
                                                     <img src="{{ asset('storage/' . $post->author->picture) }}"
-                                                    alt="Author image" class="author-img">
+                                                        alt="Author image" class="author-img">
                                                 @else
                                                     <div class="flex-shrink-0">
                                                         <div
@@ -63,7 +63,8 @@
                                                 <span class="date"><i class="bi bi-calendar3"></i>
                                                     {{ $post->created_at->format('d F Y \à H:i') }}</span>
                                                 <span cla ss="divider">•</span>
-                                                <span class="comments"><i class="bi bi-chat-text"></i> {{ $post->comments()->count() }} {{ __('comments') }}</span>
+                                                <span class="comments"><i class="bi bi-chat-text"></i>
+                                                    {{ $post->comments()->count() }} {{ __('comments') }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -83,18 +84,136 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                    
+
                                         <div class="share-section">
                                             <h4>{{ __('Share Article') }}</h4>
                                             <div class="social-links">
-                                                <a href="#" class="twitter" title="{{ __('Share on Twitter') }}"><i class="bi bi-twitter-x"></i></a>
-                                                <a href="#" class="facebook" title="{{ __('Share on Facebook') }}"><i class="bi bi-facebook"></i></a>
-                                                <a href="#" class="linkedin" title="{{ __('Share on LinkedIn') }}"><i class="bi bi-linkedin"></i></a>
-                                                <a href="#" class="copy-link" title="{{ __('Copy Link') }}"><i class="bi bi-link-45deg"></i></a>
+                                                <!-- Twitter (X) -->
+                                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode(__('Check out this page:') . ' ' . (isset($shareTitle) ? $shareTitle : config('app.name'))) }}"
+                                                    class="twitter" target="_blank" rel="noopener noreferrer"
+                                                    title="{{ __('Share on Twitter') }}">
+                                                    <i class="bi bi-twitter-x"></i>
+                                                </a>
+
+                                                <!-- Facebook -->
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
+                                                    class="facebook" target="_blank" rel="noopener noreferrer"
+                                                    title="{{ __('Share on Facebook') }}">
+                                                    <i class="bi bi-facebook"></i>
+                                                </a>
+
+                                                <!-- LinkedIn -->
+                                                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->current()) }}"
+                                                    class="linkedin" target="_blank" rel="noopener noreferrer"
+                                                    title="{{ __('Share on LinkedIn') }}">
+                                                    <i class="bi bi-linkedin"></i>
+                                                </a>
+
+                                                <a href="https://wa.me/?text={{ urlencode(__('Check this out:') . ' ' . url()->current()) }}"
+                                                    class="whatsapp" title="{{ __('Share on WhatsApp') }}">
+                                                    <i class="bi bi-whatsapp"></i>
+                                                </a>
+
+                                                <!-- Copy Link -->
+                                                <a href="#" class="copy-link" title="{{ __('Copy Link') }}"
+                                                    onclick="event.preventDefault(); copyToClipboard('{{ url()->current() }}')">
+                                                    <i class="bi bi-link-45deg"></i>
+                                                </a>
                                             </div>
+
+                                            <script>
+                                                function copyToClipboard(text) {
+                                                    navigator.clipboard.writeText(text).then(() => {
+                                                        // Notification toast temporaire
+                                                        const notification = document.createElement('div');
+                                                        notification.className = 'copy-notification';
+                                                        notification.textContent = '{{ __('Link copied to clipboard!') }}';
+                                                        document.body.appendChild(notification);
+
+                                                        setTimeout(() => {
+                                                            notification.remove();
+                                                        }, 2000);
+                                                    }).catch(err => {
+                                                        console.error('Error copying text: ', err);
+                                                        alert('{{ __('Failed to copy link. Please try again.') }}');
+                                                    });
+                                                }
+                                            </script>
+
+                                            <style>
+                                                .social-links {
+                                                    display: flex;
+                                                    gap: 12px;
+                                                }
+
+                                                .social-links a {
+                                                    display: inline-flex;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    width: 36px;
+                                                    height: 36px;
+                                                    border-radius: 50%;
+                                                    color: white;
+                                                    font-size: 18px;
+                                                    transition: transform 0.2s, opacity 0.2s;
+                                                }
+
+                                                .social-links a:hover {
+                                                    transform: scale(1.1);
+                                                    opacity: 0.9;
+                                                }
+
+                                                .social-links .twitter {
+                                                    background-color: #000000;
+                                                }
+
+                                                /* Twitter/X couleur noire */
+                                                .social-links .facebook {
+                                                    background-color: #3b5998;
+                                                }
+
+                                                .social-links .linkedin {
+                                                    background-color: #0077b5;
+                                                }
+
+                                                .social-links .copy-link {
+                                                    background-color: #6c757d;
+                                                }
+
+                                                .copy-notification {
+                                                    position: fixed;
+                                                    bottom: 20px;
+                                                    left: 50%;
+                                                    transform: translateX(-50%);
+                                                    background: rgba(0, 0, 0, 0.8);
+                                                    color: white;
+                                                    padding: 10px 20px;
+                                                    border-radius: 5px;
+                                                    z-index: 1000;
+                                                    animation: fadeInOut 2s ease-in-out;
+                                                }
+
+                                                @keyframes fadeInOut {
+                                                    0% {
+                                                        opacity: 0;
+                                                    }
+
+                                                    10% {
+                                                        opacity: 1;
+                                                    }
+
+                                                    90% {
+                                                        opacity: 1;
+                                                    }
+
+                                                    100% {
+                                                        opacity: 0;
+                                                    }
+                                                }
+                                            </style>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
                             </article>
@@ -163,7 +282,7 @@
                         <!-- Search Widget -->
                         <div class="search-widget widget-item">
 
-                            <h3 class="widget-title">{{__('search')}}</h3>
+                            <h3 class="widget-title">{{ __('search') }}</h3>
                             @livewire('partials.search-bar')
 
                         </div><!--/Search Widget -->

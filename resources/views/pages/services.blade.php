@@ -23,74 +23,6 @@
             $titel3 = __('services.titel3');
             $text3 = __('services.text3');
 
-            $testimonials = [
-                [
-                    'quote' =>
-                        'Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.',
-                    'image' => 'assets/img/testimonials/testimonials-1.jpg',
-                    'name' => 'Saul Goodman',
-                    'position' => 'Ceo & Founder',
-                ],
-                [
-                    'quote' =>
-                        'Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.',
-                    'image' => 'assets/img/testimonials/testimonials-2.jpg',
-                    'name' => 'Sara Wilsson',
-                    'position' => 'Designer',
-                ],
-                [
-                    'quote' =>
-                        'Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.',
-                    'image' => 'assets/img/testimonials/testimonials-3.jpg',
-                    'name' => 'Jena Karlis',
-                    'position' => 'Store Owner',
-                ],
-                [
-                    'quote' =>
-                        'Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.',
-                    'image' => 'assets/img/testimonials/testimonials-4.jpg',
-                    'name' => 'Matt Brandon',
-                    'position' => 'Freelancer',
-                ],
-                [
-                    'quote' =>
-                        'Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.',
-                    'image' => 'assets/img/testimonials/testimonials-5.jpg',
-                    'name' => 'John Larson',
-                    'position' => 'Entrepreneur',
-                ],
-            ];
-
-            $doctors = [
-                [
-                    'image' => 'assets/images/doctors/doctor-1.jpg',
-                    'name' => 'Dr. Walter White',
-                    'position' => 'Directeur Médical',
-                    'description' =>
-                        'Spécialiste en médecine interne avec plus de 15 ans d\'expérience. Expert dans le diagnostic et le traitement des maladies complexes.',
-                ],
-                [
-                    'image' => 'assets/images/doctors/doctor-2.jpg',
-                    'name' => 'Dr. Sarah Johnson',
-                    'position' => 'Anesthésiste',
-                    'description' =>
-                        'Anesthésiste qualifiée avec une expertise particulière en anesthésie pédiatrique et obstétrique.',
-                ],
-                [
-                    'image' => 'assets/images/doctors/doctor-3.jpg',
-                    'name' => 'Dr. William Anderson',
-                    'position' => 'Cardiologue',
-                    'description' =>
-                        'Cardiologue renommé spécialisé dans les interventions cardiaques non invasives et la prévention des maladies cardiovasculaires.',
-                ],
-                [
-                    'image' => 'assets/images/doctors/doctor-4.jpg',
-                    'name' => 'Dr. Amanda Jepson',
-                    'position' => 'Neurochirurgien',
-                    'description' =>
-                        'Neurochirurgien expérimenté avec une expertise dans les interventions cérébrales complexes et la chirurgie mini-invasive.',
-                ],
-            ];
         @endphp
 
         <x-layouts.hero :image1="$image1" :image2="$image2" :image3="$image3" :text1="$text1" :text2="$text2"
@@ -352,142 +284,185 @@
         </section><!-- /Tabs Section -->
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials section light-background">
+        <section id="testimonials" class="testimonials section bg-gray-50 py-16">
             <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>{{ __('services.testimonials_title') }}</h2>
-                <p>{{ __('services.testimonials_desc') }}</p>
-            </div><!-- End Section Title -->
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="swiper init-swiper" data-speed="600" data-delay="5000"
-                    data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
-                    <script type="application/json" class="swiper-config">
-                   {
-                     "loop": true,
-                     "speed": 600,
-                     "autoplay": {
-                       "delay": 5000
-                     },
-                     "slidesPerView": "auto",
-                     "pagination": {
-                       "el": ".swiper-pagination",
-                       "type": "bullets",
-                       "clickable": true
-                     },
-                     "breakpoints": {
-                       "320": {
-                         "slidesPerView": 1,
-                         "spaceBetween": 40
-                       },
-                       "1200": {
-                         "slidesPerView": 3,
-                         "spaceBetween": 20
-                       }
-                     }
-                   }
-                 </script>
-                    <div class="swiper-wrapper">
-                        @foreach ($testimonials as $testimonial)
-                            <div class="swiper-slide">
-                                <div class="testimonial-item">
-                                    <p>
-                                        <i class="bi bi-quote quote-icon-left"></i>
-                                        <span>{{ $testimonial['quote'] }}</span>
-                                        <i class="bi bi-quote quote-icon-right"></i>
-                                    </p>
-                                    <img src="{{ $testimonial['image'] }}" class="testimonial-img"
-                                        alt="{{ $testimonial['name'] }}">
-                                    <h3>{{ $testimonial['name'] }}</h3>
-                                    <h4>{{ $testimonial['position'] }}</h4>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
+            <div class="container section-title text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800">{{ __('services.testimonials_title') }}</h2>
+                <p class="text-gray-600 mt-2">{{ __('services.testimonials_desc') }}</p>
             </div>
-        </section><!-- /Testimonials Section -->
 
-        <!-- Doctors Section -->
-        <section id="doctors" class="doctors section">
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>{{ __('services.doctors_title') != 'services.doctors_title' ? __('services.doctors_title') : 'Notre Équipe Médicale' }}
-                </h2>
-
-                <p>{{ __('services.doctors_subtitle') != 'services.doctors_subtitle' ? __('services.doctors_subtitle') : 'Une équipe de professionnels de santé dévoués et expérimentés à votre service' }}
-                </p>
-                </p>
-            </div><!-- End Section Title -->
-
+            <!-- Témoignages -->
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper init-swiper">
                     <script type="application/json" class="swiper-config">
-                    {
-                        "loop": true,
-                        "speed": 600,
-                        "autoplay": {
-                            "delay": 5000
+                {
+                    "loop": true,
+                    "speed": 600,
+                    "autoplay": {
+                        "delay": 5000
+                    },
+                    "slidesPerView": "auto",
+                    "pagination": {
+                        "el": ".swiper-pagination",
+                        "type": "bullets",
+                        "clickable": true
+                    },
+                    "breakpoints": {
+                        "320": {
+                            "slidesPerView": 1,
+                            "spaceBetween": 20
                         },
-                        "slidesPerView": "auto",
-                        "pagination": {
-                            "el": ".swiper-pagination",
-                            "type": "bullets",
-                            "clickable": true
+                        "768": {
+                            "slidesPerView": 2,
+                            "spaceBetween": 30
                         },
-                        "breakpoints": {
-                            "320": {
-                                "slidesPerView": 1,
-                                "spaceBetween": 20
-                            },
-                            "768": {
-                                "slidesPerView": 2,
-                                "spaceBetween": 30
-                            },
-                            "1200": {
-                                "slidesPerView": 3,
-                                "spaceBetween": 40
-                            }
+                        "1200": {
+                            "slidesPerView": 3,
+                            "spaceBetween": 40
                         }
                     }
-                    </script>
+                }
+            </script>
+
                     <div class="swiper-wrapper">
-                        @foreach ($doctors as $doctor)
+                        @forelse ($testimonials as $testimonial)
                             <div class="swiper-slide">
-                                <div class="team-member">
-                                    <div class="member-img">
-                                        <img src="{{ $doctor['image'] }}" class="img-fluid"
-                                            alt="{{ $doctor['name'] }}">
-                                    </div>
-                                    <div class="member-info">
-                                        <h4>{{ $doctor['name'] }}</h4>
-                                        <span>{{ $doctor['position'] }}</span>
-                                        <p class="mt-3">{{ $doctor['description'] }}</p>
-                                    </div>
+                                <div
+                                    class="testimonial-item bg-white rounded-3xl shadow-lg p-6 text-center mx-auto max-w-md transition hover:shadow-xl">
+                                    <p class="text-gray-600 italic mb-4 relative">
+                                        <i
+                                            class="bi bi-quote quote-icon-left text-indigo-500 text-lg absolute -left-4 top-0"></i>
+                                        {{ $testimonial->content }}
+                                        <i
+                                            class="bi bi-quote quote-icon-right text-indigo-500 text-lg absolute -right-4 bottom-0"></i>
+                                    </p>
+
+                                    @if ($testimonial->image)
+                                        <img src="{{ Storage::url($testimonial->image) }}"
+                                            class="testimonial-img w-20 h-20 object-cover rounded-full mx-auto mb-3"
+                                            alt="Photo de {{ $testimonial->author_name }}">
+                                    @else
+                                        <img src="{{ asset('img/default-avatar.png') }}"
+                                            class="testimonial-img w-20 h-20 object-cover rounded-full mx-auto mb-3"
+                                            alt="Photo par défaut">
+                                    @endif
+
+                                    <h3 class="text-lg font-semibold text-indigo-700 mb-1">{{ $testimonial->author_name }}
+                                    </h3>
+                                    <h4 class="text-sm text-gray-500">{{ $testimonial->author_title ?? 'Patient' }}</h4>
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                            <div class="col-12 text-center py-5">
+                                <p class="text-gray-500">Aucun témoignage disponible pour le moment.</p>
+                            </div>
+                        @endforelse
                     </div>
-                    <div class="swiper-pagination"></div>
+
+                    <div class="swiper-pagination mt-6"></div>
                 </div>
             </div>
-        </section><!-- /Doctors Section -->
+        </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery" class="gallery section light-background">
 
+        <!-- Doctors Section -->
+        <section id="doctors" class="doctors section bg-white py-16">
             <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>{{ __('services.gallery_title') }}</h2>
-                <p>{{ __('services.gallery_desc') }}</p>
-            </div><!-- End Section Title -->
+            <div class="container section-title text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800">
+                    {{ __('services.doctors_title') != 'services.doctors_title' ? __('services.doctors_title') : 'Notre Équipe Médicale' }}
+                </h2>
+                <p class="text-gray-600 mt-2">
+                    {{ __('services.doctors_subtitle') != 'services.doctors_subtitle' ? __('services.doctors_subtitle') : 'Une équipe de professionnels de santé dévoués et expérimentés à votre service' }}
+                </p>
+            </div>
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <!-- Swiper Doctors -->
+            <div class="swiper init-swiper container" data-aos="fade-up" data-aos-delay="100">
+                <script type="application/json" class="swiper-config">
+            {
+                "loop": true,
+                "speed": 600,
+                "autoplay": {
+                    "delay": 5000
+                },
+                "slidesPerView": "auto",
+                "pagination": {
+                    "el": ".swiper-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                },
+                "breakpoints": {
+                    "320": {
+                        "slidesPerView": 1,
+                        "spaceBetween": 20
+                    },
+                    "768": {
+                        "slidesPerView": 2,
+                        "spaceBetween": 30
+                    },
+                    "1200": {
+                        "slidesPerView": 3,
+                        "spaceBetween": 40
+                    }
+                }
+            }
+        </script>
 
-                <div class="swiper init-swiper">
-                    <script type="application/json" class="swiper-config">
+                <div class="swiper-wrapper">
+                    @forelse ($doctors as $doctor)
+                        <div class="swiper-slide">
+                            <div
+                                class="team-member max-w-sm mx-auto bg-white rounded-2xl shadow-md overflow-hidden transition hover:shadow-lg h-full">
+                                <div class="member-img relative">
+                                    @if ($doctor->profile_picture)
+                                        <img src="{{ Storage::url($doctor->profile_picture) }}"
+                                            alt="Photo de {{ $doctor->name }}"
+                                            class="w-full h-64 object-cover object-top transition-transform duration-300 hover:scale-105">
+                                    @else
+                                        <img src="{{ asset('img/default-doctor-avatar.png') }}"
+                                            alt="Photo de docteur par défaut"
+                                            class="w-full h-64 object-cover object-top transition-transform duration-300 hover:scale-105">
+                                    @endif
+                                </div>
+
+                                <div class="member-info p-5 text-center">
+                                    <h4 class="text-xl font-semibold text-indigo-800">{{ $doctor->name }}</h4>
+                                    <span
+                                        class="text-sm text-gray-500 block mt-1">{{ $doctor->specialty ?? 'Généraliste' }}</span>
+
+                                    <p class="text-gray-600 text-sm mt-3 line-clamp-3">
+                                        {{ Str::limit($doctor->bio, 120) ?? 'Pas de biographie disponible.' }}
+                                    </p>
+
+                                    {{-- Icônes sociales optionnelles --}}
+                                    {{-- <div class="mt-4 flex justify-center space-x-3 text-gray-400 text-sm">
+                                <a href="#"><i class="bi bi-twitter"></i></a>
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                            </div> --}}
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12 text-center py-5">
+                            <p class="text-gray-500">Aucun docteur disponible pour le moment.</p>
+                        </div>
+                    @endforelse
+                </div>
+
+                <div class="swiper-pagination mt-6"></div>
+            </div>
+        </section>
+
+    <section id="gallery" class="gallery section light-background">
+
+        <div class="container section-title" data-aos="fade-up">
+            <h2>{{ __('services.gallery_title') }}</h2> 
+            <p>{{ __('services.gallery_desc') }}</p> 
+        </div><div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="swiper init-swiper">
+                <script type="application/json" class="swiper-config">
                    {
                      "loop": true,
                      "speed": 600,
@@ -517,25 +492,27 @@
                      }
                    }
                  </script>
-                    <div class="swiper-wrapper align-items-center">
-                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets/images/gallery/gallery-1.jpeg"><img
-                                    src="assets/images/gallery/gallery-1.jpeg" class="img-fluid" alt=""></a>
+                <div class="swiper-wrapper align-items-center">
+                    @forelse ($galleryImages as $image)
+                        <div class="swiper-slide">
+                            <a class="glightbox" data-gallery="images-gallery"
+                                href="{{ Storage::url($image->path) }}"
+                                title="{{ $image->filename ?? 'Image de la galerie' }}"> 
+                                <img src="{{ Storage::url($image->path) }}" class="img-fluid"
+                                    alt="{{ $image->filename ?? 'Image de la galerie' }}">
+                            </a>
                         </div>
-                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets/images/gallery/gallery-2.jpeg"><img
-                                    src="assets/images/gallery/gallery-2.jpeg" class="img-fluid" alt=""></a>
+                    @empty
+                        <div class="col-12 text-center py-5">
+                            <p>Aucune image disponible dans la galerie pour le moment.</p>
                         </div>
-                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets/images/gallery/gallery-3.jpeg"><img
-                                    src="assets/images/gallery/gallery-3.jpeg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
+                    @endforelse
                 </div>
-
+                <div class="swiper-pagination"></div>
             </div>
-        </section><!-- /Gallery Section -->
+
+        </div>
+    </section>
 
         <!-- Faq Section -->
         <section id="faq" class="faq section" style='background : white'>

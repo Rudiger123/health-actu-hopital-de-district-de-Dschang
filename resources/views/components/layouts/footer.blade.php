@@ -1,3 +1,9 @@
+@php 
+
+    $setting = \App\Models\SiteSetting::first();
+
+@endphp
+
 <footer id="footer" class="footer bg-light">
     <div class="container footer-top py-5">
         <div class="row gy-4">
@@ -9,9 +15,9 @@
                     <p><i class="bi bi-geo-alt me-2"></i> {{ __('footer.address_line_1') }}</p>
                     <p><i class="bi bi-building me-2"></i> {{ __('footer.address_line_2') }}</p>
                     <p class="mt-3"><strong><i class="bi bi-telephone me-2"></i> {{ __('footer.phone_label') }}:</strong>
-                        <span>{{ __('footer.phone_number') }}</span></p>
+                        <span>{{ $setting->site_phone }}</span></p>
                     <p><strong><i class="bi bi-envelope me-2"></i> {{ __('footer.email_label') }}:</strong>
-                        <span>{{ __('footer.email_address') }}</span></p>
+                        <span>{{ $setting->site_email }}</span></p>
                     <p><strong><i class="bi bi-clock me-2"></i> {{ __('footer.hours_label') }}:</strong>
                         <span>{{ __('footer.hours') }}</span></p>
                 </div>

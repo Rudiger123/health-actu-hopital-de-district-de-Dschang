@@ -59,7 +59,6 @@ class TestimonialManager extends Component
         session()->flash('message', 'Témoignage ajouté avec succès!');
         $this->resetForm();
         $this->showForm = false;
-        $this->loadTestimonials();
     }
 
     public function editTestimonial($id)
@@ -104,7 +103,6 @@ class TestimonialManager extends Component
         session()->flash('message', 'Témoignage mis à jour avec succès!');
         $this->resetForm();
         $this->showForm = false;
-        $this->loadTestimonials();
     }
 
     public function deleteTestimonial($id)
@@ -116,7 +114,6 @@ class TestimonialManager extends Component
         $testimonial->delete();
 
         session()->flash('message', 'Témoignage supprimé avec succès!');
-        $this->loadTestimonials();
     }
 
     public function toggleApproved($id)
@@ -125,7 +122,6 @@ class TestimonialManager extends Component
         $testimonial->is_approved = !$testimonial->is_approved;
         $testimonial->save();
         session()->flash('message', 'Statut d\'approbation mis à jour.');
-        $this->loadTestimonials();
     }
 
     public function cancel()

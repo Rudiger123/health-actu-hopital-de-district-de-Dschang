@@ -9,6 +9,9 @@ use App\Models\NewsletterSubscription;
 use App\Models\SocialLink;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Doctor;
+use App\Models\Image;
+use App\Models\Testimonial;
 
 class FrontController extends Controller
 {
@@ -19,7 +22,16 @@ class FrontController extends Controller
 
     public function services()
     {
-        return view('pages.services');
+         // Récupérer uniquement les docteurs actifs pour la page publique
+         $doctors = Doctor::where('is_active', true)->get();
+          // Fetch only approved testimonials
+        $testimonials = Testimonial::where('is_approved', true)->latest()->get();
+
+        // Récupérer les images publiées et les trier par ordre défini
+        $galleryImages = Image::orderBy('created_at')->get();
+
+
+        return view('pages.services', compact('doctors', 'testimonials','galleryImages'));
     }
 
     public static function actualités()

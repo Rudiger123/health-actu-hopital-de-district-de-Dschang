@@ -136,11 +136,73 @@
                     {{ __('general.sign_in') }}
                 </a>
             @endguest
+
+
+            @auth
+                <!-- Menu utilisateur -->
+                <div class="nav-item dropdown ms-2">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                        <!-- Avatar -->
+                        <div class="me-2 d-flex align-items-center justify-content-center rounded-circle bg-primary text-white"
+                            style="width: 36px; height: 36px;">
+
+                            @if (Auth::user()->picture)
+                                <img src="{{ asset('storage/' . Auth::user()->picture) }}" alt="{{ Auth::user()->name }}"
+                                    class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+                            @else
+                                <div class="d-flex align-items-center justify-content-center bg-blue-100 text-blue-600 fw-semibold"
+                                    style="width: 100%; height: 100%; border-radius: 50%;">
+                                    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                                </div>
+                            @endif
+                        </div>
+
+                        <!-- Nom d'utilisateur visible sur grands écrans -->
+                        <span class="d-none d-lg-inline">{{ Auth::user()->username }}</span>
+                    </a>
+
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <!-- En-tête profil -->
+                        <li class="px-3 py-2">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center"
+                                    style="width: 48px; height: 48px;">
+                                    @if (Auth::user()->picture)
+                                        <img src="{{ asset('storage/' . Auth::user()->picture) }}"
+                                            alt="{{ Auth::user()->name }}" class="rounded-circle"
+                                            style="width: 100%; height: 100%; object-fit: cover;">
+                                    @else
+                                        <div class="d-flex align-items-center justify-content-center bg-blue-100 text-blue-600 fw-semibold"
+                                            style="width: 100%; height: 100%; border-radius: 50%;">
+                                            {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                                        </div>
+                                    @endif
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">{{ Auth::user()->name }}</h6>
+                                    <small class="text-muted">{{ Auth::user()->username }}</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <!-- Lien vers profil -->
+                        <li>
+                            <a class="dropdown-item" href="{{ route('admin.profile') }}">
+                                <i class="bi bi-person me-2"></i> Mon Profil
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            @endauth
         </div>
 
-        @auth
-            @livewire('back.user-top-info')
-        @endauth
     </div>
 </header>
 
@@ -175,13 +237,13 @@
 <livewire:reset-password-form />
 
 @can('viewAny', App\Models\User::class)
-<div class="menu-item mt-auto">
-    <div class="fixed bottom-4 right-4">
-        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">
-            Aller à l’espace administrateur
-        </a>
+    <div class="menu-item mt-auto">
+        <div class="fixed bottom-4 right-4">
+            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">
+                Aller à l’espace administrateur
+            </a>
+        </div>
     </div>
-</div> 
 @endcan
 
 @push('scripts')
