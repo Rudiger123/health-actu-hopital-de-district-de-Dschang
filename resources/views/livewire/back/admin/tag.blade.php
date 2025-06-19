@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="mt-4">
-                    {{ $tags->links() }}
+                    {{ $tags->links('pagination::bootstrap-5') }}
                 </div>
             </div>
 

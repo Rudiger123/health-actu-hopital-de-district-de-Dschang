@@ -78,7 +78,7 @@
                         @endforeach
                     </div>
                     <div class="px-6 py-4 border-t">
-                        {{ $posts->links() }}
+                        {{ $posts->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
             </div>

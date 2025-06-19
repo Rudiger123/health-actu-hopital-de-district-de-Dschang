@@ -102,7 +102,7 @@
                         </table>
                     </div>
                     <div class="mt-4">
-                        {{ $messages->links() }}
+                        {{ $messages->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
             </div>

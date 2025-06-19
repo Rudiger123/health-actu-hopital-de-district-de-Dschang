@@ -100,7 +100,7 @@
                                 </tbody>
                             </table>
                              <div class="container-fluid container-p-y">
-                                {{ $parentCategories->links() }}
+                                {{ $parentCategories->links('pagination::bootstrap-5') }}
                             </div>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                                 </tbody>
                             </table>
                             <div class="container-fluid container-p-y">
-                                {{ $childCategories->links() }}
+                                {{ $childCategories->links('pagination::bootstrap-5') }}
                             </div>
                         </div>
                     </div>

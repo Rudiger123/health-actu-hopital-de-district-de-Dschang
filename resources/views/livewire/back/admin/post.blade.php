@@ -175,7 +175,7 @@
             </table>
         </div>
         <div class="container-fluid container-p-y">
-            {{ $posts->links() }}
+            {{ $posts->links('pagination::bootstrap-5') }}
         </div>
 
     </div>
