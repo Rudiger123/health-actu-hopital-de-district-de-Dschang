@@ -77,7 +77,7 @@
         <div class="row">
             <!-- Colonne image - moitié de l'écran -->
             <div class="col-lg-6 image-container">
-                <img src="{{ asset('assets/img/about copy.jpg') }}" alt="Reset Illustration" class="img-fluid">
+                <img src="{{ asset('assets/images/hopital.jpeg') }}" alt="Reset Illustration" class="img-fluid">
             </div>
 
             <!-- Colonne formulaire - moitié de l'écran -->

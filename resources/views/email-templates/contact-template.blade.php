@@ -12,11 +12,17 @@
         .label { font-weight: 600; color: #4f46e5; margin-bottom: 5px; display: block; }
         .value { margin-bottom: 15px; }
         .button { display: inline-block; padding: 10px 20px; background-color: #4f46e5; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <img src="https://votre-logo.com/logo-white.png" alt="Logo Entreprise">
+        <div class="logo">HRA de Dschang</div>
     </div>
     
     <div class="content">
