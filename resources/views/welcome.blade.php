@@ -40,7 +40,7 @@
                         data-aos="zoom-out" 
                         data-aos-delay="300">
                        
-                       <img src="assets/images/hopital.jpeg" 
+                       <img src="assets/images/hopital.jpg" 
                             alt="Hero Image" 
                             class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105" />
                    </div>
